@@ -1,0 +1,26 @@
+﻿@using EnvanterYonetimi.Models.Entity
+@model List<CihazTuru>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Cihaz Türü Id</th>
+                <th scope="col">Cihaz Tip</th>
+                <th scope="col">Karakter</th>
+            </tr> test
+        </thead>
+        <tbody>
+            @foreach(var cihazturu in Model)
+            {
+                <tr>
+                    <th>@cihazturu.cihazTuruId</th>
+                    <td>@cihazturu.cihazTip</td>
+                    <td>@cihazturu.karakter</td>
+                </tr>
+            }
+        </tbody>
+    </table>
