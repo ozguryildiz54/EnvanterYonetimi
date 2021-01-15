@@ -8,6 +8,41 @@ Dashboard UI
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+
+/* Menü ortalama başlangıcı*/
+header {
+	float: left;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+ul {
+	float: left;
+	list-style: none;
+	position: relative;
+	left: 50%;
+}
+
+li {
+	display: block;
+	float: left;
+	position: relative;
+	right: 50%;
+}
+
+/*#ortala {
+	display: table;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	margin: 0 auto;
+}*/
+}
+/*Menü ortalama sonu*/
+
+
 .navbar-brand
 {
     width: 100%;
@@ -9989,12 +10024,13 @@ body.fixed-header .header {
 }
 
 .header-brand-img {
-  height: 2rem;
-  line-height: 2rem;
-  vertical-align: bottom;
-  margin-right: .5rem;
-  width: auto;
+	height: 3rem;
+	line-height: 2rem;
+	vertical-align: bottom;
+	margin-right: .5rem;
+	width: auto;
 }
+
 
 .header-avatar {
   width: 2rem;

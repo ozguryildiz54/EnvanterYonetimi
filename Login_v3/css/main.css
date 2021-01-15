@@ -1,6 +1,9 @@
-
-
-
+.dairesel {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 320px;
+	height: 320px;
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
@@ -158,23 +161,21 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  z-index: 1;  
+	width: 100%;
+	min-height: 100vh;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	z-index: 1;
 }
 
 .container-login100::before {
@@ -207,7 +208,8 @@ iframe {
 [ Form ]*/
 
 .login100-form {
-  width: 100%;
+	width: 100%;
+
 }
 
 .login100-form-logo {
