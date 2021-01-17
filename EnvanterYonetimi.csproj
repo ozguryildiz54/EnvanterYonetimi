@@ -187,6 +187,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\action.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\config.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\css\dataTables.bootstrap.min.css" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\Employee.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\inc\container.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\inc\footer.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\inc\header.php" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\index.html" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\js\data.js" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\js\dataTables.bootstrap.min.js" />
+    <Content Include="datatables-add-edit-delete-ajax-php-mysql-demo\js\jquery.dataTables.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -203,6 +214,10 @@
     <Content Include="Login_v3\images\login1.jpg" />
     <Content Include="login\images\login2.jpg" />
     <Content Include="login\images\login3.jpg" />
+    <Content Include="tabler-dev\dist\assets\css\dataTables.bootstrap.min.css" />
+    <Content Include="tabler-dev\dist\assets\js\data.js" />
+    <Content Include="tabler-dev\dist\assets\js\dataTables.bootstrap.min.js" />
+    <Content Include="tabler-dev\dist\assets\js\jquery.dataTables.min.js" />
     <Content Include="tabler-dev\dist\demo\brand\headLogo.png" />
     <Content Include="tabler-dev\dist\demo\brand\login4.png" />
     <Content Include="login\images\login5.png" />
@@ -1082,6 +1097,7 @@
     <Content Include="tabler-dev\dist\docs\tags.html" />
     <Content Include="tabler-dev\dist\docs\typography.html" />
     <Content Include="tabler-dev\dist\email.html" />
+    <Content Include="tabler-dev\dist\table.html" />
     <Content Include="tabler-dev\dist\empty.html" />
     <Content Include="tabler-dev\dist\favicon.ico" />
     <Content Include="tabler-dev\dist\forgot-password.html" />
