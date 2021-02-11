@@ -1,0 +1,254 @@
+[33mcommit 4247128ab58c10ec9bf070df39b5eba298a92dcb[m[33m ([m[1;36mHEAD -> [m[1;32mozgur[m[33m, [m[1;31morigin/ozgur[m[33m)[m
+Merge: b1ae5b4 d136527
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 17 22:44:49 2021 +0300
+
+    degişiklikler ozgur branchi ile merge edildi
+
+[33mcommit d136527b1ab2c3230d70055bf504f05518b28b86[m[33m ([m[1;31morigin/kubra[m[33m, [m[1;32mkubra[m[33m)[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 17 22:35:24 2021 +0300
+
+    Anasayfa üzerinde dashboard tasarımları tamamlandı.
+
+[33mcommit 0b922f676a94bd6c1faf617585abf9c97c7a09db[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 01:17:08 2021 +0300
+
+    git duzeltmeleri 6
+
+[33mcommit b1ae5b4f8f0865279dd547787c4419fe8c166d0a[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 01:12:21 2021 +0300
+
+    git duzeltmeleri 4
+
+[33mcommit f6a8abc97187fcabf4954ca6ec1e496504bfd1be[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 01:07:51 2021 +0300
+
+    git duzeltmeleri 2
+
+[33mcommit 16b931f189a68879785a609e5c5312ab2ed323ce[m
+Merge: 4d1b393 f20d758
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 01:02:54 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozguryildiz54/EnvanterYonetimi into ozgur
+
+[33mcommit f20d758f53dfee2e73d35c6c08316446bc9ae526[m
+Merge: 92afcce 73987c7
+Author: Özgür <31105507+ozguryildiz54@users.noreply.github.com>
+Date:   Sat Jan 16 00:59:18 2021 +0300
+
+    Merge pull request #4 from ozguryildiz54/kubra
+    
+    Kubra
+
+[33mcommit 4d1b39353180a5351f2c15cae7298b13d5fae810[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 00:57:37 2021 +0300
+
+    git düzeltmeleri 1
+
+[33mcommit 73987c756d99e51006ceb7961140779d97e1c197[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sat Jan 16 00:41:54 2021 +0300
+
+    - Frontend Tasarımında ki değişiklikler aşağıda ki gibidir.
+    - Kübra ve Özgür'ün Login ekranı tasarımları Akgıda için özelleştirildi. Ortak alınacak kararla biri kullanım için seçilecek.
+    - Ana ekran tasarımında ki menü hizalaması sorunu halledildi.
+    - Ana ekranda logo tasarımı yapıldı.
+    - Özgürün login ekranında ki hizalama sorunu düzeltildi.
+    - Kübranın login ekranı için arka plan özelleştirilmesi yapıldı.
+    
+    - Genel manada güzel değişiklikler oldu. Umut vadediyor :)
+
+[33mcommit c24a4b9e1aa371027c8433f5d20d96fa3b97afc7[m
+Merge: 92afcce d2bc70e
+Author: Özgür <31105507+ozguryildiz54@users.noreply.github.com>
+Date:   Tue Jan 12 19:38:19 2021 +0300
+
+    Merge pull request #2 from ozguryildiz54/kubra
+    
+    Kubra
+
+[33mcommit d2bc70e5a58f37d0c4e5768fb33892f10db5d878[m
+Author: kubra <ozguryildiz.ada@gmail.com>
+Date:   Tue Jan 12 19:34:28 2021 +0300
+
+    Frontend ana ekran tasarımındaki navbar düzenlemeleri geliştirildi
+
+[33mcommit eb777e44a24a3474995ccd0367b3413cdb628e77[m
+Author: kubra <ozguryildiz.ada@gmail.com>
+Date:   Mon Jan 11 18:51:05 2021 +0300
+
+    degisiklik 5
+
+[33mcommit af0fa6f861a8dd9f548b73d489dc48189a7ea9af[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Mon Jan 11 14:52:32 2021 +0300
+
+    commit 1
+
+[33mcommit ced435fb2ce0e1e2411d84741126110a79d34d73[m
+Author: Özgür <31105507+ozguryildiz54@users.noreply.github.com>
+Date:   Mon Jan 11 10:24:47 2021 +0300
+
+    Initial commit
+
+[33mcommit 92afcce4b9a945abcda219bc3d8e9b63bc124bec[m[33m ([m[1;31mgonder/master[m[33m)[m
+Merge: 5b71283 7fbfb8e
+Author: Özgür <31105507+ozguryildiz54@users.noreply.github.com>
+Date:   Mon Jan 11 18:09:38 2021 +0300
+
+    Merge pull request #1 from ozguryildiz54/ozgur
+    
+    mutlu son
+
+[33mcommit 7fbfb8e7ca531a604a9e2b591e27c0034f4493e2[m[33m ([m[1;31mgonder/ozgur[m[33m)[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Mon Jan 11 18:06:29 2021 +0300
+
+    mutlu son
+
+[33mcommit 5b71283fc58590ac572a46c18337171ab5480a8c[m
+Author: kubra <ozguryildiz.ada@gmail.com>
+Date:   Mon Jan 11 17:19:18 2021 +0300
+
+    ddegisiklik yapıldı
+
+[33mcommit d7b202d3630c9ab2e06161d336130535e1fc22a0[m
+Author: Özgür <31105507+ozguryildiz54@users.noreply.github.com>
+Date:   Mon Jan 11 10:24:47 2021 +0300
+
+    Initial commit
+
+[33mcommit 48da0a401e3f9f1549bba070f403a6d5894cb174[m[33m ([m[1;31mgonder/kubra[m[33m)[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Mon Jan 11 14:54:36 2021 +0300
+
+    commit 2
+
+[33mcommit 426688c460f4df3b04acef89e9d6a82ba82d1459[m
+Merge: 81b4f53 5a1c2eb
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 10 20:33:14 2021 +0300
+
+    yorum4
+
+[33mcommit 81b4f533e7ff1b96bd3170affdb37c5efcdf48a2[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 10 20:31:01 2021 +0300
+
+    yorum 3?
+
+[33mcommit 3d9de76ec11d8f6f4ea2b1eb92e326621061707a[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 10 20:20:24 2021 +0300
+
+    yorum 2
+
+[33mcommit cedbceeee79592e83016c246a87b3e0f888a0840[m
+Merge: a2d773f ef459e9
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Sun Jan 10 20:15:09 2021 +0300
+
+    yorum 1
+
+[33mcommit a2d773f54258d8ad8fddcffefbe6ec2abd250da5[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:47:37 2021 +0300
+
+    tttt
+
+[33mcommit 2facf0fe323f5ee72dfce665cd56d4024ee65fac[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:46:44 2021 +0300
+
+    testtt
+
+[33mcommit 5a1c2eb0abbc8d81726ac9735509e84fd4fd4336[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:41:19 2021 +0300
+
+    222
+
+[33mcommit ef459e945379063a79cfd58fba9d48ca1b1ff4d4[m
+Author: kubra <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:25:59 2021 +0300
+
+    test2
+
+[33mcommit de83bf79604f57109c9a90de9f9bdf01c058d140[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:22:14 2021 +0300
+
+    deneme 9
+
+[33mcommit af82572acdec323c7a4c5bc90338392f7df382e5[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:19:15 2021 +0300
+
+    deneme 8
+
+[33mcommit f0315f27ff003eb6a18ace19f126740d8312654a[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 19:16:56 2021 +0300
+
+    deneme 7
+
+[33mcommit b98a26b84a6e3064347ff8ce7e3909dc879d3fda[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 18:52:12 2021 +0300
+
+    deneme 5
+
+[33mcommit 1f9d9daa4be6123adc3f51ef1c5cedf18e7309a7[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 18:48:19 2021 +0300
+
+    deneme 4
+
+[33mcommit 9c92f5e279bfab1fb00b5255d44b9987dc444082[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 16:56:58 2021 +0300
+
+    deneme 2
+
+[33mcommit d586c6c1e23fd09f0ddcc6b1b01d75c490962495[m
+Merge: d1d5ee0 0b74ff9
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 16:48:40 2021 +0300
+
+    Merge branch 'master' into ozgur
+
+[33mcommit 0b74ff9475cc491adc8972b8a2276a392f45713b[m
+Author: ozguryildiz54 <ozguryildiz.ada@gmail.com>
+Date:   Fri Jan 8 16:39:37 2021 +0300
+
+    ikinci git deneme
+
+[33mcommit d1d5ee09cb129a633b0669e4c493d08f29d02976[m
+Author: OZGUR YILDIZ <ozgur.yildiz@akgida.com.tr>
+Date:   Thu Jan 7 18:37:02 2021 +0300
+
+    ikinci test versiyon - Özgür
+
+[33mcommit cfdde0b44681cb3b82cbb14fa92ce4e958d4ee75[m
+Author: OZGUR YILDIZ <ozgur.yildiz@akgida.com.tr>
+Date:   Thu Jan 7 18:21:08 2021 +0300
+
+    İlk versiyon - Özgür
+
+[33mcommit 6583311b2d5fcc6316f08d96c76763ea16ed7aab[m
+Author: OZGUR YILDIZ <ozgur.yildiz@akgida.com.tr>
+Date:   Thu Jan 7 17:24:31 2021 +0300
+
+    Proje dosyası ekle.
+
+[33mcommit c913b95a4c2b155ab7bd9c0419c9b62de760e28c[m
+Author: OZGUR YILDIZ <ozgur.yildiz@akgida.com.tr>
+Date:   Thu Jan 7 17:24:25 2021 +0300
+
+    .Gitignore ve .gitattributes ekle.

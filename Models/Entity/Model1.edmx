@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="envanterTakipWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CihazTuru">
+          <Key>
+            <PropertyRef Name="cihazTuruId" />
+          </Key>
+          <Property Name="cihazTuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTip" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="karakter" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Depo">
+          <Key>
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="depoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTuruId" Type="int" Nullable="false" />
+          <Property Name="envNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="seriNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="garantiBas" Type="date" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+          <Property Name="islemZaman" Type="date" Nullable="false" />
+          <Property Name="islemiYapan" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="islemlerId" />
+          </Key>
+          <Property Name="islemlerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTuruId" Type="int" Nullable="false" />
+          <Property Name="kullaniciId" Type="int" Nullable="false" />
+          <Property Name="lokasyonId" Type="int" Nullable="false" />
+          <Property Name="envNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="seriNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="garantiBas" Type="date" Nullable="false" />
+          <Property Name="islemTuru" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="islemZaman" Type="date" Nullable="false" />
+          <Property Name="islemiYapanId" Type="int" Nullable="false" />
+          <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+          </Key>
+          <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="soyad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Lokasyon">
+          <Key>
+            <PropertyRef Name="lokasyonId" />
+          </Key>
+          <Property Name="lokasyonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lokasyonAdi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Modeller">
+          <Key>
+            <PropertyRef Name="modelId" />
+          </Key>
+          <Property Name="modelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cihazTuruId" Type="int" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Modeller_Depo">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="depoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modeller_Islemler">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="islemlerId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="islemlerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modeller_Saha">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="sahaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="operatorId" />
+          </Key>
+          <Property Name="operatorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="soyad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sifre" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Saha">
+          <Key>
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="sahaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTuruId" Type="int" Nullable="false" />
+          <Property Name="lokasyonId" Type="int" Nullable="false" />
+          <Property Name="envNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="seriNo" Type="varchar" MaxLength="15" />
+          <Property Name="garantiBas" Type="date" Nullable="false" />
+          <Property Name="islemZaman" Type="date" Nullable="false" />
+          <Property Name="operatorId" Type="int" Nullable="false" />
+          <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="kullaniciId" Type="int" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Sirket">
+          <Key>
+            <PropertyRef Name="sirketId" />
+          </Key>
+          <Property Name="sirketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sirket" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sirketNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Sirket_Lokasyon">
+          <Key>
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="lokasyonId" />
+          </Key>
+          <Property Name="sirketId" Type="int" Nullable="false" />
+          <Property Name="lokasyonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Depo_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Depo" Type="Self.Depo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Depo">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullaniciId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="kullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="lokasyonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="operatorId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="islemiYapanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_CihazTuru1">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Modeller">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Depo_Depo">
+          <End Role="Depo" Type="Self.Depo" Multiplicity="1" />
+          <End Role="Modeller_Depo" Type="Self.Modeller_Depo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depo">
+              <PropertyRef Name="depoId" />
+            </Principal>
+            <Dependent Role="Modeller_Depo">
+              <PropertyRef Name="depoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Depo_Modeller">
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="1" />
+          <End Role="Modeller_Depo" Type="Self.Modeller_Depo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeller">
+              <PropertyRef Name="modelId" />
+            </Principal>
+            <Dependent Role="Modeller_Depo">
+              <PropertyRef Name="modelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Islemler_Islemler">
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="1" />
+          <End Role="Modeller_Islemler" Type="Self.Modeller_Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Islemler">
+              <PropertyRef Name="islemlerId" />
+            </Principal>
+            <Dependent Role="Modeller_Islemler">
+              <PropertyRef Name="islemlerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Islemler_Modeller">
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="1" />
+          <End Role="Modeller_Islemler" Type="Self.Modeller_Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeller">
+              <PropertyRef Name="modelId" />
+            </Principal>
+            <Dependent Role="Modeller_Islemler">
+              <PropertyRef Name="modelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Saha_Modeller">
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="1" />
+          <End Role="Modeller_Saha" Type="Self.Modeller_Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeller">
+              <PropertyRef Name="modelId" />
+            </Principal>
+            <Dependent Role="Modeller_Saha">
+              <PropertyRef Name="modelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_Saha_Saha">
+          <End Role="Saha" Type="Self.Saha" Multiplicity="1" />
+          <End Role="Modeller_Saha" Type="Self.Modeller_Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saha">
+              <PropertyRef Name="sahaId" />
+            </Principal>
+            <Dependent Role="Modeller_Saha">
+              <PropertyRef Name="sahaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullaniciId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="kullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="lokasyonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="operatorId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="operatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirket_Lokasyon_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="1" />
+          <End Role="Sirket_Lokasyon" Type="Self.Sirket_Lokasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Principal>
+            <Dependent Role="Sirket_Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirket_Lokasyon_Sirket">
+          <End Role="Sirket" Type="Self.Sirket" Multiplicity="1" />
+          <End Role="Sirket_Lokasyon" Type="Self.Sirket_Lokasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirket">
+              <PropertyRef Name="sirketId" />
+            </Principal>
+            <Dependent Role="Sirket_Lokasyon">
+              <PropertyRef Name="sirketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="envanterTakipWebModelStoreContainer">
+          <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Depo" EntityType="Self.Depo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lokasyon" EntityType="Self.Lokasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeller" EntityType="Self.Modeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeller_Depo" EntityType="Self.Modeller_Depo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeller_Islemler" EntityType="Self.Modeller_Islemler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeller_Saha" EntityType="Self.Modeller_Saha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operator" EntityType="Self.Operator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirket" EntityType="Self.Sirket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirket_Lokasyon" EntityType="Self.Sirket_Lokasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Depo_CihazTuru" Association="Self.FK_Depo_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Depo" EntitySet="Depo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_CihazTuru" Association="Self.FK_Islemler_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Kullanicilar" Association="Self.FK_Islemler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Lokasyon" Association="Self.FK_Islemler_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Operator" Association="Self.FK_Islemler_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_CihazTuru1" Association="Self.FK_Modeller_CihazTuru1">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Modeller" EntitySet="Modeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Depo_Depo" Association="Self.FK_Modeller_Depo_Depo">
+            <End Role="Depo" EntitySet="Depo" />
+            <End Role="Modeller_Depo" EntitySet="Modeller_Depo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Depo_Modeller" Association="Self.FK_Modeller_Depo_Modeller">
+            <End Role="Modeller" EntitySet="Modeller" />
+            <End Role="Modeller_Depo" EntitySet="Modeller_Depo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Islemler_Islemler" Association="Self.FK_Modeller_Islemler_Islemler">
+            <End Role="Islemler" EntitySet="Islemler" />
+            <End Role="Modeller_Islemler" EntitySet="Modeller_Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Islemler_Modeller" Association="Self.FK_Modeller_Islemler_Modeller">
+            <End Role="Modeller" EntitySet="Modeller" />
+            <End Role="Modeller_Islemler" EntitySet="Modeller_Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Saha_Modeller" Association="Self.FK_Modeller_Saha_Modeller">
+            <End Role="Modeller" EntitySet="Modeller" />
+            <End Role="Modeller_Saha" EntitySet="Modeller_Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_Saha_Saha" Association="Self.FK_Modeller_Saha_Saha">
+            <End Role="Saha" EntitySet="Saha" />
+            <End Role="Modeller_Saha" EntitySet="Modeller_Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_CihazTuru" Association="Self.FK_Saha_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Kullanicilar" Association="Self.FK_Saha_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Lokasyon" Association="Self.FK_Saha_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Operator" Association="Self.FK_Saha_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirket_Lokasyon_Lokasyon" Association="Self.FK_Sirket_Lokasyon_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Sirket_Lokasyon" EntitySet="Sirket_Lokasyon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirket_Lokasyon_Sirket" Association="Self.FK_Sirket_Lokasyon_Sirket">
+            <End Role="Sirket" EntitySet="Sirket" />
+            <End Role="Sirket_Lokasyon" EntitySet="Sirket_Lokasyon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="envanterTakipWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CihazTuru">
+          <Key>
+            <PropertyRef Name="cihazTuruId" />
+          </Key>
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="karakter" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Depo" Relationship="Self.FK_Depo_CihazTuru" FromRole="CihazTuru" ToRole="Depo" />
+          <NavigationProperty Name="Islemler" Relationship="Self.FK_Islemler_CihazTuru" FromRole="CihazTuru" ToRole="Islemler" />
+          <NavigationProperty Name="Modeller" Relationship="Self.FK_Modeller_CihazTuru1" FromRole="CihazTuru" ToRole="Modeller" />
+          <NavigationProperty Name="Saha" Relationship="Self.FK_Saha_CihazTuru" FromRole="CihazTuru" ToRole="Saha" />
+        </EntityType>
+        <EntityType Name="Depo">
+          <Key>
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="depoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="garantiBas" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="durum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="islemZaman" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="islemiYapan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CihazTuru" Relationship="Self.FK_Depo_CihazTuru" FromRole="Depo" ToRole="CihazTuru" />
+          <NavigationProperty Name="Modeller" Relationship="Self.Modeller_Depo" FromRole="Depo" ToRole="Modeller" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="islemlerId" />
+          </Key>
+          <Property Name="islemlerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" />
+          <Property Name="kullaniciId" Type="Int32" Nullable="false" />
+          <Property Name="lokasyonId" Type="Int32" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="garantiBas" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="islemTuru" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="islemZaman" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="islemiYapanId" Type="Int32" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CihazTuru" Relationship="Self.FK_Islemler_CihazTuru" FromRole="Islemler" ToRole="CihazTuru" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Islemler_Kullanicilar" FromRole="Islemler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Lokasyon" Relationship="Self.FK_Islemler_Lokasyon" FromRole="Islemler" ToRole="Lokasyon" />
+          <NavigationProperty Name="Operator" Relationship="Self.FK_Islemler_Operator" FromRole="Islemler" ToRole="Operator" />
+          <NavigationProperty Name="Modeller" Relationship="Self.Modeller_Islemler" FromRole="Islemler" ToRole="Modeller" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+          </Key>
+          <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Islemler" Relationship="Self.FK_Islemler_Kullanicilar" FromRole="Kullanicilar" ToRole="Islemler" />
+          <NavigationProperty Name="Saha" Relationship="Self.FK_Saha_Kullanicilar" FromRole="Kullanicilar" ToRole="Saha" />
+        </EntityType>
+        <EntityType Name="Lokasyon">
+          <Key>
+            <PropertyRef Name="lokasyonId" />
+          </Key>
+          <Property Name="lokasyonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lokasyonAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Islemler" Relationship="Self.FK_Islemler_Lokasyon" FromRole="Lokasyon" ToRole="Islemler" />
+          <NavigationProperty Name="Saha" Relationship="Self.FK_Saha_Lokasyon" FromRole="Lokasyon" ToRole="Saha" />
+          <NavigationProperty Name="Sirket" Relationship="Self.Sirket_Lokasyon" FromRole="Lokasyon" ToRole="Sirket" />
+        </EntityType>
+        <EntityType Name="Modeller">
+          <Key>
+            <PropertyRef Name="modelId" />
+          </Key>
+          <Property Name="modelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CihazTuru" Relationship="Self.FK_Modeller_CihazTuru1" FromRole="Modeller" ToRole="CihazTuru" />
+          <NavigationProperty Name="Depo" Relationship="Self.Modeller_Depo" FromRole="Modeller" ToRole="Depo" />
+          <NavigationProperty Name="Islemler" Relationship="Self.Modeller_Islemler" FromRole="Modeller" ToRole="Islemler" />
+          <NavigationProperty Name="Saha" Relationship="Self.Modeller_Saha" FromRole="Modeller" ToRole="Saha" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="operatorId" />
+          </Key>
+          <Property Name="operatorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Islemler" Relationship="Self.FK_Islemler_Operator" FromRole="Operator" ToRole="Islemler" />
+          <NavigationProperty Name="Saha" Relationship="Self.FK_Saha_Operator" FromRole="Operator" ToRole="Saha" />
+        </EntityType>
+        <EntityType Name="Saha">
+          <Key>
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="sahaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" />
+          <Property Name="lokasyonId" Type="Int32" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="garantiBas" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="islemZaman" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="operatorId" Type="Int32" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullaniciId" Type="Int32" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CihazTuru" Relationship="Self.FK_Saha_CihazTuru" FromRole="Saha" ToRole="CihazTuru" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Saha_Kullanicilar" FromRole="Saha" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Lokasyon" Relationship="Self.FK_Saha_Lokasyon" FromRole="Saha" ToRole="Lokasyon" />
+          <NavigationProperty Name="Operator" Relationship="Self.FK_Saha_Operator" FromRole="Saha" ToRole="Operator" />
+          <NavigationProperty Name="Modeller" Relationship="Self.Modeller_Saha" FromRole="Saha" ToRole="Modeller" />
+        </EntityType>
+        <EntityType Name="Sirket">
+          <Key>
+            <PropertyRef Name="sirketId" />
+          </Key>
+          <Property Name="sirketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sirket1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sirketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Lokasyon" Relationship="Self.Sirket_Lokasyon" FromRole="Sirket" ToRole="Lokasyon" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Depo_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Depo" Type="Self.Depo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Depo">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modeller_CihazTuru1">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Modeller">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_CihazTuru">
+          <End Role="CihazTuru" Type="Self.CihazTuru" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazTuru">
+              <PropertyRef Name="cihazTuruId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="cihazTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullaniciId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="kullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="lokasyonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="operatorId" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="islemiYapanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullaniciId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="kullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokasyon">
+              <PropertyRef Name="lokasyonId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="lokasyonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saha_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="operatorId" />
+            </Principal>
+            <Dependent Role="Saha">
+              <PropertyRef Name="operatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Modeller_Depo">
+          <End Role="Depo" Type="Self.Depo" Multiplicity="*" />
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="*" />
+        </Association>
+        <Association Name="Modeller_Islemler">
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="*" />
+        </Association>
+        <Association Name="Modeller_Saha">
+          <End Role="Modeller" Type="Self.Modeller" Multiplicity="*" />
+          <End Role="Saha" Type="Self.Saha" Multiplicity="*" />
+        </Association>
+        <Association Name="Sirket_Lokasyon">
+          <End Role="Lokasyon" Type="Self.Lokasyon" Multiplicity="*" />
+          <End Role="Sirket" Type="Self.Sirket" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="envanterTakipWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" />
+          <EntitySet Name="Depo" EntityType="Self.Depo" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Lokasyon" EntityType="Self.Lokasyon" />
+          <EntitySet Name="Modeller" EntityType="Self.Modeller" />
+          <EntitySet Name="Operator" EntityType="Self.Operator" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" />
+          <EntitySet Name="Sirket" EntityType="Self.Sirket" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Depo_CihazTuru" Association="Self.FK_Depo_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Depo" EntitySet="Depo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_CihazTuru" Association="Self.FK_Islemler_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modeller_CihazTuru1" Association="Self.FK_Modeller_CihazTuru1">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Modeller" EntitySet="Modeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_CihazTuru" Association="Self.FK_Saha_CihazTuru">
+            <End Role="CihazTuru" EntitySet="CihazTuru" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Kullanicilar" Association="Self.FK_Islemler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Lokasyon" Association="Self.FK_Islemler_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Operator" Association="Self.FK_Islemler_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Kullanicilar" Association="Self.FK_Saha_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Lokasyon" Association="Self.FK_Saha_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saha_Operator" Association="Self.FK_Saha_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="Modeller_Depo" Association="Self.Modeller_Depo">
+            <End Role="Depo" EntitySet="Depo" />
+            <End Role="Modeller" EntitySet="Modeller" />
+          </AssociationSet>
+          <AssociationSet Name="Modeller_Islemler" Association="Self.Modeller_Islemler">
+            <End Role="Islemler" EntitySet="Islemler" />
+            <End Role="Modeller" EntitySet="Modeller" />
+          </AssociationSet>
+          <AssociationSet Name="Modeller_Saha" Association="Self.Modeller_Saha">
+            <End Role="Modeller" EntitySet="Modeller" />
+            <End Role="Saha" EntitySet="Saha" />
+          </AssociationSet>
+          <AssociationSet Name="Sirket_Lokasyon" Association="Self.Sirket_Lokasyon">
+            <End Role="Lokasyon" EntitySet="Lokasyon" />
+            <End Role="Sirket" EntitySet="Sirket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="envanterTakipWebModelStoreContainer" CdmEntityContainer="envanterTakipWebEntities">
+          <EntitySetMapping Name="CihazTuru">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.CihazTuru">
+              <MappingFragment StoreEntitySet="CihazTuru">
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="cihazTip" ColumnName="cihazTip" />
+                <ScalarProperty Name="karakter" ColumnName="karakter" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Depo">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Depo">
+              <MappingFragment StoreEntitySet="Depo">
+                <ScalarProperty Name="depoId" ColumnName="depoId" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="islemiYapan" ColumnName="islemiYapan" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islemler">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Islemler">
+              <MappingFragment StoreEntitySet="Islemler">
+                <ScalarProperty Name="islemlerId" ColumnName="islemlerId" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="islemTuru" ColumnName="islemTuru" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="islemiYapanId" ColumnName="islemiYapanId" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lokasyon">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Lokasyon">
+              <MappingFragment StoreEntitySet="Lokasyon">
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="lokasyonAdi" ColumnName="lokasyonAdi" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeller">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller">
+              <MappingFragment StoreEntitySet="Modeller">
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operator">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Operator">
+              <MappingFragment StoreEntitySet="Operator">
+                <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saha">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Saha">
+              <MappingFragment StoreEntitySet="Saha">
+                <ScalarProperty Name="sahaId" ColumnName="sahaId" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirket">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Sirket">
+              <MappingFragment StoreEntitySet="Sirket">
+                <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+                <ScalarProperty Name="sirket1" ColumnName="sirket" />
+                <ScalarProperty Name="sirketNo" ColumnName="sirketNo" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Modeller_Depo" TypeName="envanterTakipWebModel.Modeller_Depo" StoreEntitySet="Modeller_Depo">
+            <EndProperty Name="Depo">
+              <ScalarProperty Name="depoId" ColumnName="depoId" />
+            </EndProperty>
+            <EndProperty Name="Modeller">
+              <ScalarProperty Name="modelId" ColumnName="modelId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Modeller_Islemler" TypeName="envanterTakipWebModel.Modeller_Islemler" StoreEntitySet="Modeller_Islemler">
+            <EndProperty Name="Islemler">
+              <ScalarProperty Name="islemlerId" ColumnName="islemlerId" />
+            </EndProperty>
+            <EndProperty Name="Modeller">
+              <ScalarProperty Name="modelId" ColumnName="modelId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Modeller_Saha" TypeName="envanterTakipWebModel.Modeller_Saha" StoreEntitySet="Modeller_Saha">
+            <EndProperty Name="Modeller">
+              <ScalarProperty Name="modelId" ColumnName="modelId" />
+            </EndProperty>
+            <EndProperty Name="Saha">
+              <ScalarProperty Name="sahaId" ColumnName="sahaId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Sirket_Lokasyon" TypeName="envanterTakipWebModel.Sirket_Lokasyon" StoreEntitySet="Sirket_Lokasyon">
+            <EndProperty Name="Lokasyon">
+              <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+            </EndProperty>
+            <EndProperty Name="Sirket">
+              <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
