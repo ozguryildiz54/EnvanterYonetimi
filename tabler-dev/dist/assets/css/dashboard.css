@@ -10007,14 +10007,14 @@ body.fixed-header .header {
 }
 
 .header-brand {
-  color: inherit;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  white-space: nowrap;
-  font-weight: 600;
-  padding: 0;
-  transition: .3s opacity;
-  line-height: 2rem;
+	color: inherit;
+	margin-right: 1rem;
+	font-size: 1.25rem;
+	white-space: nowrap;
+	font-weight: 600;
+	padding: 0;
+	transition: .3s opacity;
+	line-height: normal;
 }
 
 .header-brand:hover {
@@ -10024,7 +10024,7 @@ body.fixed-header .header {
 }
 
 .header-brand-img {
-	height: 3rem;
+	height: 4rem;
 	line-height: 2rem;
 	vertical-align: bottom;
 	margin-right: .5rem;
@@ -11337,7 +11337,7 @@ a.icon:hover {
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   transition: .3s border-color;
-  font-weight: 400;
+  font-weight: bold;
   padding: 1rem 0;
 }
 
@@ -11366,7 +11366,7 @@ a.icon:hover {
 .nav-tabs .nav-item i {
   margin-right: .25rem;
   line-height: 1;
-  font-size: 0.875rem;
+  font-size: 1rem;
   width: 0.875rem;
   vertical-align: baseline;
   display: inline-block;

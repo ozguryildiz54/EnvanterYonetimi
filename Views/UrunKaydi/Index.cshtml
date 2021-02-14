@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="header collapse d-lg-flex p-0" id="menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
+                    <li class="nav-item">
+                        <a href="/Main/Index" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-box"> </i> <font color="#6574cd">Depo İşlemleri</font></a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="./cards.html" class="dropdown-item active"> Ürün Kaydı</a>
+                            <a href="./charts.html" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="./cards.html" class="dropdown-item "> Bağış Yap</a>
+                            <a href="./cards.html" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="./cards.html" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="./cards.html" class="dropdown-item "> Amortisman Bildirimi</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="./maps.html" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            <a href="./icons.html" class="dropdown-item "> Kargo Takibi</a>
+                            <a href="./store.html" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="./form-elements.html" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="./profile.html" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="./login.html" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="./register.html" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="./forgot-password.html" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            <a href="./400.html" class="dropdown-item "> Operatör İşlemleri</a>
+                            <a href="./rtl.html" class="dropdown-item "> Kullanıcı İşlemleri</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                Depo Ürün Kaydı
+            </h1>
+        </div>
+
+            <form name="urunKaydi" action="/Main/Index/" onsubmit="return validateForm()" method="post" class="login100-form validate-form">
+                <div class="row row-cards row-deck">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
+                            <select class="form-control" id="cihazTuru" name="cihazTuru">
+                                <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
+                                <option value="1">Notebook</option>
+                                <option value="2">Tablet</option>
+                                <option value="3">Telefon</option>
+                                <option value="4">LCD Ekran</option>
+                                <option value="5">Mouse</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
+                            <select class="form-control" id="cihazModeli" name="cihazModeli">
+                                <option value="" hidden>Cihaz türüne ait model seçin.</option>
+                                <option value="1">Notebook</option>
+                                <option value="2">Tablet</option>
+                                <option value="3">Telefon</option>
+                                <option value="4">LCD Ekran</option>
+                                <option value="5">Mouse</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
+                            <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
+                            <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">                           
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
+                            <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
+                            <select class="form-control required" id="cihazDurumu" name="cihazDurumu">
+                                <option value="" hidden>Cihaz durumunu seçin.</option>
+                                <option value="1">Kullanılabilir</option>
+                                <option value="2">Arızalı</option>
+                                <option value="3">Hurda</option>
+                                <option value="4">Serviste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
+                            <select class="form-control required" id="sifirIkinciEl" name="sifirIkinciEl">
+                                <option value="" hidden>Seçim Yapın.</option>
+                                <option value="1">Sıfır</option>
+                                <option value="2">İkinci El</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ürüne ait detaylar."></textarea>
+                        </div>
+                    </div>
+                </div><br /><br />
+                <div class="card-footer text-right">
+                    <div class="text-right">
+                        <button type="reset" @*onclick="location.href='/Main/Index'"*@ class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
+                        <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
