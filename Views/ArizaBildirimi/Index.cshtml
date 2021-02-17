@@ -62,10 +62,13 @@
                 <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
                 <div class="row gutters-xs" style="margin-left:1px">
                     <span class="col-auto">
-                        <input type="text" class="form-control" placeholder="Envanter Numarası veya Seri Numarası" style=" width: 270px;">
+                        <input type="text" id="ara" class="form-control" placeholder="Envanter Numarası veya Seri Numarası" style=" width: 270px;">
                     </span>
                     <span class="col-auto">
                         <button class="btn btn-secondary" type="button"><i class="fe fe-search"></i></button>
+                        <button class="btn btn-secondary" type="button" onclick="arama()">
+                            <span class="glyphicon glyphicon-copy"></span> Kopyala
+                        </button>
                     </span><br /><br />
                 </div>
             </div>
@@ -76,60 +79,37 @@
                 <div class="row row-cards row-deck">
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
-                            <select class="form-control" id="cihazTuru" name="cihazTuru">
-                                <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
-                                <option value="1">Notebook</option>
-                                <option value="2">Tablet</option>
-                                <option value="3">Telefon</option>
-                                <option value="4">LCD Ekran</option>
-                                <option value="5">Mouse</option>
-                            </select>
+                            <label for="exampleFormControlSelect1">Cihaz Türü</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürün cihaz türü.">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
-                            <select class="form-control" id="cihazModeli" name="cihazModeli">
-                                <option value="" hidden>Cihaz türüne ait model seçin.</option>
-                                <option value="1">Notebook</option>
-                                <option value="2">Tablet</option>
-                                <option value="3">Telefon</option>
-                                <option value="4">LCD Ekran</option>
-                                <option value="5">Mouse</option>
-                            </select>
+                            <label for="exampleFormControlSelect1">Cihaz Modeli</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürün cihaz modeli.">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
-                            <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                            <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürün garanti başlangıç tarihi.">
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
-                            <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+                            <label for="exampleFormControlInput1">Envanter Numarası</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
-                            <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                            <label for="exampleFormControlInput1">Seri Numarası</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürün seri numarası">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
-                            <select class="form-control required" id="cihazDurumu" name="cihazDurumu">
-                                <option value="" hidden>Cihaz durumunu seçin.</option>
-                                <option value="1">Kullanılabilir</option>
-                                <option value="2">Arızalı</option>
-                                <option value="3">Hurda</option>
-                                <option value="4">Serviste</option>
-                            </select>
+                            <label for="exampleFormControlSelect1">Cihaz Durumu</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Cihazın durumu">
+
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="form-group">
-                            <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
-                            <select class="form-control required" id="sifirIkinciEl" name="sifirIkinciEl">
-                                <option value="" hidden>Seçim Yapın.</option>
-                                <option value="1">Sıfır</option>
-                                <option value="2">İkinci El</option>
-                            </select>
+                            <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
+                            <input disabled=" disabled " type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürün sıfır/ikinci el bilgisi.">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
