@@ -226,39 +226,36 @@
             <div class="header py-4">
                 <div class="container" style=" margin-top: -55px;">
                     <div class="d-flex">
-                        @*Burası logo kısmıdır.*@
-                        <a class="header-brand" href="/Main/Index">
-                            <img src="~/tabler-dev/dist/demo/brand/headLogo.png" class="header-brand-img" alt="tabler logo">
-                        </a>
+                        @* Burası Profil Kısmı *@
                         <div class="d-flex order-lg-2 ml-auto">
                             <div class="dropdown">
                                 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                     <span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/25.jpg)"></span>
                                     <span class="ml-2 d-none d-lg-block">
-                                        <span class="text-default"> Kullanıcı Adı </span>
+                                        <span class="text-default">Kullanıcı Adı</span>
                                         <small class="text-muted d-block mt-1"> Operatör</small>
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-user"> </i> Profile
+                                    <a class="dropdown-item" href="/Profil/Index">
+                                        <i class="dropdown-icon fe fe-user"> </i> Profil
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-settings"> </i> Settings
+                                    <a class="dropdown-item" href="/Ayarlar/Index">
+                                        <i class="dropdown-icon fe fe-settings"> </i> Ayarlar
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/GelenKutusu/Index">
                                         <span class="float-right"> <span class="badge badge-primary"> 6</span> </span>
-                                        <i class="dropdown-icon fe fe-mail"> </i> Inbox
+                                        <i class="dropdown-icon fe fe-mail"> </i> Gelen Kutusu
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-send"> </i> Message
+                                    <a class="dropdown-item" href="/Mesaj/Index">
+                                        <i class="dropdown-icon fe fe-send"> </i> Mesaj
                                     </a>
                                     <div class="dropdown-divider"> </div>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-help-circle"> </i> Need help?
+                                    <a class="dropdown-item" href="/Yardim/Index">
+                                        <i class="dropdown-icon fe fe-help-circle"> </i> Yardım
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-log-out"> </i> Sign out
+                                    <a class="dropdown-item" href="/Cikis/Index">
+                                        <i class="dropdown-icon fe fe-log-out"> </i> Çıkış
                                     </a>
                                 </div>
                             </div>
@@ -270,9 +267,9 @@
                 </div>
             </div>
             @*<div class="card-footer">*@
-                @RenderBody()
-           @*</div>*@
-            </div>
+            @RenderBody()
+            @*</div>*@
+        </div>
             <div class="footer">
                 <div class="container">
                     <div class="row">

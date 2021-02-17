@@ -1,6 +1,8 @@
-﻿
-@{ ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+﻿@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+
+
 
 <div class="header collapse d-lg-flex p-0" id="menu">
     <div class="container">
@@ -11,36 +13,36 @@
                         <a href="/Main/Index" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-box"> </i> <font color="#6574cd">Depo İşlemleri</font></a>
+                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="/UrunKaydi/Index" class="dropdown-item"> Ürün Kaydı</a>
-                            <a href="/ArizaBildirimi/Index" class="dropdown-item active"> Arıza Bildirimi</a>
-                            <a href="./cards.html" class="dropdown-item "> Bağış Yap</a>
-                            <a href="./cards.html" class="dropdown-item "> İşten Çıkma</a>
-                            <a href="./cards.html" class="dropdown-item "> Pozisyon Değişikliği</a>
-                            <a href="./cards.html" class="dropdown-item "> Amortisman Bildirimi</a>
+                            <a href="/UrunKaydi/Index" class="dropdown-item "> Ürün Kaydı</a>
+                            <a href="/ArizaBildirimi/Index" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="/BagisYap/Index" class="dropdown-item "> Bağış Yap</a>
+                            <a href="/IstenCikma/Index" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi/Index" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi/Index" class="dropdown-item "> Amortisman Bildirimi</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./maps.html" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
-                            <a href="./icons.html" class="dropdown-item "> Kargo Takibi</a>
-                            <a href="./store.html" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                            <a href="/KullaniciyaUrunAtama/Index" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            <a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>
+                            <a href="/UrunKullanicisiDegistir/Index" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="./form-elements.html" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                        <a href="/SistemKayitlari/Index" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./profile.html" class="dropdown-item "> Cihaz Türü Yönetimi</a>
-                            <a href="./login.html" class="dropdown-item "> Model Yönetimi</a>
-                            <a href="./register.html" class="dropdown-item "> Şirket Yönetimi</a>
-                            <a href="./forgot-password.html" class="dropdown-item "> Lokasyon Yönetimi</a>
-                            <a href="./400.html" class="dropdown-item "> Operatör İşlemleri</a>
-                            <a href="./rtl.html" class="dropdown-item "> Kullanıcı İşlemleri</a>
+                            <a href="/CihazTuruYonetimi/Index" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi/Index" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi/Index" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi/Index" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            <a href="/OperatorIslemleri/Index" class="dropdown-item "> Operatör İşlemleri</a>
+                            <a href="/KullaniciIslemleri/Index" class="dropdown-item "> Kullanıcı İşlemleri</a>
                         </div>
                     </li>
                 </ul>

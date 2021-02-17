@@ -1,49 +1,46 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
-}
+﻿@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
 
-
+@* Navbar Menü Alanı *@
 <div class="header collapse d-lg-flex p-0" id="menu">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
                     <li class="nav-item">
-                        <a href="/Main/Index" class="nav-link active"> <i class="fe fe-home"> </i> <font color="#6574cd">Anasayfa</font></a>
+                        <a href="/Main/Index" class="nav-link active"> <i class="fe fe-home"> </i> Anasayfa</a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/UrunKaydi/Index" class="dropdown-item "> Ürün Kaydı</a>
                             <a href="/ArizaBildirimi/Index" class="dropdown-item "> Arıza Bildirimi</a>
-                            <a href="./cards.html" class="dropdown-item "> Bağış Yap</a>
-                            <a href="./cards.html" class="dropdown-item "> İşten Çıkma</a>
-                            <a href="./cards.html" class="dropdown-item "> Pozisyon Değişikliği</a>
-                            <a href="./cards.html" class="dropdown-item "> Amortisman Bildirimi</a>
+                            <a href="/BagisYap/Index" class="dropdown-item "> Bağış Yap</a>
+                            <a href="/IstenCikma/Index" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi/Index" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi/Index" class="dropdown-item "> Amortisman Bildirimi</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./maps.html" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
-                            <a href="./icons.html" class="dropdown-item "> Kargo Takibi</a>
-                            <a href="./store.html" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                            <a href="/KullaniciyaUrunAtama/Index" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            <a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>
+                            <a href="/UrunKullanicisiDegistir/Index" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="./form-elements.html" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                        <a href="/SistemKayitlari/Index" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
-                            <a href="./profile.html" class="dropdown-item "> Cihaz Türü Yönetimi</a>
-                            <a href="./login.html" class="dropdown-item "> Model Yönetimi</a>
-                            <a href="./register.html" class="dropdown-item "> Şirket Yönetimi</a>
-                            <a href="./forgot-password.html" class="dropdown-item "> Lokasyon Yönetimi</a>
-                            <a href="./400.html" class="dropdown-item "> Operatör İşlemleri</a>
-                            <a href="./rtl.html" class="dropdown-item "> Kullanıcı İşlemleri</a>
+                            <a href="/CihazTuruYonetimi/Index" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi/Index" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi/Index" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi/Index" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            <a href="/OperatorIslemleri/Index" class="dropdown-item "> Operatör İşlemleri</a>
+                            <a href="/KullaniciIslemleri/Index" class="dropdown-item "> Kullanıcı İşlemleri</a>
                         </div>
                     </li>
                 </ul>
@@ -51,6 +48,7 @@
         </div>
     </div>
 </div>
+
 <div class="my-3 my-md-5">
     <div class="container">
         <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
@@ -137,172 +135,172 @@
                         <h3 class="card-title">Son Gönderilen Cihazlar</h3>
                     </div>
                     @*<div id="chart-development-activity" style="height: 10rem"></div>*@
-                <div class="table-responsive">
-                    <div class="card-body o-auto" style="height: 34.5rem">
-                        <table class="table card-table table-striped table-vcenter">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Kullanıcı Adı Soyadı</th>
-                                    <th>Cihaz Türü</th>
-                                    <th>Bölge Adı</th>
-                                    <th>Tarih</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div class="table-responsive">
+                        <div class="card-body o-auto" style="height: 34.5rem">
+                            <table class="table card-table table-striped table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Kullanıcı Adı Soyadı</th>
+                                        <th>Cihaz Türü</th>
+                                        <th>Bölge Adı</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>Mert REİS</td>
-                                    <td>SAMSUNG_GALAXY_TAB</td>
-                                    <td>
-                                        ISTANBUL AVRUPA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        12 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar"></span></td>
-                                    <td>Emre SERİNCE</td>
-                                    <td>SAMSUNG_GALAXY_TAB</td>
-                                    <td>
-                                        ISTANBUL AVRUPA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        12 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/1.jpg)"></span></td>
-                                    <td>Sumeyra KAYA</td>
-                                    <td>
-                                        LENOVO T470
-                                    </td>
-                                    <td>
-                                        PAMUKOVA FABRIKA
-                                    </td>
-                                    <td class="text-nowrap">
-                                        10 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/male/4.jpg)"></span></td>
-                                    <td>Gökmen ÖZKAN</td>
-                                    <td>
-                                        LENOVO T440P
-                                    </td>
-                                    <td>
-                                        PAMUKOVA FABRIKA
-                                    </td>
-                                    <td class="text-nowrap">
-                                        10 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>Özgür ÖGMEN</td>
-                                    <td>SAMSUNG_GALAXY_TAB</td>
-                                    <td>
-                                        SAHA SATIS
-                                    </td>
-                                    <td class="text-nowrap">
-                                        9 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>Elif AKDOĞAN</td>
-                                    <td>
-                                        SAMSUNG A10
-                                    </td>
-                                    <td>
-                                        ISTANBUL AVRUPA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        5 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>Hakan MUTLU</td>
-                                    <td>
-                                        SAMSUNG A10
-                                    </td>
-                                    <td>
-                                        ISTANBUL AVRUPA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        5 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>Orhan UYSAL</td>
-                                    <td>
-                                        LENOVO X1YOGA
-                                    </td>
-                                    <td>
-                                        PAMUKOVA FABRIKA
-                                    </td>
-                                    <td class="text-nowrap">
-                                        5 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>BURAK GÖKÇEN</td>
-                                    <td>
-                                        SAMSUNG GALAXY TAB ACTİVE 2
-                                    </td>
-                                    <td>
-                                        ANKARA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        5 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>DERYA YILDIRIM</td>
-                                    <td>
-                                        SAMSUNG A10
-                                    </td>
-                                    <td>
-                                        ISTANBUL AVRUPA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        5 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>ÇAĞLAR MADEN</td>
-                                    <td>
-                                        SAMSUNG TAB ACTİVE 2
-                                    </td>
-                                    <td>
-                                        İZMİR DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        3 Şubat 2021
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
-                                    <td>MERT ERABUR</td>
-                                    <td>
-                                        SAMSUNG A10
-                                    </td>
-                                    <td>
-                                       ANTALYA DEPO
-                                    </td>
-                                    <td class="text-nowrap">
-                                        1 Şubat 2021
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    <tr>
+                                        <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                        <td>Mert REİS</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            12 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar"></span></td>
+                                        <td>Emre SERİNCE</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            12 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/1.jpg)"></span></td>
+                                        <td>Sumeyra KAYA</td>
+                                        <td>
+                                            LENOVO T470
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            10 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/male/4.jpg)"></span></td>
+                                        <td>Gökmen ÖZKAN</td>
+                                        <td>
+                                            LENOVO T440P
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            10 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Özgür ÖGMEN</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            SAHA SATIS
+                                        </td>
+                                        <td class="text-nowrap">
+                                            9 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Elif AKDOĞAN</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Hakan MUTLU</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Orhan UYSAL</td>
+                                        <td>
+                                            LENOVO X1YOGA
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>BURAK GÖKÇEN</td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTİVE 2
+                                        </td>
+                                        <td>
+                                            ANKARA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>DERYA YILDIRIM</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>ÇAĞLAR MADEN</td>
+                                        <td>
+                                            SAMSUNG TAB ACTİVE 2
+                                        </td>
+                                        <td>
+                                            İZMİR DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            3 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(~/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>MERT ERABUR</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ANTALYA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            1 Şubat 2021
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <script>
@@ -1196,60 +1194,60 @@
                     <div class="card-header">
                         <h4 class="card-title">Cihaz Türleri</h4>
                     </div>
-                        <div class="card-body o-auto" style="height: 15rem">
-                            <table class="table card-table">
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>MASAUSTU</td>
-                                    <td class="text-right"><span class="text-muted">211</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>NOTEBOOK</td>
-                                    <td class="text-right"><span class="text-muted">810</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>TELEFON</td>
-                                    <td class="text-right"><span class="text-muted">350</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>TABLET</td>
-                                    <td class="text-right"><span class="text-muted">149</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>EL TERMİNALİ</td>
-                                    <td class="text-right"><span class="text-muted">15</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>BARKOD YAZICI</td>
-                                    <td class="text-right"><span class="text-muted">71</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>MOBIL YAZICI</td>
-                                    <td class="text-right"><span class="text-muted">20</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>EL TERMİNALİ</td>
-                                    <td class="text-right"><span class="text-muted">15</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>BARKOD YAZICI</td>
-                                    <td class="text-right"><span class="text-muted">71</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
-                                    <td>MOBIL YAZICI</td>
-                                    <td class="text-right"><span class="text-muted">20</span></td>
-                                </tr>
-                            </table>
-                        </div>
+                    <div class="card-body o-auto" style="height: 15rem">
+                        <table class="table card-table">
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MASAUSTU</td>
+                                <td class="text-right"><span class="text-muted">211</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>NOTEBOOK</td>
+                                <td class="text-right"><span class="text-muted">810</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>TELEFON</td>
+                                <td class="text-right"><span class="text-muted">350</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>TABLET</td>
+                                <td class="text-right"><span class="text-muted">149</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>EL TERMİNALİ</td>
+                                <td class="text-right"><span class="text-muted">15</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>BARKOD YAZICI</td>
+                                <td class="text-right"><span class="text-muted">71</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MOBIL YAZICI</td>
+                                <td class="text-right"><span class="text-muted">20</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>EL TERMİNALİ</td>
+                                <td class="text-right"><span class="text-muted">15</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>BARKOD YAZICI</td>
+                                <td class="text-right"><span class="text-muted">71</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(~/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MOBIL YAZICI</td>
+                                <td class="text-right"><span class="text-muted">20</span></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
@@ -1360,7 +1358,7 @@
                                 <td class="text-right">
                                     <span class="badge badge-default">18</span>
                                 </td>
-                            </tr>                           
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -1451,7 +1449,7 @@
                         </table>
                     </div>
                 </div>
-            </div>           
+            </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">

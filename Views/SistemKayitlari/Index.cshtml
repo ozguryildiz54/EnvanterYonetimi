@@ -1,7 +1,8 @@
-﻿@{ ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_MainLayout.cshtml"; }
-
-
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
 
 
 <div class="header collapse d-lg-flex p-0" id="menu">
@@ -13,7 +14,7 @@
                         <a href="/Main/Index" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/UrunKaydi/Index" class="dropdown-item "> Ürün Kaydı</a>
                             <a href="/ArizaBildirimi/Index" class="dropdown-item "> Arıza Bildirimi</a>
@@ -24,7 +25,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/KullaniciyaUrunAtama/Index" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
                             <a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>

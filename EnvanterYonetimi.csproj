@@ -174,6 +174,7 @@
     <Compile Include="Controllers\SahaIslemleri\KargoTakibiController.cs" />
     <Compile Include="Controllers\SahaIslemleri\KullaniciyaUrunAtamaController.cs" />
     <Compile Include="Controllers\SahaIslemleri\UrunKullanicisiDegistirController.cs" />
+    <Compile Include="Controllers\SistemKayitlari\SistemKayitlariController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2244,10 +2245,10 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />
     <Content Include="Views\UrunKaydi\Index.cshtml" />
+    <Content Include="Views\SistemKayitlari\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\SistemKayitlari\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
