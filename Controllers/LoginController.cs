@@ -31,15 +31,17 @@ namespace EnvanterYonetimi.Controllers
         #endregion
 
         // GET: Login
+        //[Route("")]
         [HttpGet]
         public ActionResult Index()
-        {           
-           return View();
+        {
+            return View();
         }
         public ActionResult Error()
         {
             return View();
         }
+        //[Route("")]
         [HttpPost]
         public ActionResult Index(string eposta, string sifre)
         {
@@ -53,6 +55,7 @@ namespace EnvanterYonetimi.Controllers
             if (sonuc == "True")
             {
                 ViewData["mesaj"] = "true";
+                //Response.Redirect("/Main", true);
                 Response.Redirect("/Main/Index", true);
             }
             ViewData["mesaj"] = "false";

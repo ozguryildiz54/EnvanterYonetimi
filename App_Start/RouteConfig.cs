@@ -19,5 +19,25 @@ namespace EnvanterYonetimi
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
         }
+        //public static void RegisterRoutes(RouteCollection routes)
+        //{
+        //    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+        //    routes.MapMvcAttributeRoutes();
+        //    routes.MapRoute(
+        //        name: "Login",
+        //        url: "",
+        //        defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+        //    );
+        //    routes.MapRoute(
+        //        name: "Main",
+        //        url: "Main",
+        //        defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional }
+        //        );
+        //    routes.MapRoute(
+        //        name: "ArizaBildirimi",
+        //        url: "ArizaBildirimi",
+        //        defaults: new { controller = "ArizaBildirimi", action = "Index", id = UrlParameter.Optional }
+        //        );
+        //}
     }
 }

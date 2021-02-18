@@ -20,6 +20,14 @@
     <meta name="MobileOptimized" content="320">
     <title>Envanter Yönetim Sistemi</title>
 
+
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     @* Title Logo *@
@@ -152,8 +160,7 @@
     </script>
 
     <script>
-        function validateForm()
-        {
+        function validateForm() {
             var garantiBas = document.forms["urunKaydi"]["garantiBas"].value;
             var envNo = document.forms["urunKaydi"]["envNo"].value;
             var seriNo = document.forms["urunKaydi"]["seriNo"].value;
@@ -211,11 +218,13 @@
             } else {
                 alert("Birşey Yazmadınız!");
             }
-            
+
         }
         $('#overlay').modal('show');
 
     </script>
+
+
 
 
 </head>
@@ -226,6 +235,10 @@
             <div class="header py-4">
                 <div class="container" style=" margin-top: -55px;">
                     <div class="d-flex">
+                        <!-- Burası logo kısmıdır. -->
+                        <a class="header-brand" href="/Main/Index">
+                            <img src="~/tabler-dev/dist/demo/brand/headLogo.png" class="header-brand-img" alt="tabler logo">
+                        </a>
                         @* Burası Profil Kısmı *@
                         <div class="d-flex order-lg-2 ml-auto">
                             <div class="dropdown">
@@ -238,21 +251,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                     <a class="dropdown-item" href="/Profil/Index">
-                                        <i class="dropdown-icon fe fe-user"> </i> Profil
-                                    </a>
-                                    <a class="dropdown-item" href="/Ayarlar/Index">
-                                        <i class="dropdown-icon fe fe-settings"> </i> Ayarlar
-                                    </a>
-                                    <a class="dropdown-item" href="/GelenKutusu/Index">
-                                        <span class="float-right"> <span class="badge badge-primary"> 6</span> </span>
-                                        <i class="dropdown-icon fe fe-mail"> </i> Gelen Kutusu
-                                    </a>
-                                    <a class="dropdown-item" href="/Mesaj/Index">
-                                        <i class="dropdown-icon fe fe-send"> </i> Mesaj
-                                    </a>
-                                    <div class="dropdown-divider"> </div>
-                                    <a class="dropdown-item" href="/Yardim/Index">
-                                        <i class="dropdown-icon fe fe-help-circle"> </i> Yardım
+                                        <i class="dropdown-icon fe fe-user"> </i> Operatör Ayarları
                                     </a>
                                     <a class="dropdown-item" href="/Cikis/Index">
                                         <i class="dropdown-icon fe fe-log-out"> </i> Çıkış

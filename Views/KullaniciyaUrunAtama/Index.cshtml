@@ -4,15 +4,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <div class="header collapse d-lg-flex p-0" id="menu">
     <div class="container">
         <div class="row align-items-center">
@@ -36,7 +27,7 @@
                         <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/KullaniciyaUrunAtama/Index" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
-                            <a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>
+                            @*<a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>*@
                             <a href="/UrunKullanicisiDegistir/Index" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
@@ -59,159 +50,161 @@
         </div>
     </div>
 </div>
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                İşten Çıkış
+            </h1>
+        </div>
+        @*<div class="card-footer">*@
+        <div class="" style=" width: auto;">
+            <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
+            <div class="row gutters-xs" style="margin-left:1px">
+                <span class="col-auto">
+                    <input type="text" class="form-control" placeholder="Envanter Numarası veya Seri Numarası" style=" width: 270px;">
+                </span>
+                <span class="col-auto">
+                    <button class="btn btn-secondary" type="button"><i class="fe fe-search"></i></button>
+                </span><br /><br />
+                <span class="col-auto">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Ürün Kayıt Listesi</button>
+                </span><br /><br />
+                <br />
 
-@*<div class="card-footer">*@
-<div class="" style=" width: auto;">
-    <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
-    <div class="row gutters-xs" style="margin-left:1px">
-        <span class="col-auto">
-            <input type="text" class="form-control" placeholder="Envanter Numarası veya Seri Numarası" style=" width: 270px;">
-        </span>
-        <span class="col-auto">
-            <button class="btn btn-secondary" type="button"><i class="fe fe-search"></i></button>
-        </span><br /><br />
-        <span class="col-auto">
-            <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Ürün Kayıt Listesi</button>
-        </span><br /><br />
-        <br />
-
-        <!-- Pop up-tablo ekranı -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-
-
-
-
-
-
-
+                <!-- Pop up-tablo ekranı -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
 
 
-                <!-- Pop up-tablo içeriği-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Cihaz Kayıt Tablosu</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            1-Cihaz1
-                            2-Cihaz1
-                            3-Cihaz1
-                            4-Cihaz1
-                            5-Cihaz1
-                            6-Cihaz1
-                            7-Cihaz1
-                            8-Cihaz1
-                            9-Cihaz1
-                            10-Cihaz1
-                            11-Cihaz1
-                            12-Cihaz1
+                        ​[17:45] UNER Kubra
+
+                        <!-- Pop up-tablo içeriği-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Cihaz Kayıt Tablosu</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    1-Cihaz1
+                                    2-Cihaz1
+                                    3-Cihaz1
+                                    4-Cihaz1
+                                    5-Cihaz1
+                                    6-Cihaz1
+                                    7-Cihaz1
+                                    8-Cihaz1
+                                    9-Cihaz1
+                                    10-Cihaz1
+                                    11-Cihaz1
+                                    12-Cihaz1
 
 
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Çıkış</button>
+                            </div>
+                        </div>
 
-                        </p>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Çıkış</button>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
-    </div>
-</div>
-@*</div>*@
-<br />
-<br />
+        @*</div>*@
+        <br />
+        <br />
 
 
 
-<form name="urunKaydi" action="/Main/Index/" onsubmit="return validateForm()" method="post" class="login100-form validate-form">
-    <div class="row row-cards row-deck">
-        <div class="col-sm-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Cihaz Türü</label>
-                <select class="form-control" id="cihazTuru" name="cihazTuru">
-                    <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
-                    <option value="1">Notebook</option>
-                    <option value="2">Tablet</option>
-                    <option value="3">Telefon</option>
-                    <option value="4">LCD Ekran</option>
-                    <option value="5">Mouse</option>
-                </select>
+
+        ​[17:46] UNER Kubra
+
+        <form name="urunKaydi" action="/Main/Index/" onsubmit="return validateForm()" method="post" class="login100-form validate-form">
+            <div class="row row-cards row-deck">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Türü</label>
+                        <select class="form-control" id="cihazTuru" name="cihazTuru">
+                            <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
+                            <option value="1">Notebook</option>
+                            <option value="2">Tablet</option>
+                            <option value="3">Telefon</option>
+                            <option value="4">LCD Ekran</option>
+                            <option value="5">Mouse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Modeli</label>
+                        <select class="form-control" id="cihazModeli" name="cihazModeli">
+                            <option value="" hidden>Cihaz türüne ait model seçin.</option>
+                            <option value="1">Notebook</option>
+                            <option value="2">Tablet</option>
+                            <option value="3">Telefon</option>
+                            <option value="4">LCD Ekran</option>
+                            <option value="5">Mouse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
+                        <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Envanter Numarası</label>
+                        <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Seri Numarası</label>
+                        <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
+                        <select class="form-control required" id="cihazDurumu" name="cihazDurumu">
+                            <option value="" hidden>Cihaz durumunu seçin.</option>
+                            <option value="1">Kullanılabilir</option>
+                            <option value="2">Arızalı</option>
+                            <option value="3">Hurda</option>
+                            <option value="4">Serviste</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
+                        <input type="text" name="sifirIkinciel" class="form-control" id="exampleFormControlInput3" placeholder="Cihazın sıfır/ikinci el durumu.">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput2">Cihaz Kullanıcısı</label>
+                        <input type="text" name="kullaniciAdi" class="form-control" id="exampleFormControlInput2" placeholder="Kullanıcı Adı yazınız.">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ürüne ait detaylar."></textarea>
+                    </div>
+
+
+                </div>
+            </div><br /><br />
+            <div class="card-footer text-right">
+                <div class="text-right">
+                    <button type="reset" @*onclick="location.href='/Main/Index'"*@ class="btn btn-danger btn-sm" style=" margin-right: 30px;">İptal</button>
+                    <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-sm">Kaydet</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Cihaz Modeli</label>
-                <select class="form-control" id="cihazModeli" name="cihazModeli">
-                    <option value="" hidden>Cihaz türüne ait model seçin.</option>
-                    <option value="1">Notebook</option>
-                    <option value="2">Tablet</option>
-                    <option value="3">Telefon</option>
-                    <option value="4">LCD Ekran</option>
-                    <option value="5">Mouse</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
-                <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Envanter Numarası</label>
-                <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Seri Numarası</label>
-                <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
-                <select class="form-control required" id="cihazDurumu" name="cihazDurumu">
-                    <option value="" hidden>Cihaz durumunu seçin.</option>
-                    <option value="1">Kullanılabilir</option>
-                    <option value="2">Arızalı</option>
-                    <option value="3">Hurda</option>
-                    <option value="4">Serviste</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
-                <input type="text" name="sifirIkinciel" class="form-control" id="exampleFormControlInput3" placeholder="Cihazın sıfır/ikinci el durumu.">
-            </div>
+        </form>
 
 
 
-            <div class="form-group">
-                <label for="exampleFormControlInput2">Cihaz Kullanıcısı</label>
-                <input type="text" name="kullaniciAdi" class="form-control" id="exampleFormControlInput2" placeholder="Kullanıcı Adı yazınız.">
-            </div>
 
 
-
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ürüne ait detaylar."></textarea>
-            </div>
-
-
-
-        </div>
-    </div><br /><br />
-    <div class="card-footer text-right">
-        <div class="text-right">
-            <button type="reset" @*onclick="location.href='/Main/Index'"*@ class="btn btn-danger btn-sm" style=" margin-right: 30px;">İptal</button>
-            <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-sm">Kaydet</button>
-        </div>
-    </div>
-</form>
     </div>
 </div>
 

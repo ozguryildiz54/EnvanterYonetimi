@@ -1,5 +1,5 @@
 ﻿@{ ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
 
 
 
@@ -13,7 +13,7 @@
                         <a href="/Main/Index" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/UrunKaydi/Index" class="dropdown-item "> Ürün Kaydı</a>
                             <a href="/ArizaBildirimi/Index" class="dropdown-item "> Arıza Bildirimi</a>
@@ -24,10 +24,10 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/KullaniciyaUrunAtama/Index" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
-                            <a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>
+                            @*<a href="/KargoTakibi/Index" class="dropdown-item "> Kargo Takibi</a>*@
                             <a href="/UrunKullanicisiDegistir/Index" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
@@ -50,243 +50,411 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-<!-- Sayfanın en üstündeki yatay bar menü kodları bu kısımda - navbar-->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Sürücü Kursu</a>
-            <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">
-                    <a href="admin.php" class="navbar-link">Kullanıcı Giriş</a>
-                </p>
-                <ul class="nav">
-                    <li class="active"><a href="adayekle.php">Kargo Kayıt Formu</a></li>
-                    <li><a href="listele.php">Listeleme</a></li>
-                    <li><a href="sorgula.php">Sorgulama</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+               Kargo Takibi
+            </h1>
         </div>
+
+        @*<div class="card-footer">*@
+        <div class="" style=" width: auto;">
+            <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
+            <div class="row gutters-xs" style="margin-left:1px">
+                <span class="col-auto">
+                    <input type="text" id="ara" class="form-control" placeholder="Envanter Numarası veya Seri Numarası" style=" width: 270px;">
+                </span>
+                <span class="col-auto">
+                    <button class="btn btn-secondary" type="button"><i class="fe fe-search"></i></button>
+                    <button class="btn btn-secondary" type="button" onclick="arama()">
+                        <span class="glyphicon glyphicon-copy"></span> Kopyala
+                    </button>
+                </span><br /><br />
+            </div>
+        </div>
+        @*</div>*@
+        <br /><br />
+
+        <form name="urunKaydi" action="/Main/Index/" onsubmit="return validateForm()" method="post" class="login100-form validate-form">
+            <div class="row row-cards row-deck">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Depoda ki Ürünler</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table card-table table-vcenter text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="w-1">Sıra No</th>
+                                        <th>Kullanıcı Adı</th>
+                                        <th>Bölge Adı</th>
+                                        <th>Cihaz Türü</th>
+                                        <th>Cihaz Modeli</th>
+                                        <th>İşlem Zamanı</th>
+                                        <th>Kargo Durumu</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">DERYA YILDIRIM</a></td>
+                                        <td>
+                                            AVRUPA DEPO
+                                        </td>
+                                        <td>
+                                            TABLET
+                                        </td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTIVE 2
+                                        </td>
+                                        <td>
+                                            18 Şubat 2021
+                                        </td>
+                                        <td>CİHAZ HAZIRLANIYOR</td>
+                                        <td class="text-right">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">GUNCELLE</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Kargo Durumu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <select class="form-control selectpicker">
+                                                                    <option hide>Kargo Durumunu Güncelle</option>
+                                                                    <option>CİHAZ HAZIRLANIYOR</option>
+                                                                    <option>CİHAZ KARGOYA İLETİLDİ</option>
+                                                                    <option>CİHAZ TESLİM ALINDI</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/KargoTakibi/Index'">Kapat</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='/KargoTakibi/Index'">Kaydet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><br /><br />
+            <div class="card-footer text-right">
+                <div class="text-right">
+                    <button type="reset" @*onclick="location.href='/Main/Index'"*@ class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
+                    <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
-<!-- Formumuz burada başlıyor -->
-<div class="container-fluid">
-    <form class="form-horizontal">
-        <legend>Kargo Kayıt Formu</legend>
-        <div class="row-fluid">
-            <div class="span8">
-
-                <!-- Hata mesajı vermek için aşağıdaki kısmı aktif yapabilirsiniz -->
-                <!-- <div class="row-fluid">
-                  <div class="span12 bgcolor">
-                    <div class="alert alert-error">
-                    <a href="#" class="close" data-dismiss="alert">×</a>
-                      Hata mesajları.
-                    </div>
-                  </div>
-                </div> -->
-                <div class="row-fluid">
-                    <div class="span6 bgcolor">
-                        <div class="control-group">
-                            <label class="control-label" for="adi">Adı</label>
-                            <div class="controls">
-                                <input type="text" id="adi" placeholder="Adi">
-
-                            </div>
-                        </div>
-                    </div><!--/span-->
-                    <div class="span6 bgcolor">
-                        <div class="control-group">
-                            <label class="control-label" for="soyadi">Soyadı</label>
-                            <div class="controls">
-                                <input type="text" id="soyadi" placeholder="Soyadı">
-
-                            </div>
-                        </div>
-                    </div><!--/span-->
-                </div><!--/row-->
-                <div class="row-fluid">
-                    <div class="span6 bgcolor">
-                        <div class="control-group">
-                            <label class="control-label" for="gender">Cinsiyet</label>
-                            <div class="controls">
-                                <select id="gender" class="span12">
-                                    <option value="1">Bay</option>
-                                    <option value="2">Bayan</option>
-                                </select>
-                                <!-- <span class="help-block">Cinsiyet seçiniz.</span>-->
-                            </div>
-                        </div>
-                    </div><!--/span-->
-                    <div class="span6 bgcolor">
-                        <div class="control-group">
-                            <label class="control-label" for="dogumyeri">Lokasyon</label>
-                            <div class="controls">
-                                <input type="text" id="dogumyeri" placeholder="dd.mm.yyyy">
-                            </div>
-                            <br /><br />
-                        </div>
-                    </div><!--/span-->
-                </div><!--/row-->
-
-                <fieldset>
-
-                    <legend>Adres Bilgileri</legend>
-                    <div class="row-fluid">
-                        <div class="span12 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="adres1">Adres(1)</label>
-                                <div class="controls">
-                                    <input type="text" class="input-xxlarge" id="street">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="adres2">Adres(2)</label>
-                                <div class="controls">
-                                    <input type="text" class="input-xxlarge" id="street">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="sehir">Şehir</label>
-                                <div class="controls">
-                                    <input type="text" id="sehir">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="semt">Semt/İlçe</label>
-                                <div class="controls">
-                                    <input type="text" id="semt">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                    </div><!--/row-->
-                    <div class="row-fluid">
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="postakodu">Posta Kodu</label>
-                                <div class="controls">
-                                    <input type="text" id="postakodu">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="ulke">Ülke</label>
-                                <div class="controls">
-                                    <select id="ulke">
-                                        <option value="Türkiye">Türkiye</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div><!--/span-->
-                        <div class="span6 bgcolor"></div>
-
-
-                    </div><!--/row-->
-                </fieldset>
-
-                <fieldset>
-                    <legend>Adres Bilgileri</legend>
-                    <div class="row-fluid">
-                        <div class="span12 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="adres1">Adres(1)</label>
-                                <div class="controls">
-                                    <input type="text" class="input-xxlarge" id="street">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="adres2">Adres(2)</label>
-                                <div class="controls">
-                                    <input type="text" class="input-xxlarge" id="street">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="sehir">Şehir</label>
-                                <div class="controls">
-                                    <input type="text" id="sehir">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="semt">Semt/İlçe</label>
-                                <div class="controls">
-                                    <input type="text" id="semt">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                    </div><!--/row-->
-                    <div class="row-fluid">
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="postakodu">Posta Kodu</label>
-                                <div class="controls">
-                                    <input type="text" id="postakodu">
-                                </div>
-                            </div>
-                        </div><!--/span-->
-                        <div class="span6 bgcolor">
-                            <div class="control-group">
-                                <label class="control-label" for="ulke">Ülke</label>
-                                <div class="controls">
-                                    <select id="ulke">
-                                        <option value="Türkiye">Türkiye</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div><!--/span-->
-                        <div class="span6 bgcolor"></div>
-                        <div class="span6 bgcolor">
-                            <button type="submit" class="btn btn-primary">Kaydet</button>
-
-                        </div>
-
-
-                    </div><!--/row-->
-                </fieldset>
-            </div><!--/span-->
-
-            <div class="span4">
-
-            </div><!--/span-->
-        </div><!--/row-->
-    </form>
-
-    <hr>
-
-</div><!--/.fluid-container sonu-->
-<!-- JavaScript Kodları -->
-<script src="js/jquery-1.8.0.min.js"></script>
-<script src="js/bootstrap.js"></script>

@@ -9,6 +9,7 @@ namespace EnvanterYonetimi.Controllers
     public class MainController : Controller
     {
         // GET: Main
+        //[Route("Main")]
         public ActionResult Index()
         {
             return View();

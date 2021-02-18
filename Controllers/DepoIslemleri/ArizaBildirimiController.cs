@@ -9,6 +9,7 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
     public class ArizaBildirimiController : Controller
     {
         // GET: ArizaBildirimi
+        //[Route("ArizaBildirimi")]
         public ActionResult Index()
         {
             return View();
