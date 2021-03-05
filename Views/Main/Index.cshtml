@@ -1,0 +1,1476 @@
+﻿@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+@* Navbar Menü Alanı *@
+<div class="header collapse d-lg-flex p-0" id="menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
+                    <li class="nav-item">
+                        <a href="/Main" class="nav-link" id="menuActive"> <i class="fe fe-home"> </i> Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/UrunKaydi" class="dropdown-item "> Ürün Kaydı</a>
+                            <a href="/ArizaBildirimi" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="/BagisYap" class="dropdown-item "> Bağış Yap</a>
+                            <a href="/IstenCikma" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi" class="dropdown-item "> Amortisman Bildirimi</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/KullaniciyaUrunAtama" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            @*<a href="/KargoTakibi" class="dropdown-item "> Kargo Takibi</a>*@
+                            <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/SistemKayitlari" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/CihazTuruYonetimi" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
+                            <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                Depo Stoklarına Hızlı Bakış
+            </h1>
+        </div>
+        <div class="row row-cards">
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-green">
+                            6%
+                            <i class="fe fe-chevron-up"></i>
+                        </div>
+                        <div class="h1 m-0">20</div>
+                        <div class="text-muted mb-4">Sıfır Notebook</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-red">
+                            -3%
+                            <i class="fe fe-chevron-down"></i>
+                        </div>
+                        <div class="h1 m-0">18</div>
+                        <div class="text-muted mb-4">Tablet & Telefon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-green">
+                            9%
+                            <i class="fe fe-chevron-up"></i>
+                        </div>
+                        <div class="h1 m-0">119</div>
+                        <div class="text-muted mb-4">Kalan İkinci El Bilgisayar</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-green">
+                            3%
+                            <i class="fe fe-chevron-up"></i>
+                        </div>
+                        <div class="h1 m-0">6</div>
+                        <div class="text-muted mb-4">Sıfır LCD Ekran</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-red">
+                            -2%
+                            <i class="fe fe-chevron-down"></i>
+                        </div>
+                        <div class="h1 m-0">4</div>
+                        <div class="text-muted mb-4">Kalan Barkod Yazıcı</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+                        <div class="text-right text-red">
+                            -1%
+                            <i class="fe fe-chevron-down"></i>
+                        </div>
+                        <div class="h1 m-0">23</div>
+                        <div class="text-muted mb-4">Kalan Mouse</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Son Gönderilen Cihazlar</h3>
+                    </div>
+                    @*<div id="chart-development-activity" style="height: 10rem"></div>*@
+                    <div class="table-responsive">
+                        <div class="card-body o-auto" style="height: 34.5rem">
+                            <table class="table card-table table-striped table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Kullanıcı Adı Soyadı</th>
+                                        <th>Cihaz Türü</th>
+                                        <th>Bölge Adı</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                        <td>Mert REİS</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            12 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/1.jpg)"></span></td>
+                                        <td>Emre SERİNCE</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            12 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/1.jpg)"></span></td>
+                                        <td>Sumeyra KAYA</td>
+                                        <td>
+                                            LENOVO T470
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            10 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/male/4.jpg)"></span></td>
+                                        <td>Gökmen ÖZKAN</td>
+                                        <td>
+                                            LENOVO T440P
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            10 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Özgür ÖGMEN</td>
+                                        <td>SAMSUNG_GALAXY_TAB</td>
+                                        <td>
+                                            SAHA SATIS
+                                        </td>
+                                        <td class="text-nowrap">
+                                            9 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Elif AKDOĞAN</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Hakan MUTLU</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>Orhan UYSAL</td>
+                                        <td>
+                                            LENOVO X1YOGA
+                                        </td>
+                                        <td>
+                                            PAMUKOVA FABRIKA
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>BURAK GÖKÇEN</td>
+                                        <td>
+                                            SAMSUNG GALAXY TAB ACTİVE 2
+                                        </td>
+                                        <td>
+                                            ANKARA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>DERYA YILDIRIM</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ISTANBUL AVRUPA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            5 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>ÇAĞLAR MADEN</td>
+                                        <td>
+                                            SAMSUNG TAB ACTİVE 2
+                                        </td>
+                                        <td>
+                                            İZMİR DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            3 Şubat 2021
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="avatar" style="background-image: url(/tabler-dev/dist/demo/faces/female/11.jpg)"></span></td>
+                                        <td>MERT ERABUR</td>
+                                        <td>
+                                            SAMSUNG A10
+                                        </td>
+                                        <td>
+                                            ANTALYA DEPO
+                                        </td>
+                                        <td class="text-nowrap">
+                                            1 Şubat 2021
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Lokasyona Göre Bilgisayarlar</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body o-auto" style="height: 15rem">
+                                    <table class="table card-table">
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MALTEPE HEAD OFFICE
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                PAMUKOVA FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>TELEFON</td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANKARA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANTALYA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                BANDIRMA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL ANADOLU DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL AVRUPA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                AYDIN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MARAS FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                KARAMAN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                GENERIC USERS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                SAHA SATIS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                STAJYER
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                DEP DENIZLI
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                FAB AYDIN
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Lokasyona Göre Tablet ve Telefonlar</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body o-auto" style="height: 15rem">
+                                    <table class="table card-table">
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MALTEPE HEAD OFFICE
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                PAMUKOVA FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>TELEFON</td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANKARA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANTALYA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                BANDIRMA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL ANADOLU DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL AVRUPA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                AYDIN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MARAS FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                KARAMAN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                GENERIC USERS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                SAHA SATIS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                STAJYER
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                DEP DENIZLI
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                FAB AYDIN
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Lokasyona Göre El Terminalleri</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body o-auto" style="height: 15rem">
+                                    <table class="table card-table">
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MALTEPE HEAD OFFICE
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                PAMUKOVA FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>TELEFON</td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANKARA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANTALYA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                BANDIRMA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL ANADOLU DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL AVRUPA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                AYDIN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MARAS FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                KARAMAN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                GENERIC USERS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                SAHA SATIS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                STAJYER
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                DEP DENIZLI
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                FAB AYDIN
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Lokasyona Göre Barkod Yazıcılar</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body o-auto" style="height: 15rem">
+                                    <table class="table card-table">
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MALTEPE HEAD OFFICE
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                PAMUKOVA FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>TELEFON</td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANKARA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ANTALYA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                BANDIRMA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL ANADOLU DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                ISTANBUL AVRUPA DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ DEPO
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                AYDIN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">211</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                IZMIR FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">810</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                MARAS FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">350</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                KARAMAN FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">149</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                LULEBURGAZ FABRIKA
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                GENERIC USERS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                SAHA SATIS
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                STAJYER
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">15</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                DEP DENIZLI
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">71</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                            <td>
+                                                FAB AYDIN
+                                            </td>
+                                            <td class="text-right"><span class="text-muted">20</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-blue mr-3">
+                            <i class="fe fe-dollar-sign"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="javascript:void(0)">1493<br /><small>Toplam Kullanıcı</small></a></h4>
+                            @*<small class="text-muted">12 waiting payments</small>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-green mr-3">
+                            <i class="fe fe-shopping-cart"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="javascript:void(0)">1202<br /><small>Toplam Envanter</small></a></h4>
+                            @*<small class="text-muted">32 shipped</small>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-red mr-3">
+                            <i class="fe fe-users"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="javascript:void(0)">20<br /><small>Toplam Arıza</small></a></h4>
+                            @*<small class="text-muted">163 registered today</small>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="stamp stamp-md bg-yellow mr-3">
+                            <i class="fe fe-message-square"></i>
+                        </span>
+                        <div>
+                            <h4 class="m-0"><a href="javascript:void(0)">25<br /><small>Toplam Hurda & Bağış</small></a></h4>
+                            @*<small class="text-muted">16 waiting</small>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cards row-deck">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Cihaz Türleri</h4>
+                    </div>
+                    <div class="card-body o-auto" style="height: 15rem">
+                        <table class="table card-table">
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MASAUSTU</td>
+                                <td class="text-right"><span class="text-muted">211</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>NOTEBOOK</td>
+                                <td class="text-right"><span class="text-muted">810</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>TELEFON</td>
+                                <td class="text-right"><span class="text-muted">350</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>TABLET</td>
+                                <td class="text-right"><span class="text-muted">149</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>EL TERMİNALİ</td>
+                                <td class="text-right"><span class="text-muted">15</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>BARKOD YAZICI</td>
+                                <td class="text-right"><span class="text-muted">71</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MOBIL YAZICI</td>
+                                <td class="text-right"><span class="text-muted">20</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>EL TERMİNALİ</td>
+                                <td class="text-right"><span class="text-muted">15</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>BARKOD YAZICI</td>
+                                <td class="text-right"><span class="text-muted">71</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MOBIL YAZICI</td>
+                                <td class="text-right"><span class="text-muted">20</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Modeller</h2>
+                    </div>
+                    <div class="card-body o-auto" style="height: 30rem">
+                        <table class="table card-table">
+                            <tr>
+                                <td>LENOVO T490S</td>
+                                <td class="text-right">
+                                    <span class="badge ">30</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO T480S</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">6</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO T470P</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">20</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> LENOVO T460P</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">15</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO X1CARBON</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">7</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO T450</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">12</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO T490S</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">75</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LENOVO L390 YOGA</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">9</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INTERMEC PC43T</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">14</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SAMSUNG TAB ACTIVE PRO</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">123</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SAMSUNG A10</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">178</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HONEYWELL CK65L0N</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">47</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SAMSUNG_J4_CORE</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">96</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HP_PRODESK_600</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">67</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>EXPER_YATAY</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">32</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HP G400</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">8</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CASIO</td>
+                                <td class="text-right">
+                                    <span class="badge badge-default">18</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Lokasyonlar</h4>
+                    </div>
+                    <div class="card-body o-auto" style="height: 15rem">
+                        <table class="table card-table">
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MALTEPE HEAD OFFICE </td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>PAMUKOVA FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>ANKARA DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>ANTALYA DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>BANDIRMA DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>ISTANBUL ANADOLU DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>ISTANBUL AVRUPA DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>IZMIR DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>LULEBURGAZ DEPO</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>AYDIN FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>IZMIR FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>MARAS FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>KARAMAN FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>LULEBURGAZ FABRIKA</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>GENERIC USERS</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>SAHA SATIS</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>STAJYER</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>DEP DENIZLI</td>
+                            </tr>
+                            <tr>
+                                <td class="w-1"><span class="avatar" style=" background-image: url(/tabler-dev/dist/demo/faces/male/9.jpg)"></span></td>
+                                <td>FAB AYDIN</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Depodaki Ürünler</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <div class="card-body o-auto" style="height: 25rem">
+                            <table class="table card-table table-vcenter text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="w-1">Depo Numarası</th>
+                                        <th>Cihaz Türü</th>
+                                        <th>Cihaz Modeli</th>
+                                        <th>Envanter No</th>
+                                        <th>Seri No</th>
+                                        <th>Garanti Başlangıcı</th>
+                                        <th>Durum</th>
+                                        <th>Açıklama</th>
+                                        <th>Sıfır/İkinci El</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="text-muted">1</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">TELEFON</a></td>
+                                        <td>
+                                            SAMSUNG A10S
+                                        </td>
+                                        <td>
+                                            M0316-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>SIFIR</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">2</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">TELEFON</a></td>
+                                        <td>
+                                            SAMSUNG J4
+                                        </td>
+                                        <td>
+                                            M0312-1077
+                                        </td>
+                                        <td>
+                                            PF0X733H
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 27 Eylül 2017 Çarşamba
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>SIFIR</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">3</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">EL TERMİNALİ</a></td>
+                                        <td>
+                                            EDA 51
+                                        </td>
+                                        <td>
+                                            M0201-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">4</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T490S
+                                        </td>
+                                        <td>
+                                            N0316-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>SIFIR</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">5</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T470P
+                                        </td>
+                                        <td>
+                                            N0316-1077
+                                        </td>
+                                        <td>
+                                            PF0X733H
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 27 Eylül 2017 Çarşamba
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">6</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T450
+                                        </td>
+                                        <td>
+                                            N0316-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>ARIZALI</td>
+                                        <td>KLAVYE SIVI TEMASI</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">7</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T460p
+                                        </td>
+                                        <td>
+                                            N0316-1077
+                                        </td>
+                                        <td>
+                                            PF0X733H
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 27 Eylül 2017 Çarşamba
+                                        </td>
+                                        <td>HURDA</td>
+                                        <td>ANAKART YANIK!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">8</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T480S
+                                        </td>
+                                        <td>
+                                            N0316-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">9</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T470P
+                                        </td>
+                                        <td>
+                                            N0316-1077
+                                        </td>
+                                        <td>
+                                            PF0X733H
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 27 Eylül 2017 Çarşamba
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">10</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T480S
+                                        </td>
+                                        <td>
+                                            N0316-1028
+                                        </td>
+                                        <td>
+                                            PC11LJCY
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 7 Şubat 2020 Cuma
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-muted">11</span></td>
+                                        <td><a href="invoice.html" class="text-inherit">NOTEBOOK</a></td>
+                                        <td>
+                                            LENOVO T470P
+                                        </td>
+                                        <td>
+                                            N0316-1077
+                                        </td>
+                                        <td>
+                                            PF0X733H
+                                        </td>
+                                        <td>
+                                            <span class="status-icon bg-success"></span> 27 Eylül 2017 Çarşamba
+                                        </td>
+                                        <td>KULLANILABİLİR</td>
+                                        <td>Detay Girilmemiş!</td>
+                                        <td>İkinci El</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
