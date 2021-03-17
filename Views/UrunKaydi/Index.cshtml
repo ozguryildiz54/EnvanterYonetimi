@@ -1,10 +1,13 @@
-﻿@using EnvanterYonetimi.Models.Entity
+﻿@*@using EnvanterYonetimi.Models.Entity*@
+@*@model EnvanterYonetimi.Models.Entity.CihazTuru
+@model EnvanterYonetimi.Models.Entity.Modeller*@
+
+@model EnvanterYonetimi.Models.Entity.cihazDetay
+
+
 
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml"; }
-
-
-
 
 @* Navbar Menü Alanı *@
 <div class="header collapse d-lg-flex p-0" id="menu">
@@ -45,7 +48,7 @@
                             <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
                             <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
                             @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
-                            <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
+                                <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
                         </div>
                     </li>
                 </ul>
@@ -60,79 +63,130 @@
                 Depo Ürün Kaydı
             </h1>
         </div>
+        @if (ViewBag.Message == true)
+        {
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+    Ürün Kaydı Başarılı!
+</div>}
+        @if (ViewBag.Message == false)
+        {
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+    Ürün Kaydedilemedi!
+</div>}
 
-        <form @*name="urunKaydi" action="/Main/Index/" onsubmit="return validateForm()"*@ method="post" class="form-group">
+        <form name="urunKaydi" @*action="/Main/Index/"*@ onsubmit="return validateForm()" method="post" class="form-group">
             <div class="row row-cards row-deck">
                 <div class="col-sm-6 col-lg-4">
-                    @if (ViewBag.Message != null)
-                    {
-                        <div class="form-group">
-                            <p>@ViewBag.Message</p>
-                        </div>
-                    }
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
-                    <input type='text' name="depoId" class="form-control">
-                    <input type='text' name="cihazTuruId" class="form-control">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
+                        @*@Html.DropDownListFor(cihazTipi => cihazTipi.cihazTip, (List<SelectListItem>)ViewBag.cihazTuru, new { @class = "form-select", @name = "cihazTuruId" })*@
+                    <!--<select class="form-select" id="cihazTuru" name="cihazTuruId">-->
+                        @*<option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
+        <option value="1">Notebook</option>
+        <option value="2">Tablet</option>
+        <option value="3">Telefon</option>
+        <option value="4">LCD Ekran</option>
+        <option value="5">Mouse</option>*@
+                        <!--<option value="0" hidden>Cihaz türü seçin.</option>
+                        
 
-                    @*<select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>*@
-
-                </div>
+                    </select>-->
+                      @if(ViewBag.CihazTurleri !=null)
+                        {
+                          @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new { @class ="form-select", Name = "cihazTuruId", @id = "cihazTuruId", })
+                        }
+                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
-                        <input type='text' name="cihazModeliId" class="form-control">
+                        @*@Html.DropDownListFor(cihazModeli => cihazModeli.model, (List<SelectListItem>)ViewBag.model, new { @class = "form-select", @name = "cihazModeliId" })*@
+
+                        @*<select class="form-select" id="cihazModeli" name="cihazModeliId" disabled>
+        <option value="0" hidden>Cihaz türüne ait model seçin.</option>*@
+                        @*<option value="1">Notebook</option>
+        <option value="2">Tablet</option>
+        <option value="3">Telefon</option>
+        <option value="4">LCD Ekran</option>
+        <option value="5">Mouse</option>*@
+
+                        @Html.DropDownListFor(model => model.modelId, new SelectList(" "), "Cihaz türüne ait model seçin!", new
+                   {
+                       @class = "form-select",
+                       @disabled = "disabled",
+                       Name = "cihazModeliId",
+                       @id = "modelId",
+                   })
 
 
 
+                        @*</select>*@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
-                        <input type='text' name="envNo" class="form-control">
+                        <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
-                        <input type="text" name="seriNo" class="form-control">
+                        <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
-                        <input type="text" name="garantiBas" class="form-control">
+                        <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
-                        <input type="text" name="durum" class="form-control">
-
-
-
+                        <select class="form-select required" id="cihazDurumu" name="durum">
+                            <option value="" hidden>Cihaz durumunu seçin.</option>
+                            <option value="1">Kullanılabilir</option>
+                            <option value="2">Arızalı</option>
+                            <option value="3">Hurda</option>
+                            <option value="4">Serviste</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="aciklama" rows="2" placeholder="Ürüne ait detaylar."></textarea>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
-                        <input type="text" name="islemZaman" class="form-control">
+                        <select class="form-select required" id="sifirIkinciEl" name="sifirIkinciEl">
+                            <option value="0" hidden>Seçim Yapın.</option>
+                            <option value="1">Sıfır</option>
+                            <option value="2">İkinci El</option>
+                        </select>
+                    </div>
 
-
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"><font color="red">* </font>Cihaz Geçici mi?</label>
+                        <select class="form-select required" id="termin" name="iade">
+                            <option value="0" hidden>Seçim Yapın.</option>
+                            <option value="1">Kalıcı</option>
+                            <option value="2">Geçici</option>
+                        </select>
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
-                        <input type='text' name="islemiYapan" class="form-control">
-                        <input type='text' name="kullanim" class="form-control">
-                        <input type='text' name="aciklama" class="form-control">
-
-
+                        <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;"><font color="red">* </font>Cihaz Kullanım Termini</label>
+                        <input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />
+                        @*<input type='text' name="termin" class="form-control" id='terminId' placeholder="Termin tarihi seçin!">*@
 
                     </div>
+
                 </div>
             </div><br /><br />
+
             <div class="card-footer text-right">
+
+
                 <div class="text-right">
+
                     <button type="reset" @*onclick="location.href='/Main/Index'"*@ class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
                     <button type="submit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
                 </div>
@@ -141,91 +195,91 @@
 
         <!--<form--> @*name="urunKaydi"*@ @*action="/Main/Index/" onsubmit="return validateForm()"*@
         <!--method="post" class="login100-form validate-form">
-    <div class="row row-cards row-deck">
-        <div class="col-sm-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
-                <select class="form-control" id="cihazTuru" name="cihazTuruId">
-                    <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
-                    <option value="1">Notebook</option>
-                    <option value="2">Tablet</option>
-                    <option value="3">Telefon</option>
-                    <option value="4">LCD Ekran</option>
-                    <option value="5">Mouse</option>
-                </select>
+        <div class="row row-cards row-deck">
+            <div class="col-sm-6 col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
+                    <select class="form-control" id="cihazTuru" name="cihazTuruId">
+                        <option value="" hidden>Notebook, Tablet, Telefon, Lcd vb.</option>
+                        <option value="1">Notebook</option>
+                        <option value="2">Tablet</option>
+                        <option value="3">Telefon</option>
+                        <option value="4">LCD Ekran</option>
+                        <option value="5">Mouse</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
+                    <select class="form-control" id="cihazModeli" name="cihazModeliId">
+                        <option value="" hidden>Cihaz türüne ait model seçin.</option>
+                        <option value="1">Notebook</option>
+                        <option value="2">Tablet</option>
+                        <option value="3">Telefon</option>
+                        <option value="4">LCD Ekran</option>
+                        <option value="5">Mouse</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
+                    <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
-                <select class="form-control" id="cihazModeli" name="cihazModeliId">
-                    <option value="" hidden>Cihaz türüne ait model seçin.</option>
-                    <option value="1">Notebook</option>
-                    <option value="2">Tablet</option>
-                    <option value="3">Telefon</option>
-                    <option value="4">LCD Ekran</option>
-                    <option value="5">Mouse</option>
-                </select>
+            <div class="col-sm-6 col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
+                    <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
+                    <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>İşlem Zamanı</label>
+                    <input type="text" name="islemZaman" class="form-control" id="exampleFormControlInput1" placeholder="İşlem Zamanı">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>İşlemi Yapan</label>
+                    <input type="text" name="islemiYapan" class="form-control" id="exampleFormControlInput1" placeholder="İşlemi Yapan">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Kullanim</label>
+                    <input type="text" name="kullanim" class="form-control" id="exampleFormControlInput1" placeholder="Kullanim">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
+                    <select class="form-control required" id="cihazDurumu" name="durum">
+                        <option value="" hidden>Cihaz durumunu seçin.</option>
+                        <option value="1">Kullanılabilir</option>
+                        <option value="2">Arızalı</option>
+                        <option value="3">Hurda</option>
+                        <option value="4">Serviste</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
-                <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+            <div class="col-md-6 col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
+                    <select class="form-control required" id="sifirIkinciEl" name="sifir_ikinci_el">
+                        <option value="" hidden>Seçim Yapın.</option>
+                        <option value="1">Sıfır</option>
+                        <option value="2">İkinci El</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ürüne ait detaylar." name="aciklama"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
-                <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
-                <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>İşlem Zamanı</label>
-                <input type="text" name="islemZaman" class="form-control" id="exampleFormControlInput1" placeholder="İşlem Zamanı">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>İşlemi Yapan</label>
-                <input type="text" name="islemiYapan" class="form-control" id="exampleFormControlInput1" placeholder="İşlemi Yapan">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>Kullanim</label>
-                <input type="text" name="kullanim" class="form-control" id="exampleFormControlInput1" placeholder="Kullanim">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
-                <select class="form-control required" id="cihazDurumu" name="durum">
-                    <option value="" hidden>Cihaz durumunu seçin.</option>
-                    <option value="1">Kullanılabilir</option>
-                    <option value="2">Arızalı</option>
-                    <option value="3">Hurda</option>
-                    <option value="4">Serviste</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
-                <select class="form-control required" id="sifirIkinciEl" name="sifir_ikinci_el">
-                    <option value="" hidden>Seçim Yapın.</option>
-                    <option value="1">Sıfır</option>
-                    <option value="2">İkinci El</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ürüne ait detaylar." name="aciklama"></textarea>
-            </div>
-        </div>
-    </div><br /><br />
-    <div class="card-footer text-right">
-        <div class="text-right">
-            <button type="reset"-->
+        </div><br /><br />
+        <div class="card-footer text-right">
+            <div class="text-right">
+                <button type="reset"-->
         @*onclick="location.href='/Main/Index'"*@
         <!--class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
-                <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
+                    <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
+                </div>
             </div>
-        </div>
-    </form>-->
+        </form>-->
     </div>
 </div>
 
@@ -304,11 +358,12 @@
             </div><br /><br />
             <div class="card-footer text-right">
                 <div class="text-right">
-                    <button type="reset"--> @*onclick="location.href='/Main/Index'"*@ <!--class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
+                    <button type="reset"-->
+@*onclick="location.href='/Main/Index'"*@
+<!--class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
                     <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
                 </div>
             </div>
         </form>
     </div>
 </div>-->
-

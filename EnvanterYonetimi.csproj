@@ -186,6 +186,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\cihazDetay.cs" />
+    <Compile Include="Models\Entity\cihazModel.cs" />
     <Compile Include="Models\Entity\CihazTuru.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -240,7 +242,7 @@
     <Compile Include="Models\Entity\Sirket_Lokasyon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entity\sysdiagram.cs">
+    <Compile Include="Models\Entity\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

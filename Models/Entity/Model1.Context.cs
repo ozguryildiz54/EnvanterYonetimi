@@ -13,10 +13,10 @@ namespace EnvanterYonetimi.Models.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class envanterTakipWebEntities : DbContext
+    public partial class envanterTakipWebEntities2 : DbContext
     {
-        public envanterTakipWebEntities()
-            : base("name=envanterTakipWebEntities")
+        public envanterTakipWebEntities2()
+            : base("name=envanterTakipWebEntities2")
         {
         }
     
@@ -25,19 +25,19 @@ namespace EnvanterYonetimi.Models.Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Depo> Depoes { get; set; }
+        public virtual DbSet<Depo> Depo { get; set; }
         public virtual DbSet<Sirket_Lokasyon> Sirket_Lokasyon { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<CihazTuru> CihazTurus { get; set; }
-        public virtual DbSet<Islemler> Islemlers { get; set; }
-        public virtual DbSet<Kullanicilar> Kullanicilars { get; set; }
-        public virtual DbSet<Lokasyon> Lokasyons { get; set; }
-        public virtual DbSet<Modeller> Modellers { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<CihazTuru> CihazTuru { get; set; }
+        public virtual DbSet<Islemler> Islemler { get; set; }
+        public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
+        public virtual DbSet<Lokasyon> Lokasyon { get; set; }
+        public virtual DbSet<Modeller> Modeller { get; set; }
         public virtual DbSet<Modeller_Depo> Modeller_Depo { get; set; }
         public virtual DbSet<Modeller_Islemler> Modeller_Islemler { get; set; }
         public virtual DbSet<Modeller_Saha> Modeller_Saha { get; set; }
-        public virtual DbSet<Operator> Operators { get; set; }
-        public virtual DbSet<Saha> Sahas { get; set; }
-        public virtual DbSet<Sirket> Sirkets { get; set; }
+        public virtual DbSet<Operator> Operator { get; set; }
+        public virtual DbSet<Saha> Saha { get; set; }
+        public virtual DbSet<Sirket> Sirket { get; set; }
     }
 }

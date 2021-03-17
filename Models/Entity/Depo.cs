@@ -14,7 +14,7 @@ namespace EnvanterYonetimi.Models.Entity
     
     public partial class Depo
     {
-        public string depoId { get; set; }
+        public int depoId { get; set; }
         public string cihazTuruId { get; set; }
         public string cihazModeliId { get; set; }
         public string envNo { get; set; }
@@ -25,5 +25,8 @@ namespace EnvanterYonetimi.Models.Entity
         public string islemiYapan { get; set; }
         public string kullanim { get; set; }
         public string aciklama { get; set; }
+        public string sifirIkinciEl { get; set; }
+        public string iade { get; set; }
+        public string termin { get; set; }
     }
 }

@@ -6,11 +6,14 @@ using System.Web.Security;
 
 namespace EnvanterYonetimi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
+        string kullanici = "";
+
         #region LoginUserCheck
 
-            public bool ValidateUser(string userName, string password)
+        public bool ValidateUser(string userName, string password)
             {
                 bool validation;
                 try
@@ -21,8 +24,11 @@ namespace EnvanterYonetimi.Controllers
                     ldc.AuthType = AuthType.Negotiate;
                     ldc.Bind(nc); // user has authenticated at this point, as the credentials were used to login to the dc.
                     validation = true;
-                }
-                catch (LdapException)
+
+                //kullanici = nc.UserName;
+                TempData["kullanici"] = "ewrwer";
+            }
+            catch (LdapException)
                 {
                     validation = false;
                 }
@@ -41,6 +47,7 @@ namespace EnvanterYonetimi.Controllers
         {
             return View();
         }
+        
         [Route("")]
         [HttpPost]
         public ActionResult Index(string eposta, string sifre)
@@ -56,7 +63,11 @@ namespace EnvanterYonetimi.Controllers
             {
                 ViewData["mesaj"] = "true";
                 //Response.Redirect("/Main", true);
+
+                FormsAuthentication.SetAuthCookie(eposta, false);
+                //return RedirectToAction("Index", "Main");
                 Response.Redirect("/Main", true);
+
             }
             ViewData["mesaj"] = "false";
             return View();

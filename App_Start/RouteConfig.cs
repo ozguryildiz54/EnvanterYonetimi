@@ -24,7 +24,7 @@ namespace EnvanterYonetimi
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
             routes.MapRoute(
-                name: "Login",
+                name: "",
                 url: "",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
@@ -94,6 +94,11 @@ namespace EnvanterYonetimi
                 defaults: new { controller = "UrunKaydi", action = "Index", id = UrlParameter.Optional }
                 );
             routes.MapRoute(
+             name: "GetStateList",
+             url: "GetStateList",
+             defaults: new { controller = "UrunKaydi", action = "GetStateList", id = UrlParameter.Optional }
+             );
+            routes.MapRoute(
                 name: "KullaniciIslemleri",
                 url: "KullaniciIslemleri",
                 defaults: new { controller = "KullaniciIslemleri", action = "Index", id = UrlParameter.Optional }
@@ -121,8 +126,8 @@ namespace EnvanterYonetimi
                 );
             routes.MapRoute(
                 name: "Cikis",
-                url: "Cikis",
-                defaults: new { controller = "Cikis", action = "Index", id = UrlParameter.Optional }
+                url: "",
+                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
                 );
 
         }

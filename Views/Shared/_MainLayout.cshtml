@@ -121,7 +121,7 @@
                                     <a class="dropdown-item" href="/OperatorAyarlari">
                                         <i class="dropdown-icon fe fe-user"> </i> Operatör Ayarları
                                     </a>
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="/Cikis">
                                         <i class="dropdown-icon fe fe-log-out"> </i> Çıkış
                                     </a>
                                 </div>
@@ -270,6 +270,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datepicker').datepicker();
+        });
+        $(document).ready(function () {
+            $('#terminId').datepicker();
+        });
+    </script>
+
     <script type="text/javascript" defer>
         $(function () {
             $("#btnSubmit").click(function () {
@@ -290,14 +303,14 @@
             var envNo = document.forms["urunKaydi"]["envNo"].value;
             var seriNo = document.forms["urunKaydi"]["seriNo"].value;
 
-            var ddlFruits = $("#cihazTuru");
+            var ddlFruits = $("#cihazTuruId");
             if (ddlFruits.val() == "") {
                 //If the "Please Select" option is selected display error.
                 alert("Lütfen Cihaz Türü seçin!");
                 return false;
             }
 
-            var ddlFruits = $("#cihazModeli");
+            var ddlFruits = $("#modelId");
             if (ddlFruits.val() == "") {
                 //If the "Please Select" option is selected display error.
                 alert("Lütfen Cihaz Modeli seçin!");
@@ -386,6 +399,21 @@
             $(".modal-backdrop").remove();
         });
 
+        $('#termin').change(function () {
+            if ($(this).val() == '2') {
+                $('#terminId').show();
+            } else {
+                $('#terminId').hide();
+            }
+            if ($(this).val() == '2') {
+                $('#terminLabel').show();
+            } else {
+                $('#terminLabel').hide();
+            }
+
+            
+        });
+
         onComplete = "$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove();"
 
 
@@ -397,6 +425,95 @@
             });
         });
 
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1500);
+
+        /*Select seçim alanı*/
+        //$(function () {
+        //    //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+        //    $.ajaxSetup({
+        //        type: "post",
+        //        url: "/SelectGetir",//controlerımda gidicek olan yerim
+        //        dataType: "json"
+        //    });
+        //    $.extend({
+        //        cihazTuruGetir: function () {
+        //            $.ajax({
+        //                //datamızı gönderiyoruz
+        //                data: { "tip": "cihazTuruGetir" },
+        //                success: function (sonuc) {
+        //                    //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+        //                    if (sonuc.ok) {
+
+        //                        $.each(sonuc.text, function (index, item) {
+        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+        //                            $("#cihazTuru").append(optionhtml);
+
+        //                        });
+
+        //                    } else {
+        //                        $.each(sonuc.text, function (index, item) {
+        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+        //                            $("#cihazTuru").append(optionhtml);
+
+        //                        });
+
+        //                    }
+        //                }
+        //            });
+        //        },
+        //        cihazModeliGetir: function (cihazTuruId) {
+
+        //            $.ajax({
+        //                //ekstra olarak functionumaza gelen ilID mizi gönderiyoruz
+        //                data: { "cihazTuruId": cihazTuruId, "tip": "cihazTuruGetir" },
+        //                success: function (sonuc) {
+        //                    //bir önceki kayıtları temizliyorum
+        //                    $("#cihazModeli option").remove();
+        //                    if (sonuc.ok) {
+        //                        //disabled true yapıyorum
+        //                        $("#cihazModeli").prop("disabled", false);
+        //                        $.each(sonuc.text, function (index, item) {
+        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+        //                            $("#cihazModeli").append(optionhtml);
+        //                        });
+
+        //                    } else {
+        //                        $.each(sonuc.text, function (index, item) {
+        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+        //                            $("#cihazModeli").append(optionhtml);
+
+        //                        });
+        //                    }
+        //                }
+        //            });
+        //        }
+        //    });
+        //    //cihazTuruGetir imizi çalıştıyoruz
+        //    $.cihazTuruGetir();
+        //    //Cİhaz türü selectimizde değişiklik olduğunda çalışacak func
+        //    $("#cihazTuru").on("change", function () {
+        //        //seçili olan id alıyoruz
+        //        var cihazturuIdDegeri = $(this).val();
+        //        //seçili olan idmizi ilceGetir'imze gönderiyoruz
+        //        $.cihazModeliGetir(cihazturuIdDegeri);
+        //    });
+        //});
+
+        $(document).ready(function () {
+            $("#cihazTuruId").change(function () {
+                $.get("/GetStateList", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {
+                    $("#modelId").prop("disabled", false);
+                    $("#modelId").empty();
+                    $.each(data, function (index, row) {
+                        $("#modelId").append("<option value='" + row.modelId + "'>" + row.model + "</option>")
+                    });
+                });
+            })
+        });
 
     </script>
     <style type="text/javascript" defer>

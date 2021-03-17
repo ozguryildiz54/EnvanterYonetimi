@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c8dbf801c8c14fa3819625e52f9695d7" Name="Diagram1">
+      <Diagram DiagramId="e1e5804a3e584428b7e90e945a1a275e" Name="Diagram1">
         <EntityTypeShape EntityType="envanterTakipWebModel.Depo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="envanterTakipWebModel.Sirket_Lokasyon" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="envanterTakipWebModel.sysdiagram" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="envanterTakipWebModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="envanterTakipWebModel.CihazTuru" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="envanterTakipWebModel.Islemler" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="envanterTakipWebModel.Kullanicilar" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />

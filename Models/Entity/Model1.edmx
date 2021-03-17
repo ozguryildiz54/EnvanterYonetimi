@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="envanterTakipWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="envanterTakipWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CihazTuru">
@@ -22,7 +22,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a pr
           <Key>
             <PropertyRef Name="depoId" />
           </Key>
-          <Property Name="depoId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="depoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cihazTuruId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="cihazModeliId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="envNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -33,6 +33,9 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a pr
           <Property Name="islemiYapan" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kullanim" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="sifirIkinciEl" Type="varchar" MaxLength="50" />
+          <Property Name="iade" Type="varchar" MaxLength="50" />
+          <Property Name="termin" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'envanterTakipWeb.dbo.Islemler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -337,8 +340,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
     FROM [dbo].[Sirket] AS [Sirket]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="envanterTakipWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -346,7 +348,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Key>
             <PropertyRef Name="depoId" />
           </Key>
-          <Property Name="depoId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="depoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cihazTuruId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cihazModeliId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="envNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -357,6 +359,9 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="islemiYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifirIkinciEl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="iade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="termin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sirket_Lokasyon">
           <Key>
@@ -366,7 +371,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="sirketId" Type="Int32" Nullable="false" />
           <Property Name="lokasyonId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -540,31 +545,34 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="sirketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="envanterTakipWebEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Depoes" EntityType="Self.Depo" />
+        <EntityContainer Name="envanterTakipWebEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depo" EntityType="Self.Depo" />
           <EntitySet Name="Sirket_Lokasyon" EntityType="Self.Sirket_Lokasyon" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="CihazTurus" EntityType="Self.CihazTuru" />
-          <EntitySet Name="Islemlers" EntityType="Self.Islemler" />
-          <EntitySet Name="Kullanicilars" EntityType="Self.Kullanicilar" />
-          <EntitySet Name="Lokasyons" EntityType="Self.Lokasyon" />
-          <EntitySet Name="Modellers" EntityType="Self.Modeller" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Lokasyon" EntityType="Self.Lokasyon" />
+          <EntitySet Name="Modeller" EntityType="Self.Modeller" />
           <EntitySet Name="Modeller_Depo" EntityType="Self.Modeller_Depo" />
           <EntitySet Name="Modeller_Islemler" EntityType="Self.Modeller_Islemler" />
           <EntitySet Name="Modeller_Saha" EntityType="Self.Modeller_Saha" />
-          <EntitySet Name="Operators" EntityType="Self.Operator" />
-          <EntitySet Name="Sahas" EntityType="Self.Saha" />
-          <EntitySet Name="Sirkets" EntityType="Self.Sirket" />
+          <EntitySet Name="Operator" EntityType="Self.Operator" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" />
+          <EntitySet Name="Sirket" EntityType="Self.Sirket" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="envanterTakipWebModelStoreContainer" CdmEntityContainer="envanterTakipWebEntities">
-          <EntitySetMapping Name="Depoes">
+        <EntityContainerMapping StorageEntityContainer="envanterTakipWebModelStoreContainer" CdmEntityContainer="envanterTakipWebEntities2">
+          <EntitySetMapping Name="Depo">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Depo">
               <MappingFragment StoreEntitySet="Depo">
+                <ScalarProperty Name="termin" ColumnName="termin" />
+                <ScalarProperty Name="iade" ColumnName="iade" />
+                <ScalarProperty Name="sifirIkinciEl" ColumnName="sifirIkinciEl" />
                 <ScalarProperty Name="depoId" ColumnName="depoId" />
                 <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
                 <ScalarProperty Name="cihazModeliId" ColumnName="cihazModeliId" />
@@ -588,7 +596,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="envanterTakipWebModel.sysdiagram">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -598,7 +606,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CihazTurus">
+          <EntitySetMapping Name="CihazTuru">
             <EntityTypeMapping TypeName="envanterTakipWebModel.CihazTuru">
               <MappingFragment StoreEntitySet="CihazTuru">
                 <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
@@ -608,7 +616,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Islemlers">
+          <EntitySetMapping Name="Islemler">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Islemler">
               <MappingFragment StoreEntitySet="Islemler">
                 <ScalarProperty Name="islemlerId" ColumnName="islemlerId" />
@@ -629,7 +637,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Kullanicilars">
+          <EntitySetMapping Name="Kullanicilar">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Kullanicilar">
               <MappingFragment StoreEntitySet="Kullanicilar">
                 <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
@@ -640,7 +648,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Lokasyons">
+          <EntitySetMapping Name="Lokasyon">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Lokasyon">
               <MappingFragment StoreEntitySet="Lokasyon">
                 <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
@@ -649,7 +657,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Modellers">
+          <EntitySetMapping Name="Modeller">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller">
               <MappingFragment StoreEntitySet="Modeller">
                 <ScalarProperty Name="modelId" ColumnName="modelId" />
@@ -683,7 +691,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Operators">
+          <EntitySetMapping Name="Operator">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Operator">
               <MappingFragment StoreEntitySet="Operator">
                 <ScalarProperty Name="operatorId" ColumnName="operatorId" />
@@ -695,7 +703,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sahas">
+          <EntitySetMapping Name="Saha">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Saha">
               <MappingFragment StoreEntitySet="Saha">
                 <ScalarProperty Name="sahaId" ColumnName="sahaId" />
@@ -717,7 +725,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sirkets">
+          <EntitySetMapping Name="Sirket">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Sirket">
               <MappingFragment StoreEntitySet="Sirket">
                 <ScalarProperty Name="sirketId" ColumnName="sirketId" />
@@ -741,7 +749,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
