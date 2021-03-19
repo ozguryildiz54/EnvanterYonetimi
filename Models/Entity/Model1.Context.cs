@@ -13,10 +13,10 @@ namespace EnvanterYonetimi.Models.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class envanterTakipWebEntities2 : DbContext
+    public partial class envanterTakipWebEntities : DbContext
     {
-        public envanterTakipWebEntities2()
-            : base("name=envanterTakipWebEntities2")
+        public envanterTakipWebEntities()
+            : base("name=envanterTakipWebEntities")
         {
         }
     

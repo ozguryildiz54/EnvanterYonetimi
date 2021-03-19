@@ -1,5 +1,4 @@
-﻿
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -15,98 +14,68 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <title>Envanter Yönetim Sistemi</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-
-
-    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
-
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel='stylesheet' type='text/css'>
-
-
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+    <title>Envanter Yönetim Sistemi</title>
 
     @* Title Logo *@
     <link rel="icon" href="~/tabler-dev/dist/title_logo.ico" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="~/tabler-dev/dist/title_logo.ico" />
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
     @* CSS Tanımlamaları *@
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @*c3.js Charts Plugin*@
-
-    <link href="~/tabler-dev/dist/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/tabler-dev/dist/assets/plugins/charts-c3/plugin.css" />
 
     @*Google Maps Plugin*@
-    <link href="~/tabler-dev/dist/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-
-
+    <link rel="stylesheet" type="text/css" href="~/tabler-dev/dist/assets/plugins/maps-google/plugin.css" />
 
     @* Boostrap *@
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
     @* Dashboard Core*@
-    <link href="~/tabler-dev/dist/assets/css/dashboard.css" rel="stylesheet" />
-
-    <!-- Dashboard Core -->
-    @*<script src="~/tabler-dev/dist/assets/js/dashboard.js"></script>*@
+    <link rel="stylesheet" type="text/css" href="~/tabler-dev/dist/assets/css/dashboard.css" />
 
     @*Table Değişiklikleri Başlangıcı*@
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*Table Değişiklik Sonu*@
 
-
-
-    @*Son*@
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-
-
-
-
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-
-    @*<script src="~tabler-dev/dist/assets/js/require.min.js"></script>
-        <script>
-            requirejs.config({
-                baseUrl: '.'
-            });
-        </script>*@
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <link type="text/css" href="~/Content/tools.css" rel="stylesheet" defer /> @* Özelleştirme yaptığımız css kodları burada yer almaktadır.*@
 
 </head>
 <body class="">
-
     <div class="page">
         <div class="page-main">
             <div class="header py-4">
                 <div class="container" style=" margin-top: -55px;">
                     <div class="d-flex">
-                        <!-- Burası logo kısmıdır. -->
+
+                        <!-- Burası menü logo kısmıdır. -->
                         <a class="header-brand" href="/Main">
                             <img src="~/tabler-dev/dist/demo/brand/headLogo.png" class="header-brand-img" alt="tabler logo">
                         </a>
+
                         @* Burası Profil Kısmı *@
                         <div class="d-flex order-lg-2 ml-auto">
                             <div class="dropdown">
@@ -127,16 +96,19 @@
                                 </div>
                             </div>
                         </div>
+
                         <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
                             <span class="header-toggler-icon"> </span>
                         </a>
                     </div>
                 </div>
             </div>
-            @*<div class="card-footer">*@
+
             @RenderBody()
-            @*</div>*@
+
         </div>
+        
+        @*Footer Alanı*@
         <div class="footer">
             <div class="container">
                 <div class="row">
@@ -145,14 +117,14 @@
                             <div class="col-6 col-md-3">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#"> Akgıda </a>
+                                        <a href="https://www.akgida.com.tr/"> Akgıda </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-6 col-md-3">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#"> Akgıda Facebook</a>
+                                        <a href="https://www.facebook.com/akgidakariyer"> Akgıda Facebook</a>
                                     </li>
 
                                 </ul>
@@ -160,14 +132,22 @@
                             <div class="col-6 col-md-3">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#"> Akgıda Instagram</a>
+                                        <a href="https://www.instagram.com/accounts/login/?next=/akgidakariyer/"> Akgıda Instagram</a>
                                     </li>
                                 </ul>
                             </div>
+                            @*Footer alanı düzenlenecek bu alanı açınca burada taşma oluyor.*@
+                            @*<div class="col-6 col-md-3">
+                                    <ul class="list-unstyled mb-0">
+                                        <li>
+                                            <a href="https://www.linkedin.com/company/akgida/"> Akgıda LinkedIn</a>
+                                        </li>
+                                    </ul>
+                                </div>*@
                             <div class="col-6 col-md-3">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#"> Akgıda Youtube</a>
+                                        <a href="https://www.youtube.com/channel/UCeUEcxuZLCck3EIUCnAOjSg"> Akgıda Youtube</a>
                                     </li>
                                 </ul>
                             </div>
@@ -179,367 +159,49 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 
-
-    <style type="text/css" defer>
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-
-
-        .bgcolor {
-            background-color: none;
-        }
-
-        .lightblue {
-            background-color: none;
-        }
-
-        .form-horizontal .control-label {
-            width: 70px;
-        }
-
-        .form-horizontal .controls {
-            margin-left: 90px;
-        }
-    </style>
-
-
-
     @* Javascript Tanımlamaları *@
-
     @*Optional JavaScript jQuery first, then Popper.js, then Bootstrap JS*@
 
     @*jQuery*@
-
-
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    @*çalışmıyor*@
+    <script type="text/javascript" src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     @*Popper*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
     @*Bootstrap*@
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
-    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table-locale-all.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
-
-    @* Boostrap Datepicker*@
-
-
-
-
-
-
-    @*Dashboard Core*@
-    @*<script src="~/tabler-dev/dist/assets/js/dashboard.js"></script>*@
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table-locale-all.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
     @*Google Maps Plugin*@
-    <script src="~/tabler-dev/dist/assets/plugins/maps-google/plugin.js"></script>
+    <script type="text/javascript" src="~/tabler-dev/dist/assets/plugins/maps-google/plugin.js"></script>
 
     @*Input Mask Plugin*@
-    <script src="~/tabler-dev/dist/assets/plugins/input-mask/plugin.js"></script>
+    <script type="text/javascript" src="~/tabler-dev/dist/assets/plugins/input-mask/plugin.js"></script>
 
+    @*HTML ve IE 8 için gerekli kodlar bu kısımda [if lt IE 9]>*@
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    @*HTML ve IE 8 için gerekli kodlar bu kısımda
-        [if lt IE 9]>*@
-
-    @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>*@
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#datepicker').datepicker();
-        });
-        $(document).ready(function () {
-            $('#terminId').datepicker();
-        });
-    </script>
-
-    <script type="text/javascript" defer>
-        $(function () {
-            $("#btnSubmit").click(function () {
-                var ddlFruits = $("#ddlFruits");
-                if (ddlFruits.val() == "") {
-                    //If the "Please Select" option is selected display error.
-                    alert("Please select an option!");
-                    return false;
-                }
-                return true;
-            });
-        });
-    </script>
-
-    <script type="text/javascript" defer>
-        function validateForm() {
-            var garantiBas = document.forms["urunKaydi"]["garantiBas"].value;
-            var envNo = document.forms["urunKaydi"]["envNo"].value;
-            var seriNo = document.forms["urunKaydi"]["seriNo"].value;
-
-            var ddlFruits = $("#cihazTuruId");
-            if (ddlFruits.val() == "") {
-                //If the "Please Select" option is selected display error.
-                alert("Lütfen Cihaz Türü seçin!");
-                return false;
-            }
-
-            var ddlFruits = $("#modelId");
-            if (ddlFruits.val() == "") {
-                //If the "Please Select" option is selected display error.
-                alert("Lütfen Cihaz Modeli seçin!");
-                return false;
-            }
-            if (garantiBas == "" || garantiBas == null) {
-                alert("Lütfen Garanti Başlangıcı için seçim yapın!");
-                return false;
-            }
-            if (envNo == "" || envNo == null) {
-                alert("Lütfen Envanter No bilgisi girin!");
-                return false;
-            }
-            if (seriNo == "" || seriNo == null) {
-                alert("Lütfen Seri No bilgisi girin!");
-                return false;
-            }
-            var ddlFruits = $("#cihazDurumu");
-            if (ddlFruits.val() == "") {
-                //If the "Please Select" option is selected display error.
-                alert("Lütfen Cihaz Durumu seçin!");
-                return false;
-            }
-
-            var ddlFruits = $("#sifirIkinciEl");
-            if (ddlFruits.val() == "") {
-                //If the "Please Select" option is selected display error.
-                alert("Lütfen Sıfır/İkinci el durumunu seçin!");
-                return false;
-            }
-
-
-
-        }
-
-        function arama() {
-            var copyText = document.getElementById("ara");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999)
-            document.execCommand("copy");
-            if (copyText.value != "") {
-                alert("Aradığınız kelime kopyalandı:    " + copyText.value);
-            } else {
-                alert("Birşey Yazmadınız!");
-            }
-
-        }
-
-
-        $('#overlay').modal('show');
-
-        //function highlight_row() {
-
-        //    var table = document.getElementById('display-table');
-        //    var cells = table.getElementsByTagName('td');
-
-        //    for (var i = 0; i < cells.length; i++) {
-        //        // Take each cell
-        //        var cell = cells[i];
-        //        // do something on onclick event for cell
-        //        cell.onclick = function () {
-        //            // Get the row id where the cell exists
-        //            var rowId = this.parentNode.rowIndex;
-
-        //            var rowsNotSelected = table.getElementsByTagName('tr');
-        //            for (var row = 0; row < rowsNotSelected.length; row++) {
-        //                rowsNotSelected[row].style.backgroundColor = "";
-        //                rowsNotSelected[row].classList.remove('selected');
-        //            }
-        //            var rowSelected = table.getElementsByTagName('tr')[rowId];
-        //            rowSelected.style.backgroundColor = "gray";
-        //            rowSelected.className += " selected";
-
-        //            msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
-        //            msg += '\nThe cell value is: ' + this.innerHTML;
-        //            //alert(msg);
-        //        }
-        //    }
-
-        //} //end of function
-
-        //window.onload = highlight_row;
-
-        $(document).on('click', '.accept', function (e) {
-            $(".modal-fade").modal("hide");
-            $(".modal-backdrop").remove();
-        });
-
-        $('#termin').change(function () {
-            if ($(this).val() == '2') {
-                $('#terminId').show();
-            } else {
-                $('#terminId').hide();
-            }
-            if ($(this).val() == '2') {
-                $('#terminLabel').show();
-            } else {
-                $('#terminLabel').hide();
-            }
-
-            
-        });
-
-        onComplete = "$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove();"
-
-
-        $(document).ready(function () {
-            $("#modalBtnClick").on("click", function () {
-                $('#myModal').modal('hide');
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-            });
-        });
-
-        window.setTimeout(function () {
-            $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 1500);
-
-        /*Select seçim alanı*/
-        //$(function () {
-        //    //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
-        //    $.ajaxSetup({
-        //        type: "post",
-        //        url: "/SelectGetir",//controlerımda gidicek olan yerim
-        //        dataType: "json"
-        //    });
-        //    $.extend({
-        //        cihazTuruGetir: function () {
-        //            $.ajax({
-        //                //datamızı gönderiyoruz
-        //                data: { "tip": "cihazTuruGetir" },
-        //                success: function (sonuc) {
-        //                    //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
-        //                    if (sonuc.ok) {
-
-        //                        $.each(sonuc.text, function (index, item) {
-        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
-        //                            $("#cihazTuru").append(optionhtml);
-
-        //                        });
-
-        //                    } else {
-        //                        $.each(sonuc.text, function (index, item) {
-        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
-        //                            $("#cihazTuru").append(optionhtml);
-
-        //                        });
-
-        //                    }
-        //                }
-        //            });
-        //        },
-        //        cihazModeliGetir: function (cihazTuruId) {
-
-        //            $.ajax({
-        //                //ekstra olarak functionumaza gelen ilID mizi gönderiyoruz
-        //                data: { "cihazTuruId": cihazTuruId, "tip": "cihazTuruGetir" },
-        //                success: function (sonuc) {
-        //                    //bir önceki kayıtları temizliyorum
-        //                    $("#cihazModeli option").remove();
-        //                    if (sonuc.ok) {
-        //                        //disabled true yapıyorum
-        //                        $("#cihazModeli").prop("disabled", false);
-        //                        $.each(sonuc.text, function (index, item) {
-        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
-        //                            $("#cihazModeli").append(optionhtml);
-        //                        });
-
-        //                    } else {
-        //                        $.each(sonuc.text, function (index, item) {
-        //                            var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
-        //                            $("#cihazModeli").append(optionhtml);
-
-        //                        });
-        //                    }
-        //                }
-        //            });
-        //        }
-        //    });
-        //    //cihazTuruGetir imizi çalıştıyoruz
-        //    $.cihazTuruGetir();
-        //    //Cİhaz türü selectimizde değişiklik olduğunda çalışacak func
-        //    $("#cihazTuru").on("change", function () {
-        //        //seçili olan id alıyoruz
-        //        var cihazturuIdDegeri = $(this).val();
-        //        //seçili olan idmizi ilceGetir'imze gönderiyoruz
-        //        $.cihazModeliGetir(cihazturuIdDegeri);
-        //    });
-        //});
-
-        $(document).ready(function () {
-            $("#cihazTuruId").change(function () {
-                $.get("/GetStateList", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {
-                    $("#modelId").prop("disabled", false);
-                    $("#modelId").empty();
-                    $.each(data, function (index, row) {
-                        $("#modelId").append("<option value='" + row.modelId + "'>" + row.model + "</option>")
-                    });
-                });
-            })
-        });
-
-    </script>
-    <style type="text/javascript" defer>
-        /*.table-layout {
-            text-align: center;
-            border: 1px solid black;
-            border-collapse: collapse;
-            font-family: "Trebuchet MS";
-            margin: 0 auto 0;
-        }
-
-            .table-layout td, .table-layout th {
-                border: 1px solid grey;
-                padding: 5px 5px 0;
-            }
-
-            .table-layout td {
-                text-align: left;
-            }*/
-
-        .selected {
-            color: white;
-        }
-    </style>
-
-
+    <script type="text/javascript" src="~/Scripts/tools.js" defer></script> @* Özelleştirme yaptığımız Javascript kodları burada yer almaktadır.*@
 
 </body>
 </html>

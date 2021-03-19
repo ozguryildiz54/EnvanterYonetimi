@@ -1,9 +1,4 @@
-
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
+/*[ FONT ]*/
 
 .dairesel{
 
@@ -13,6 +8,18 @@
   height: 320px;
 }
 
+.field-icon {
+	float: right;
+	margin-left: -25px;
+	margin-top: -25px;
+	position: relative;
+	z-index: 2;
+}
+
+.container {
+	padding-top: 50px;
+	margin: auto;
+}
 
 @font-face {
   font-family: Poppins-Regular;
@@ -34,8 +41,7 @@
   src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
 }
 
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
+/*[ RESTYLE TAG ]*/
 
 * {
 	margin: 0px; 
@@ -140,8 +146,8 @@ iframe {
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
+/*[ Utility ]*/
+
 .txt1 {
   font-family: Poppins-Regular;
   font-size: 13px;
@@ -157,8 +163,8 @@ iframe {
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ login ]*/
+/*[ login ]*/
+
 
 .limiter {
   width: 100%;

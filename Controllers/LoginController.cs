@@ -6,70 +6,63 @@ using System.Web.Security;
 
 namespace EnvanterYonetimi.Controllers
 {
-    [AllowAnonymous]
+    [AllowAnonymous] // Kullanıcı giriş kontrolünü bu sayfa için pas geçer yani bu sayfa login sayfası olduğu için buraya erişmek için kullanıcı girişi istemez
+
     public class LoginController : Controller
     {
-        string kullanici = "";
 
-        #region LoginUserCheck
-
+        // Kullanıcı bilgisinin Active Directory üzerinden kontrolünün yapıldığı blok
+        #region LoginUserCheck 
         public bool ValidateUser(string userName, string password)
+        {
+            bool validation;
+            try
             {
-                bool validation;
-                try
-                {
-                    LdapConnection ldc = new LdapConnection(new LdapDirectoryIdentifier((string)null, false, false));
-                    NetworkCredential nc = new NetworkCredential(userName, password, "AKGIDA");
-                    ldc.Credential = nc;
-                    ldc.AuthType = AuthType.Negotiate;
-                    ldc.Bind(nc); // user has authenticated at this point, as the credentials were used to login to the dc.
-                    validation = true;
-
-                //kullanici = nc.UserName;
-                TempData["kullanici"] = "ewrwer";
+                LdapConnection ldc = new LdapConnection(new LdapDirectoryIdentifier((string)null, false, false));
+                NetworkCredential nc = new NetworkCredential(userName, password, "AKGIDA");
+                ldc.Credential = nc;
+                ldc.AuthType = AuthType.Negotiate;
+                ldc.Bind(nc); // Kimlik bilgileri dc'de oturum açmak için kullanıldığından, bu noktada kullanıcı kimliği doğrulanmıştır.
+                validation = true;
             }
-            catch (LdapException)
-                {
-                    validation = false;
-                }
-                return validation;
+            catch (LdapException) // Kullanıcı girişi başarısız ise validation değişkenimiz false olarak tetiklenir.
+            {
+                validation = false;
+            }
+            return validation;
         }
         #endregion
 
         // GET: Login
-        [Route("")]
+        [Route("")] //Url yönlendirmesi; bu yönlendirmeye göre web sayfasının adını yazdıktan sonra hiçbir alt sayfaya yönlendirmediğimizde çalışacak olan blok.
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index() // Sayfa yüklendiğinde çalışacak olan blok
         {
             return View();
         }
-        public ActionResult Error()
-        {
-            return View();
-        }
-        
-        [Route("")]
+
+        [Route("")] //Url yönlendirmesi; bu yönlendirmeye göre web sayfasının adını yazdıktan sonra hiçbir alt sayfaya yönlendirmediğimizde çalışacak olan blok.
         [HttpPost]
         public ActionResult Index(string eposta, string sifre)
         {
-            ViewData["mesaj"] = "calismiyor";
-            eposta = Request.Form["email"];
-             sifre = Request.Form["pass"];
+            ViewData["mesaj"] = "Hata";
+            eposta = Request.Form["email"]; // Kullanıcının girdiği email bilgisi
+             sifre = Request.Form["pass"]; // Kullanıcının girdiği parola bilgisi
             TempData["kullaniciAdi"] = eposta;
-            String sonuc = "kod çalışmıyor";
+            String sonuc = "Kod çalışmıyor";
             sonuc = ValidateUser(eposta, sifre).ToString();
             ViewData["sonuc"] = sonuc;
-            if (sonuc == "True")
+            if (sonuc == "True") // Kullanıcı girişi başarılı
             {
                 ViewData["mesaj"] = "true";
-                //Response.Redirect("/Main", true);
 
-                FormsAuthentication.SetAuthCookie(eposta, false);
-                //return RedirectToAction("Index", "Main");
-                Response.Redirect("/Main", true);
-
+                FormsAuthentication.SetAuthCookie(eposta, false); // Kullanıcı bilgisi çerezlere kaydedilir.
+                Response.Redirect("/Main", true); // Giriş başarılı olduğundan /Main sayfasına yönlendirilir.
             }
-            ViewData["mesaj"] = "false";
+            else // Kullanıcı girişi başarısız
+            {
+                ViewData["mesaj"] = "false";                
+            }
             return View();
         }
        

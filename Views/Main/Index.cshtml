@@ -25,7 +25,6 @@
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/KullaniciyaUrunAtama" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
-                            @*<a href="/KargoTakibi" class="dropdown-item "> Kargo Takibi</a>*@
                             <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
@@ -39,8 +38,6 @@
                             <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
                             <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
                             <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
-                            @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
-                            <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
                         </div>
                     </li>
                 </ul>
@@ -57,6 +54,8 @@
             </h1>
         </div>
         <div class="row row-cards">
+
+            @*Sıfır Notebook*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -69,6 +68,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Tablet & Telefon*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -81,6 +82,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Kalan İkinci El Bilgisayar*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -93,6 +96,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Sıfır LCD Ekran*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -105,6 +110,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Kalan Barkod Yazıcı*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -117,6 +124,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Kalan Mouse*@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
                     <div class="card-body p-3 text-center">
@@ -129,6 +138,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Son Gönderilen Cihazlar*@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
@@ -304,9 +315,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
 
+            @*Lokasyona Göre Cihazlar*@
+            <div class="col-md-6">
                 <div class="row">
+
+                    @*Lokasyona Göre Bilgisayarlar*@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-header">
@@ -459,6 +473,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @*Lokasyona Göre Tablet ve Telefonlar*@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-header">
@@ -611,6 +627,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @*Lokasyona Göre El Terminalleri*@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-header">
@@ -763,6 +781,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @*Lokasyona Göre Barkod Yazıcılar*@
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-header">
@@ -918,6 +938,7 @@
                 </div>
             </div>
 
+            @*Toplam Kullanıcı*@
             <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                     <div class="d-flex align-items-center">
@@ -931,6 +952,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Toplam Envanter*@
             <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                     <div class="d-flex align-items-center">
@@ -944,6 +967,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Toplam Arıza*@
             <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                     <div class="d-flex align-items-center">
@@ -957,6 +982,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Toplam Hurda & Bağış*@
             <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                     <div class="d-flex align-items-center">
@@ -973,6 +1000,8 @@
         </div>
 
         <div class="row row-cards row-deck">
+
+            @*Cihaz Türleri*@
             <div class="col-sm-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
@@ -1034,6 +1063,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Modeller*@
             <div class="col-sm-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
@@ -1147,6 +1178,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Lokasyonlar*@
             <div class="col-sm-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
@@ -1234,6 +1267,8 @@
                     </div>
                 </div>
             </div>
+
+            @*Depodaki Ürünler*@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">

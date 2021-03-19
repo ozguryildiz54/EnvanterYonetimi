@@ -10,10 +10,10 @@ namespace EnvanterYonetimi.Controllers.KullaniciProfil
     public class CikisController : Controller
     {
         // GET: Cikis
-        [Route("Cikis")]
+        [Route("Cikis")] // Cikis sayfasına yönlendirerek bu bloğu çalıştırır.
         public ActionResult Index()
         {
-            FormsAuthentication.SignOut();
+            FormsAuthentication.SignOut(); // Çerezlerde ki oturum verileri kaldırılır.
             return View();
         }
     }
