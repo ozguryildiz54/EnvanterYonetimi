@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Envanter Yönetim Sistemi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/tabler-dev/dist/title_logo.ico" />
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img class="dairesel" src="~/login/images/login0.jpg" alt="IMG">
+                </div>
+                <form action="/" method="post" class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        Envanter Yönetim Sistemi
+                    </span>
+                    <section> 
+                        <div class="wrap-input100"> @*Kullanıcı eposta bilgisi alınır*@
+                            <input class="input100" type="text" name="email" placeholder="Kullanıcı Adı">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required"> @*Kullanıcı şifre bilgisi alınır*@
+                            <input id="password-field" type="password" class="input100" name="pass" placeholder="Şifre">
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i> @*Şifreyi göster alanı*@
+                            </span>
+                        </div>
+                        <p></p>
+
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn">
+                                Giriş Yap
+                            </button>
+                            <br /><br /><br />
+
+                            @*Kullanıcı giriş bilgileri yanlış girildiğinde uyarı döndürür.*@
+                            @if (ViewData["mesaj"] == "false")
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    Kullanıcı adı veya şifreniz yanlış!
+                                </div>
+                            }
+
+                            @RenderBody()
+
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="~/login/vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="~/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/login/vendor/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/login/vendor/tilt/tilt.jquery.min.js"></script>
+    <script type="text/javascript" src="~/login/js/main.js"></script>
+
+    @* Özelleştirme yaptığımız Javascript kodları burada yer almaktadır.*@
+    <script type="text/javascript" src="~/login/js/tools.js"></script> @* Şifreyi göster butonunu aktif eder*@
+
+</body>
+</html>

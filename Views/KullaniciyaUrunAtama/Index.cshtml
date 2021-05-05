@@ -1,0 +1,339 @@
+﻿@*@model EnvanterYonetimi.Models.Entity*@
+
+@*@using EnvanterYonetimi.Models.Entity.Depo*@
+
+@model EnvanterYonetimi.Models.Entity.Depo
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+@* Navbar Menü Alanı *@
+<div class="header collapse d-lg-flex p-0" id="menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
+                    <li class="nav-item">
+                        <a href="/Main" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/UrunKaydi" class="dropdown-item "> Ürün Kaydı</a>
+                            <a href="/ArizaBildirimi" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="/BagisYap" class="dropdown-item "> Bağış Yap</a>
+                            <a href="/IstenCikma" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi" class="dropdown-item "> Amortisman Bildirimi</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" id="menuActive" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/KullaniciyaUrunAtama" class="dropdown-item active"> Kullanıcıya Ürün Atama</a>
+                            @*<a href="/KargoTakibi" class="dropdown-item "> Kargo Takibi</a>*@
+                            <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/SistemKayitlari" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/CihazTuruYonetimi" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
+                                <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                Kullanıcıya Ürün Atama
+            </h1>
+        </div>
+        @if (ViewBag.Message == "true") // Kayıt Var!
+        {
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+        Cihaz Bulundu!
+    </div>}
+        @if (ViewBag.Message == "false") // Kayıt Yok!
+        {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        Cihaz Bulunamadı!
+    </div>}
+
+        <div class="" style=" width: auto;">
+            <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
+            <form id="form1" name="KullaniciyaUrunAtama" method="post" class="form-group">
+                <div class="row gutters-xs" style="margin-left:1px">
+
+                    <span class="col-auto">
+                        <input type="text" id="ara" name="searchString" class="form-control" placeholder="Envanter No veya Seri No" style=" width: 270px;">
+                    </span>
+                    <span class="col-auto">
+                        <button type="button" class="btn btn-secondary" id="buttonsearch" onclick="aramaDegerKontrol()">
+                            <i class="fe fe-search"></i>
+                        </button>
+                        <button class="btn btn-secondary" type="button" onclick="arama()">
+                            <span class="glyphicon glyphicon-copy"></span> Kopyala
+                        </button>
+                    </span>
+
+                    <span class="col-auto">
+                        <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Depodaki Cihazlar</button>
+                    </span>
+
+                </div>
+            </form>
+
+            @*Pop up-tablo ekranı*@
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    Pop up-tablo içeriği
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <div class="my-3 my-md-5">
+                                <div class="container">
+                                    <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+                                        <h1 class="page-title" style=" margin-top: -15px;">
+                                            Depodaki Cihazlar
+                                        </h1>
+                                    </div>
+
+                                    <table id="display-table" class="table-layout table card-table table-vcenter text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-1">Sıra No</th>
+                                                <th>Kullanıcı Adı</th>
+                                                <th>Bölge Adı</th>
+                                                <th>Cihaz Türü</th>
+                                                <th>Cihaz Modeli</th>
+                                                <th>İşlem Zamanı</th>
+                                                <th>Kargo Durumu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted">1</span></td>
+                                                <td>DERYA YILDIRIM</td>
+                                                <td>
+                                                    AVRUPA DEPO
+                                                </td>
+                                                <td>
+                                                    TABLET
+                                                </td>
+                                                <td>
+                                                    SAMSUNG GALAXY TAB ACTIVE 2
+                                                </td>
+                                                <td>
+                                                    18 Şubat 2021
+                                                </td>
+                                                <td>CİHAZ HAZIRLANIYOR</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer text-right">
+                            <button type="button" class="btn btn-primary accept" data-dismiss="modal" onclick="checkLength(this)">Ürünü Seç</button>
+                            <button id="modalBtnClick" type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <form name="KullaniciyaUrunAtama" @*action="/Main/Index/"*@ onsubmit="return validateForm()" method="post" class="form-group">
+            <div class="row row-cards row-deck">
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Türü</label>
+                        @Html.TextBoxFor(modelItem => Model.cihazTuruId, new { @class = "form-control", @id = "cihazTuruId", @name = "cihazTuruId", @disabled = "disabled" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Modeli</label>
+                        @Html.TextBoxFor(modelItem => Model.cihazModeliId, new { @class = "form-control", @id = "cihazModeliId", @name = "cihazModeliId", @disabled = "disabled" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
+                        @Html.TextBoxFor(modelItem => Model.garantiBas, new { @class = "form-control", @id = "garantiBas", @name = "garantiBas", @disabled = "disabled" })
+
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Envanter Numarası</label>
+                        @Html.TextBoxFor(modelItem => Model.envNo, new { @class = "form-control", @id = "envNo", @name = "envNo", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Seri Numarası</label>
+                        @Html.TextBoxFor(modelItem => Model.seriNo, new { @class = "form-control", @id = "seriNo", @name = "seriNo", @disabled = "disabled" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Durumu</label>
+                        @Html.TextBoxFor(modelItem => Model.durum, new { @class = "form-control", @id = "durum", @name = "durum", @disabled = "disabled" })
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
+                        @Html.TextBoxFor(modelItem => Model.sifirIkinciEl, new { @class = "form-control", @id = "sifirIkinciEl", @name = "sifirIkinciEl", @disabled = "disabled" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput2"><font color="red">* </font>Cihaz Kullanıcısı</label>
+                        <input type="text" name="kullaniciAdi" class="form-control" id="exampleFormControlInput2" placeholder="isim.soyisim">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                        @Html.TextBoxFor(modelItem => Model.aciklama, new { @class = "form-control", @id = "aciklama", @name = "aciklama" })
+                    </div>
+
+                </div>
+            </div><br /><br />
+
+            <div class="card-footer text-right">
+                <div class="text-right">
+                    <button type="reset"
+                            onclick="location.href='/Main/Index'" class="btn btn-danger btn-sm" style=" margin-right: 30px;">
+                        İptal
+                    </button>
+                    <button type="submit" id="btnSubmitbtnSubmit" class="btn btn-primary ml-auto btn-sm">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
