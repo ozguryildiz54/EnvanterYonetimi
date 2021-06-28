@@ -193,6 +193,7 @@
     <Compile Include="Models\Entity\Depo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\IEnumarable.cs" />
     <Compile Include="Models\Entity\Islemler.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -217,6 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\modelData.cs" />
     <Compile Include="Models\Entity\Modeller.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -278,6 +280,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\tools.js" />
     <Content Include="tabler-dev\dist\assets\css\dataTables.bootstrap.min.css" />
     <Content Include="tabler-dev\dist\assets\js\data.js" />
@@ -2154,6 +2157,7 @@
     <Content Include="Views\SistemKayitlari\Index.cshtml" />
     <Content Include="Views\OperatorAyarlari\Index.cshtml" />
     <Content Include="Views\Cikis\Index.cshtml" />
+    <Content Include="Views\KullaniciyaUrunAtama\ParitalDepo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2214,11 +2218,11 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
-<Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
 </Project>

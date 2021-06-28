@@ -117,6 +117,13 @@ namespace EnvanterYonetimi
                 url: "KullaniciyaUrunAtama",
                 defaults: new { controller = "KullaniciyaUrunAtama", action = "Index", id = UrlParameter.Optional }
                 );
+
+            routes.MapRoute(
+                name: "kayit",
+                url: "KullaniciyaUrunAtama",
+                defaults: new { controller = "KullaniciyaUrunAtama", action = "kayit", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute( // UrunKullanicisiDegistir/Index sayfamızın yönlendirmesi
                 name: "UrunKullanicisiDegistir",
                 url: "UrunKullanicisiDegistir",
@@ -132,7 +139,11 @@ namespace EnvanterYonetimi
                 url: "",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
                 );
-
+            routes.MapRoute( // PartialDepoUrunList
+                name: "PartialDepoUrunList",
+                url: "KullaniciyaUrunAtama/PartialDepoUrunList",
+                defaults: new { controller = "PartialDepoUrunList", action = "KullaniciyaUrunAtama"}
+                );
         }
     }
 }

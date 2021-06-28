@@ -159,26 +159,9 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Operator' does not have a pri
           <Property Name="sifre" Type="char" MaxLength="30" Nullable="false" />
           <Property Name="kullanim" Type="varchar" MaxLength="15" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'envanterTakipWeb.dbo.Saha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Saha">
           <Key>
             <PropertyRef Name="sahaId" />
-            <PropertyRef Name="kullaniciAdi" />
-            <PropertyRef Name="kullaniciSoyadi" />
-            <PropertyRef Name="sirketId" />
-            <PropertyRef Name="lokasyonId" />
-            <PropertyRef Name="envNo" />
-            <PropertyRef Name="cihazTuruId" />
-            <PropertyRef Name="seriNo" />
-            <PropertyRef Name="cihazModelId" />
-            <PropertyRef Name="garantiBas" />
-            <PropertyRef Name="durum" />
-            <PropertyRef Name="islemZaman" />
-            <PropertyRef Name="operatorId" />
-            <PropertyRef Name="kullanim" />
-            <PropertyRef Name="aciklama" />
-            <PropertyRef Name="sifir_ikinci_el" />
           </Key>
           <Property Name="sahaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -230,6 +213,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
         </EntityType>
         <EntityContainer Name="envanterTakipWebModelStoreContainer">
           <EntitySet Name="Depo" EntityType="Self.Depo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sirket_Lokasyon" EntityType="Self.Sirket_Lokasyon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" store:Type="Tables" store:Schema="dbo">
@@ -310,26 +294,6 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
     [Operator].[sifre] AS [sifre], 
     [Operator].[kullanim] AS [kullanim]
     FROM [dbo].[Operator] AS [Operator]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Saha" EntityType="Self.Saha" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Saha].[sahaId] AS [sahaId], 
-    [Saha].[kullaniciAdi] AS [kullaniciAdi], 
-    [Saha].[kullaniciSoyadi] AS [kullaniciSoyadi], 
-    [Saha].[sirketId] AS [sirketId], 
-    [Saha].[lokasyonId] AS [lokasyonId], 
-    [Saha].[envNo] AS [envNo], 
-    [Saha].[cihazTuruId] AS [cihazTuruId], 
-    [Saha].[seriNo] AS [seriNo], 
-    [Saha].[cihazModelId] AS [cihazModelId], 
-    [Saha].[garantiBas] AS [garantiBas], 
-    [Saha].[durum] AS [durum], 
-    [Saha].[islemZaman] AS [islemZaman], 
-    [Saha].[operatorId] AS [operatorId], 
-    [Saha].[kullanim] AS [kullanim], 
-    [Saha].[aciklama] AS [aciklama], 
-    [Saha].[sifir_ikinci_el] AS [sifir_ikinci_el]
-    FROM [dbo].[Saha] AS [Saha]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Sirket" EntityType="Self.Sirket" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -501,21 +465,6 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
         <EntityType Name="Saha">
           <Key>
             <PropertyRef Name="sahaId" />
-            <PropertyRef Name="kullaniciAdi" />
-            <PropertyRef Name="kullaniciSoyadi" />
-            <PropertyRef Name="sirketId" />
-            <PropertyRef Name="lokasyonId" />
-            <PropertyRef Name="envNo" />
-            <PropertyRef Name="cihazTuruId" />
-            <PropertyRef Name="seriNo" />
-            <PropertyRef Name="cihazModelId" />
-            <PropertyRef Name="garantiBas" />
-            <PropertyRef Name="durum" />
-            <PropertyRef Name="islemZaman" />
-            <PropertyRef Name="operatorId" />
-            <PropertyRef Name="kullanim" />
-            <PropertyRef Name="aciklama" />
-            <PropertyRef Name="sifir_ikinci_el" />
           </Key>
           <Property Name="sahaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />

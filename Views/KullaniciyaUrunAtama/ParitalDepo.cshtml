@@ -1,0 +1,37 @@
+﻿@model  EnvanterYonetimi.Models.Entity.cihazDetay
+<table id="myTable54" class="table table-layout table card-table table-vcenter sortable text-center table-bordered scroll">
+    <thead>
+        <tr>
+            <th class="daralt"><b>Sıra No</b> <i class="fa fa-fw fa-sort"></i></th>
+            <th>Cihaz Türü<i class="fa fa-fw fa-sort"></i></th>
+            <th>Cihaz Modeli<i class="fa fa-fw fa-sort"></i></th>
+            <th>Envanter Numarası<i class="fa fa-fw fa-sort"></i></th>
+            <th>Seri Numarası<i class="fa fa-fw fa-sort"></i></th>
+            <th>Garanti Başlangıcı<i class="fa fa-fw fa-sort"></i></th>
+            <th>Durum<i class="fa fa-fw fa-sort"></i></th>
+            <th>Açıklama<i class="fa fa-fw fa-sort"></i></th>
+            <th>Sıfır / İkinci El<i class="fa fa-fw fa-sort"></i></th>
+            <th>İşlemi Yapan<i class="fa fa-fw fa-sort"></i></th>
+            <th>İşlem Zamanı<i class="fa fa-fw fa-sort"></i></th>
+        </tr>
+    </thead>
+    <tbody class="searchable">
+        @foreach (var dep in Model.DepoGetir)
+        {
+            <tr class="clickable-row trow">
+                <td>@dep.depoId</td>
+                <td>@dep.cihazTuruId</td>
+                <td>@dep.cihazModeliId</td>
+                <td>@dep.envNo</td>
+                <td>@dep.seriNo</td>
+                <td>@dep.garantiBas</td>
+                <td>@dep.durum</td>
+                <td>@dep.aciklama</td>
+                <td>@dep.sifirIkinciEl</td>
+                <td>@dep.islemiYapan</td>
+                <td>@dep.islemZaman</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

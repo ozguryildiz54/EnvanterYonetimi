@@ -39,7 +39,7 @@
                             <a href="/CihazTuruYonetimi" class="dropdown-item "> Cihaz Türü Yönetimi</a>
                             <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
                             <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
-                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>                          
+                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
                         </div>
                     </li>
                 </ul>
@@ -56,52 +56,57 @@
             </h1>
         </div>
         @if (ViewBag.Message == true) // Kayıt Başarılı!
-         {
+        {
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                 Ürün Kaydı Başarılı!
             </div>
-         }
+        }
         @if (ViewBag.Message == false) // Kayıt Başarısız!
-         {
+        {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 Ürün Kaydedilemedi!
             </div>
-         }
+        }
 
         <form name="urunKaydi" onsubmit="return validateForm()" method="post" class="form-group">
+           
             <div class="row row-cards row-deck">
                 <div class="col-sm-6 col-lg-4">
 
                     @*Cihaz Türü Seçimi*@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
-                        @if (ViewBag.CihazTurleri != null) // Veritabanından cihaz türleri çekilebilmişse Select etiketine değerleri aktarır.
+
+                        @if (ViewBag.CihazTurleri != null)
                         {
-                            @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new { @class = "form-select", Name = "cihazTuruId", @id = "cihazTuruId", })
+                            @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new 
+                            { @class = "form-select", Name = "cihazTuruId", @id = "cihazTuruId", })
                         }
                     </div>
 
                     @*Cihaz Modeli Seçimi*@
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
 
-                        @Html.DropDownListFor(model => model.modelId, new SelectList(" "), "Cihaz türüne ait model seçin!", new
-                        {
-                            @class = "form-select",
-                            @disabled = "disabled",
-                            Name = "cihazModeliId",
-                            @id = "modelId"
-                        })
-                    </div>
+                    @Html.DropDownListFor(model => model.modelId, new SelectList(" "), "Cihaz türüne ait model seçin!", new
+                    {
+                        @class = "form-select",
+                        @disabled = "disabled",
+                        Name = "cihazModeliId",
+                        @id = "modelId",
+                    })
+
+                </div>
 
                     @*Garanti Başlangıcı Seçimi*@
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
-                        <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
+                    <input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">
+                    @*@Html.TextBoxFor(m => m.depo.garantiBas, new { @class = "form-control", Name = "garantiBas", @id = "datepicker" })*@
 
-                    </div>
+                </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
 
@@ -109,32 +114,39 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
                         <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+                        @*@Html.TextBoxFor(m => m.depo.envNo, new { @class = "form-control", Name = "envNo", @id = "exampleFormControlInput1" })*@
 
                     </div>
 
                     @*Seri Numarası Atama*@
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
-                        <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
+                    <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                    @*@Html.TextBoxFor(m => m.depo.seriNo, new { @class = "form-control", Name = "seriNo", @id = "exampleFormControlInput1" })*@
+
+                </div>
 
                     @*Cihaz Durumu Seçme*@
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
-                        <select class="form-select required" id="cihazDurumu" name="durum">
-                            <option value="" hidden>Cihaz durumunu seçin.</option>
-                            <option value="1">Kullanılabilir</option>
-                            <option value="2">Arızalı</option>
-                            <option value="3">Hurda</option>
-                            <option value="4">Serviste</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
+                    <select class="form-select required" id="cihazDurumu" name="durum">
+                        <option value="" hidden>Cihaz durumunu seçin.</option>
+                        <option value="1">Kullanılabilir</option>
+                        <option value="2">Arızalı</option>
+                        <option value="3">Hurda</option>
+                        <option value="4">Serviste</option>
+                    </select>
+                    @*@Html.TextBoxFor(m => m.depo.durum, new { @class = "form-control", Name = "durum", @id = "cihazDurumu" })*@
+
+                </div>
 
                     @*Açıklama Detayı Ekleme*@
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="aciklama" rows="2" placeholder="Ürüne ait detaylar."></textarea>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="aciklama" rows="2" placeholder="Ürüne ait detaylar."></textarea>
+                    @*@Html.TextBoxFor(m => m.depo.aciklama, new { @class = "form-control", Name = "aciklama" })*@
+
+                </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
 
@@ -146,22 +158,27 @@
                             <option value="1">Sıfır</option>
                             <option value="2">İkinci El</option>
                         </select>
+                        @*@Html.TextBoxFor(m => m.depo.sifirIkinciEl, new { @class = "form-control", Name = "sifirIkinciEl", @id = "sifirIkinciEl" })*@
+
                     </div>
 
                     @*Cihaz Termin Seçimi*@
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1"><font color="red">* </font>Cihaz Geçici mi?</label>
-                        <select class="form-select required" id="termin" name="iade">
-                            <option value="0" hidden>Seçim Yapın.</option>
-                            <option value="1">Kalıcı</option>
-                            <option value="2">Geçici</option>
-                        </select>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"><font color="red">* </font>Cihaz Geçici mi?</label>
+                    <select class="form-select required" id="termin" name="iade">
+                        <option value="0" hidden>Seçim Yapın.</option>
+                        <option value="1">Kalıcı</option>
+                        <option value="2">Geçici</option>
+                    </select>
+                    @*@Html.TextBoxFor(m => m.depo.iade, new { @class = "form-control", Name = "iade", @id = "termin" })*@
 
-                    </div>
-                    <div class="form-group">
-                        <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;"><font color="red">* </font>Cihaz Kullanım Termini</label>
-                        <input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;"><font color="red">* </font>Cihaz Kullanım Termini</label>
+                    <input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />
+                    @*@Html.TextBoxFor(m => m.depo.termin, new { @class = "form-control", Name = "termin", @id = "terminId" })*@
+
+                </div>
 
                 </div>
             </div><br /><br />
@@ -176,4 +193,38 @@
         </form>
     </div>
 </div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.js"></script>
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $("#cihazTuruId").change(function () {
+    //        $.ajax({
+    //            url: '/cihazTuruGetir',
+    //            data: { cihazTuruId: $(this).val() },
+    //            dataType: "JSON",
+    //            success: function (result) {
+    //                var cihazModel = $("#modelId");
+    //                cihazModel.empty();
+    //                $.each(result, function (i, item) {
+    //                    cihazModel.append($("<option></option>").attr("value", item.id)
+    //                        .html(item.modelAdi));
+    //                });
+    //            }
+    //        });
+    //    });
+    //});
+
+    $(document).ready(function () {
+        $("#cihazTuruId").change(function () {
+            $.get("/cihazTuruGetir", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {
+                $("#modelId").prop("disabled", false);
+                $("#modelId").empty();
+                $.each(data, function (index, row) {
+                    $("#modelId").append("<option value='" + row.modelId + "'>" + row.model + "</option>")
+                });
+            });
+        })
+    });
+</script>
 
