@@ -42,10 +42,6 @@ public partial class Depo
 
     public string sifirIkinciEl { get; set; }
 
-    public string iade { get; set; }
-
-    public string termin { get; set; }
-
 }
 
 }

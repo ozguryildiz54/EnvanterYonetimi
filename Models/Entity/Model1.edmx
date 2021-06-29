@@ -34,8 +34,6 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a pr
           <Property Name="kullanim" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="sifirIkinciEl" Type="varchar" MaxLength="50" />
-          <Property Name="iade" Type="varchar" MaxLength="50" />
-          <Property Name="termin" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'envanterTakipWeb.dbo.Islemler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -179,6 +177,8 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Operator' does not have a pri
           <Property Name="kullanim" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="sifir_ikinci_el" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="iade" Type="nvarchar" MaxLength="50" />
+          <Property Name="termin" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -324,8 +324,6 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sifirIkinciEl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="iade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="termin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sirket_Lokasyon">
           <Key>
@@ -482,6 +480,8 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sifir_ikinci_el" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="iade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="termin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sirket">
           <Key>
@@ -519,8 +519,6 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <EntitySetMapping Name="Depo">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Depo">
               <MappingFragment StoreEntitySet="Depo">
-                <ScalarProperty Name="termin" ColumnName="termin" />
-                <ScalarProperty Name="iade" ColumnName="iade" />
                 <ScalarProperty Name="sifirIkinciEl" ColumnName="sifirIkinciEl" />
                 <ScalarProperty Name="depoId" ColumnName="depoId" />
                 <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
@@ -655,6 +653,8 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <EntitySetMapping Name="Saha">
             <EntityTypeMapping TypeName="envanterTakipWebModel.Saha">
               <MappingFragment StoreEntitySet="Saha">
+                <ScalarProperty Name="termin" ColumnName="termin" />
+                <ScalarProperty Name="iade" ColumnName="iade" />
                 <ScalarProperty Name="sahaId" ColumnName="sahaId" />
                 <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
                 <ScalarProperty Name="kullaniciSoyadi" ColumnName="kullaniciSoyadi" />
@@ -698,7 +698,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -133,10 +133,10 @@ function aramaDegerKontrol() {
 
     if (copyText.value == "" || copyText.value == null) {
         alert("Bir şey Yazmadınız!");
-    } else{
+    } else {
         document.getElementById("form1").submit();
     }
-    
+
 }
 
 
@@ -148,13 +148,13 @@ $(document).on('click', '.accept', function (e) {
     $(".modal-backdrop").remove();
 });
 
-$('#termin').change(function () {
-    if ($(this).val() == '2') {
+$('#termin2').change(function () {
+    if ($(this).val() == 'GECICI') {
         $('#terminId').show();
     } else {
         $('#terminId').hide();
     }
-    if ($(this).val() == '2') {
+    if ($(this).val() == 'GECICI') {
         $('#terminLabel').show();
     } else {
         $('#terminLabel').hide();
@@ -210,7 +210,7 @@ $('#myTable54').on('click', '.clickable-row', function (event) {
     //$('#exampleModal').modal('hide');
     //$('body').removeClass('modal-open');
     //$('.modal-backdrop').remove();
-    
+
 });
 
 //$(document).ready(function () {
@@ -510,9 +510,9 @@ function temizle() {
 
 function cihazAra() {
     aramaDegerKontrol();
-    var param=document.getElementById("ara").value;
+    var param = document.getElementById("ara").value;
 
-    window.location.href = "@Url.Action(Ara,KullaniciyaUrunAtama, new { @searchString = "+param+"})";
+    window.location.href = "@Url.Action(Ara,KullaniciyaUrunAtama, new { @searchString = " + param + "})";
 
     //$.get("/CihazAra", { searchString: $("#ara").val() }, function (data) {
     //    window.location.href = "@Url.Action('Ara', 'KullaniciyaUrunAtama', new { @searchString = " + $("#ara").val()+"})";
@@ -555,7 +555,7 @@ window.onload = () => {
 //    $(document).ready(function () {
 //        $("#cihazTuruId").change(function () {
 //            $.get("/cihazTuruGetir", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {
-                
+
 //                });
 //            });
 //        })
