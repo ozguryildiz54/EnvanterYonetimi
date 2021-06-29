@@ -27,7 +27,6 @@
                         <a href="javascript:void(0)" class="nav-link" id="menuActive" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
                         <div class="dropdown-menu dropdown-menu-arrow">
                             <a href="/KullaniciyaUrunAtama" class="dropdown-item active"> Kullanıcıya Ürün Atama</a>
-                            @*<a href="/KargoTakibi" class="dropdown-item "> Kargo Takibi</a>*@
                             <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
                         </div>
                     </li>
@@ -41,8 +40,6 @@
                             <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
                             <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
                             <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
-                            @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
-                                <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
                         </div>
                     </li>
                 </ul>
@@ -58,52 +55,64 @@
                 Kullanıcıya Ürün Atama
             </h1>
         </div>
-        @if (TempData["mesaj"] == "error3") // Kayıt Var!
+
+        @*Form alanları boş!*@
+        @if (TempData["mesaj"] == "formEmpty")
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                 Form alanlarının tümünü doldurun!
-            </div>}
-        @if (ViewBag.Message == "true") // Kayıt Var!
+            </div>
+        }
+
+        @*Kayıt Var!*@
+        @if (TempData["mesaj"] == "findRecord")
         {
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                 Cihaz Bulundu!
-            </div>}
-        @if (ViewBag.Message == "true2") // Kayıt Var!
+            </div>
+        }
+
+        @*Kayıt Başarılı!*@
+        @if (TempData["mesaj"] == "successRecord")
         {
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                 Kayıt Başarılı!
-            </div>}
-        @if (TempData["mesaj"] == "true2") // Kayıt Var!
-        {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-                Kayıt Başarılı!
-            </div>}
-        @if (ViewBag.Message == "false") // Kayıt Yok!
+            </div>
+        }
+
+        @*Cihaz kullanılabilir durumda değil! (Arızalı veya Hurda)*@
+        @if (TempData["mesaj"] == "deviceNotAvaliable")
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 Cihaz Kullanılabilir Durumda Değil!
-            </div>}
-        @if (ViewBag.Message == "error") // Hata Oluştu!
+            </div>
+        }
+
+        @*Kayıt Bulunamadı!*@
+        @if (TempData["mesaj"] == "noRecord")
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 Kayıt bulunamadı!
-            </div>}
-        @if (ViewBag.Message == "error2") // Hata Oluştu!
+            </div>
+        }
+
+        @*Kayıt Başarısız!*@
+        @if (TempData["mesaj"] == "errorServer")
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 Kayıt Başarısız!
-            </div>}
+            </div>
+        }
 
         <div class="" style=" width: auto;">
             <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
-            <form action="#" id="KullaniciyaUrunAtama" name="KullaniciyaUrunAtama" method="post" class="form-group" @*action="/KullaniciyaUrunAtama/Ara"*@>
+            <form action="#" id="KullaniciyaUrunAtama" name="KullaniciyaUrunAtama" method="post" class="form-group">
                 <div class="row gutters-xs" style="margin-left:1px">
 
                     <span class="col-auto">
@@ -192,7 +201,7 @@
 
                         </div>
                         <div class="card-footer text-right">
-                            <button type="button" class="btn btn-primary accept" data-dismiss="modal" @*onclick="satirsec()"*@>Ürünü Seç</button>
+                            <button type="button" class="btn btn-primary accept" data-dismiss="modal">Ürünü Seç</button>
                             <button id="modalBtnClick" type="button" class="btn btn-default" data-dismiss="modal" onclick="temizle()">Kapat</button>
                         </div>
                     </div>
@@ -202,128 +211,128 @@
         <br />
         <br />
 
-        <form @*uiactions="@Url.Action("kayit")"*@ @*name="KullaniciyaUrunAtama"*@ method="post" class="form-group" action='@Url.Action("kayit", "KullaniciyaUrunAtama")' onsubmit="return validateForm()">
+        <form method="post" class="form-group" action='@Url.Action("kayit", "KullaniciyaUrunAtama")' onsubmit="return validateForm()">
+           
+            @* Cihaz ve kullanıcı detayları form alanı *@
             <div class="row row-cards row-deck">
+
                 <div class="col-sm-6 col-lg-4">
 
                     @* Cihaz Kullanıcı Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlInput2"><font color="red">* </font>Kullanıcı Adı</label>
                         @Html.TextBoxFor(m => m.kullaniciAdi, new
-                   {
-                       Name = "kullaniciAdi",
-                       @class = "form-control",
-                       id = "kullaniciAdi"
-                   })
+                        {
+                            Name = "kullaniciAdi",
+                            @class = "form-control",
+                            id = "kullaniciAdi"
+                        })
                     </div>
 
                     @* Cihaz Envanter Numarası *@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Envanter Numarası</label>
                         @Html.TextBoxFor(m => m.envNo, new
-                   {
-                       Name = "envNo",
-                       @class = "form-control",
-                       id = "envNo"
-                   })
+                        {
+                            Name = "envNo",
+                            @class = "form-control",
+                            id = "envNo"
+                        })
                     </div>
 
                     @* Cihaz Türü Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Cihaz Türü</label>
                         @Html.TextBoxFor(m => m.cihazTuruID, new
-                   {
-                       Name = "cihazTuruId",
-                       @class = "form-control",
-                       id = "cihazTuruId"
-                   })
+                        {
+                            Name = "cihazTuruId",
+                            @class = "form-control",
+                            id = "cihazTuruId"
+                        })
                     </div>
 
                     @* Cihaz Modeli Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Cihaz Modeli</label>
                         @Html.TextBoxFor(m => m.cihazModeliId, new
-                   {
-                       Name = "cihazModeliId",
-                       @class = "form-control",
-                       id = "cihazModeliId"
-                   })
+                        {
+                            Name = "cihazModeliId",
+                            @class = "form-control",
+                            id = "cihazModeliId"
+                        })
                     </div>
 
                     @* Cihaz Durumu Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Cihaz Durumu</label>
                         @Html.TextBoxFor(m => m.durum, new
-                   {
-                       Name = "durum",
-                       @class = "form-control",
-                       id = "durum"
-
-                   })
+                        {
+                            Name = "durum",
+                            @class = "form-control",
+                            id = "durum"
+                        })
                     </div>
 
 
                 </div>
                 <div class="col-sm-6 col-lg-4">
 
-
-
                     @* Cihaz Kullanıcı Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlInput2"><font color="red">* </font>Kullanıcı Soyadı</label>
                         @Html.TextBoxFor(m => m.kullaniciSoyadi, new
-                   {
-                       Name = "kullaniciSoyadi",
-                       @class = "form-control",
-                       id = "kullaniciSoyadi"
-                   })
+                        {
+                            Name = "kullaniciSoyadi",
+                            @class = "form-control",
+                            id = "kullaniciSoyadi"
+                        })
                     </div>
 
                     @* Şirket Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Şirket Bilgisi</label>
                         @Html.TextBoxFor(m => m.sirketId, new
-                   {
-                       Name = "sirketId",
-                       @class = "form-control",
-                       id = "sirketId"
-                   })
+                        {
+                            Name = "sirketId",
+                            @class = "form-control",
+                            id = "sirketId"
+                        })
                     </div>
 
                     @* Cihaz Seri Numarası *@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Seri Numarası</label>
                         @Html.TextBoxFor(m => m.seriNo, new
-                   {
-                       Name = "seriNo",
-                       @class = "form-control",
-                       id = "seriNo"
+                        {
+                            Name = "seriNo",
+                            @class = "form-control",
+                            id = "seriNo"
 
-                   })
+                        })
                     </div>
 
                     @* Cihaz Garanti Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
                         @Html.TextBoxFor(m => m.garantiBas, new
-                   {
-                       Name = "garantiBas",
-                       @class = "form-control",
-                       id = "garantiBas"
+                        {
+                            Name = "garantiBas",
+                            @class = "form-control",
+                            id = "garantiBas"
 
-                   })
+                        })
                     </div>
 
                     @* İşlemi Yapan Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">İşlemi Yapan</label>
                         @Html.TextBoxFor(m => m.islemiYapan, new
-                   {
-                       Name = "islemiYapan",
-                       @class = "form-control",
-                       id = "islemiYapan"
+                        {
+                            Name = "islemiYapan",
+                            @class = "form-control",
+                            id = "islemiYapan"
 
-                   })
+                        })
                     </div>
 
                 </div>
@@ -333,54 +342,94 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Lokasyon Bilgisi</label>
                         @Html.TextBoxFor(m => m.lokasyonId, new
-                   {
-                       Name = "lokasyonId",
-                       @class = "form-control",
-                       id = "lokasyonId"
-                   })
+                        {
+                            Name = "lokasyonId",
+                            @class = "form-control",
+                            id = "lokasyonId"
+                        })
                     </div>
 
                     @* Cihaz Açıklama Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
                         @Html.TextBoxFor(m => m.aciklama, new
-                   {
-                       Name = "aciklama",
-                       @class = "form-control",
-                       id = "aciklama"
-                   })
+                        {
+                            Name = "aciklama",
+                            @class = "form-control",
+                            id = "aciklama"
+                        })
                     </div>
 
                     @* Sıfır/İkinci El Bilgisi *@
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
-                        @Html.TextBoxFor(m => m.sifirIkinciEl, new
-                   {
-                       Name = "sifir_ikinci_el",
-                       @class = "form-control",
-                       id = "sifirIkinciEl"
-                   })
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
+
+                    @{
+                        var selectList = new SelectList(
+                            new List<SelectListItem>
+                            {
+                                new SelectListItem {Text = "İkinci El", Value = "IKINCIEL"},
+                                new SelectListItem {Text = "Sıfır", Value = "SIFIR"},
+                            }, "Value", "Text");
+                    }
+
+                    @Html.DropDownListFor(m => m.sifirIkinciEl, selectList, new
+                    {
+                        Name = "sifir_ikinci_el",
+                        @class = "form-control",
+                        id = "sifirIkinciEl"
+                    })
+
+
+                    @*@Html.TextBoxFor(m => m.sifirIkinciEl, new
+                    {
+                        Name = "sifir_ikinci_el",
+                        @class = "form-control",
+                        id = "sifirIkinciEl"
+                    })*@
+                </div>
 
                     @* İşlem Zamanı Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">İşlem Zamanı</label>
                         @Html.TextBoxFor(m => m.islemZaman, new
-                   {
-                       Name = "islemZaman",
-                       @class = "form-control",
-                       id = "islemZaman"
-                   })
+                        {
+                            Name = "islemZaman",
+                            @class = "form-control",
+                            id = "islemZaman"
+                        })
                     </div>
 
-                </div><br /><br />
+                    @*Cihaz Termin Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Cihaz Geçici mi?</label>
+                        <select class="form-control" id="termin2" name="iade">
+                            <option disabled hidden>Seçim Yapın.</option>
+                            <option value="KALICI">Kalıcı</option>
+                            <option value="GECICI">Geçici</option>
+                        </select>
+                    </div>
+
+                    @* Cihaz Termin Zamanı Seç *@
+                    <div class="form-group">
+                        <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;">Cihaz Kullanım Termini</label>
+                        @*<input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />*@
+
+                        <input placeholder="Tarih Seçin!" name="termin" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="terminId" style="display:none;">
+
+                    </div>
+                    <br /><br />
+                </div>
+               
             </div>
+
+            @* Footer | Kaydet/İptal Button *@
             <div class="card-footer text-right">
                 <div class="text-right">
                     <button type="button" class="btn btn-danger btn-lg" style=" margin-right: 30px;" onclick="temizle()">
                         İptal
                     </button>
-                    <button type="submit" id="button1" class="btn btn-primary ml-auto btn-lg" action='@Url.Action("kayit", "KullaniciyaUrunAtama")' onclick="return validateForm()">Kaydet</button>
+                    <button type="submit" id="button1" class="btn btn-primary ml-auto btn-lg" action='@Url.Action("kayit", "KullaniciyaUrunAtama")'>Kaydet</button>
 
                 </div>
             </div>

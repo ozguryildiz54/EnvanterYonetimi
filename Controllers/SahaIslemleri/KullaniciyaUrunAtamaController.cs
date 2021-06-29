@@ -1,38 +1,75 @@
 ﻿using EnvanterYonetimi.Models.Entity;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EnvanterYonetimi.Controllers.SahaIslemleri
 {
     public class KullaniciyaUrunAtamaController : Controller
     {
-        envanterTakipWebEntities2 db = new envanterTakipWebEntities2();
-        String mesaj="";
+        envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabanına erişim için referans nesnemiz
+        String mesaj=""; // İşlem sonucunda ki mesajı saklayacağız.
+        cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanımlaması
+        Saha saha = new Saha(); // Saha tablosu için referans nesnesi tanımlaması
 
         // GET: KullaniciyaUrunAtama
         [Route("KullaniciyaUrunAtama")]
         public ActionResult Index()
         {
-            cihazDetay model = new cihazDetay();
-            model.DepoGetir = db.Depo.Where(k=>k.durum=="DEPODA").ToList();
+            model.DepoGetir = db.Depo.Where(k=>k.durum=="DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
             return View(model);
         }
+
+        // POST: KullaniciyaUrunAtama
         [HttpPost]
         [Route("KullaniciyaUrunAtama")]
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString) // Cihaz aramayı sağlar
         {
-            cihazDetay kk = new cihazDetay();
             try
             {
-                Depo kayit = db.Depo.Where(k => k.envNo == searchString).FirstOrDefault();
-                if (!(kayit == null))
+                Depo kayit = db.Depo.Where(k => k.envNo == searchString).FirstOrDefault(); // searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
+                if (!(kayit == null)) // Kayıt varsa
                 {
-                    kk = new cihazDetay()
-                    {
+                    // Depo kayıtları null değer kontrolü
+                    #region depoNullKontrol
+
+                    if (kayit.cihazTuruId== null)
+                        kayit.cihazTuruId = "";
+
+                    if (kayit.cihazModeliId == null)
+                        kayit.cihazModeliId = "";
+
+                    if (kayit.envNo== null)
+                        kayit.envNo = "";
+
+                    if (kayit.seriNo== null)
+                        kayit.seriNo = "";
+
+                    if (kayit.garantiBas== null)
+                        kayit.garantiBas = "";
+
+                    if (kayit.durum == null)
+                        kayit.durum = "";
+
+                    if (kayit.islemZaman == null)
+                        kayit.islemZaman = "";
+
+                    if (kayit.islemiYapan == null)
+                        kayit.islemiYapan = "";
+
+                    if (kayit.kullanim == null)
+                        kayit.kullanim = "";
+
+                    if (kayit.aciklama == null)
+                        kayit.aciklama = "";
+
+                    if (kayit.sifirIkinciEl == null)
+                        kayit.sifirIkinciEl = "";
+
+                    #endregion //
+
+                    model = new cihazDetay() // Dönen kaydı modele ekliyoruz
+                    {                        
                         cihazTuruID = kayit.cihazTuruId.ToString(),
                         cihazModeliId = kayit.cihazModeliId.ToString(),
                         envNo = kayit.envNo.ToString(),
@@ -43,61 +80,63 @@ namespace EnvanterYonetimi.Controllers.SahaIslemleri
                         islemiYapan = kayit.islemiYapan.ToString(),
                         kullanim = kayit.kullanim.ToString(),
                         aciklama = kayit.aciklama.ToString(),
-                        sifirIkinciEl = "asdad",
-                        //iade = kayit.iade.ToString(),
-                        //termin = kayit.termin.ToString(),
+                        sifirIkinciEl = kayit.sifirIkinciEl.ToString()                       
                     };
 
-                    if (kk.durum != "DEPODA")
+                    model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList();  // Kullanıma uygun olan cihazları listememizi sağlar.
+
+                    if (model.durum != "DEPODA")
                     {
-                        mesaj = "false"; // Kayıt yok!
-                        ViewBag.Message = mesaj;
+                        mesaj = "deviceNotAvaliable"; // Cihaz kullanılabilir değil!
+                        TempData["mesaj"] = mesaj;
                         mesaj = "";
-
-                        kk.DepoGetir = db.Depo.ToList();
-                        return View(kk);
                     }
-
-                    mesaj = "true"; // Kayıt var!
-                    ViewBag.Message = mesaj;
-                    mesaj = "";
-                    kk.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList();
-                    return View(kk);
+                    else if (model.durum == "DEPODA")
+                    {
+                        mesaj = "findRecord"; // Kayıt var!
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                    }
+                       
+                    return View(model);
                 }
-                mesaj = "error"; // Sunucu hatası!
-                ViewBag.Message = mesaj;
+                mesaj = "noRecord"; // Kayıt yok!
+                TempData["mesaj"] = mesaj;
                 mesaj = "";
-                kk.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList();
-                return View(kk);
+
+                model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
+                return View(model);
             }
-            catch (Exception)
+            catch (Exception) // Beklenmedik durumlar burada toplanır. Sunucu hatası vs.
             {
-                kk.DepoGetir = db.Depo.ToList();
-                return View(kk);
+                mesaj = "errorServer"; // Sunucu hatası!
+                TempData["mesaj"] = mesaj;
+                mesaj = "";
+
+                model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
+                return View(model);
             }
         }
+
+        // POST: kayit
         [HttpPost]
         [Route("kayit")]
-        public ActionResult kayit(FormCollection form)
+        public ActionResult kayit(FormCollection form) // Form alanlarında ki kullanıcıya atanacak cihaz ve kullanıcı verilerini Saha tablosuna kaydeder. 
         {
-            envanterTakipWebEntities2 db2 = new envanterTakipWebEntities2();
-            cihazDetay kk = new cihazDetay();
-
-            Saha saha = new Saha();
-            String mesaj = "";
             try
             {
+                // Form alanlarının doldurulmadığını kontrol eder.
                 if (form["kullaniciAdi"] == "" || form["kullaniciSoyadi"] == "" || form["sirketId"] == "" || form["lokasyonId"] == "" || form["envNo"] == "" || form["cihazModeliId"] == "" || form["seriNo"] == "" || form["garantiBas"] == "" || form["durum"] == "" || form["aciklama"] == "" || form["sifir_ikinci_el"] == "" || form["cihazTuruId"] == "")
                 {
+                    mesaj = "formEmpty"; 
+                    TempData["mesaj"] = mesaj; // Form alanlarını doldurun hatası View alanına yönlendirilir.
+                    mesaj = "";
 
-                    mesaj = "error3";
-                    ViewBag.Message = mesaj;
-                    TempData["mesaj"] = mesaj;
-                    kk.DepoGetir = db.Depo.ToList();
-                    return RedirectToAction("Index", "KullaniciyaUrunAtama");
+                    model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
+                    return RedirectToAction("Index", "KullaniciyaUrunAtama"); // KullaniciyaUrunAtama sayfasına yönlendirir.
                 }
 
-                if (ModelState.IsValid)
+                if (ModelState.IsValid) // Form alanları doğrulandı ise bu blok çalışır.
                 {                    
                     saha.kullaniciAdi = form["kullaniciAdi"].Trim();
                     saha.kullaniciSoyadi = form["kullaniciSoyadi"].Trim();
@@ -114,34 +153,36 @@ namespace EnvanterYonetimi.Controllers.SahaIslemleri
                     saha.islemZaman = DateTime.Now.ToString();
                     saha.kullanim = "aktif";
                     saha.cihazTuruId = form["cihazTuruId"].Trim();
-                    
-                    
-                    db2.Saha.Add(saha);
-                    db2.SaveChanges();
-                    mesaj = "true2";
-                    ViewBag.Message = mesaj;
+                    saha.iade= form["iade"].Trim();
+                    saha.termin = form["termin"].Trim();
+
+                    db.Saha.Add(saha);
+                    db.SaveChanges();
+
+                    mesaj = "successRecord";
                     TempData["mesaj"] = mesaj;
+                    mesaj = "";
+
                 }
             }
-            catch(Exception exception)
+            catch(Exception exception) // Beklenmedik durumlar burada toplanır. Sunucu hatası vs.
             {
-                mesaj = "error2";
-                ViewBag.Message = mesaj;
-                mesaj = "";
+                mesaj = "errorServer"; // Sunucu hatası!
                 TempData["mesaj"] = mesaj;
-                cihazDetay kk3 = new cihazDetay();
-                kk3.DepoGetir = db.Depo.ToList();
+                mesaj = "";
+
+                model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
                 return RedirectToAction("Index", "KullaniciyaUrunAtama");
 
             }
-            kk.DepoGetir = db.Depo.ToList();
+            model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
             return RedirectToAction("Index", "KullaniciyaUrunAtama");
 
         }
-        public ActionResult ParitalDepo()
+        
+        public ActionResult ParitalDepo() // Depo tablosunda ki ürünleri lister.
         {
-            cihazDetay model = new cihazDetay();
-            model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList();
+            model.DepoGetir = db.Depo.Where(k => k.durum == "DEPODA").ToList(); // Kullanıma uygun olan cihazları listememizi sağlar.
             return PartialView(model);
         }
     }

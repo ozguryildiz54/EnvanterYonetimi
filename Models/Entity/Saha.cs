@@ -50,6 +50,10 @@ public partial class Saha
 
     public string sifir_ikinci_el { get; set; }
 
+    public string iade { get; set; }
+
+    public string termin { get; set; }
+
 }
 
 }
