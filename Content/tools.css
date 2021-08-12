@@ -1,0 +1,188 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+
+.bgcolor {
+	background-color: none;
+}
+
+.lightblue {
+	background-color: none;
+}
+
+.form-horizontal .control-label {
+	width: 70px;
+}
+
+.form-horizontal .controls {
+	margin-left: 90px;
+}
+.selected {
+	color: white;
+}
+.row:hover {
+	cursor: pointer;
+	//set the cursor to pointer (hand) background-color:blue;
+	//sets hovered row's background color to blue box-shadow: 5px 10px #888888;
+	//this is a box shadowing effect that you can tweak at your choice.
+}
+.trow {
+	transition: transform .2s;
+}
+
+	.trow:hover {
+		cursor: pointer;
+		transform: scale(1.03);
+		background: #ccc;
+		color: #fff;
+		background-color: #32CD32;
+		box-shadow: 5px 5px #ccc;
+	}
+
+.bg-success td {
+	color: white !important;
+}
+/*#table-scroll {
+	height: 475px;
+	overflow: auto;
+	margin-top: 20px;
+}
+.th {
+	background: white;
+	position: sticky;
+	top: 0;*/ /* Don't forget this, required for the stickiness */
+	/*box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}*/
+table thead tr {
+	display: block;
+}
+
+table th, table td {
+	width: 100px;
+}
+
+
+table tbody {
+	display: block;
+	height: 250px;
+}
+
+
+table {
+	width: 100%;
+}
+
+	table td, table th {
+		overflow-wrap: anywhere;
+	}
+
+table {
+	width: 100%;
+	margin: 30px 15px auto;
+	table-layout: auto;
+}
+
+.fixed {
+	table-layout: fixed;
+}
+
+thead {
+/*	position: fixed;
+*/	margin: auto;
+	background: #eaeef1;
+	color: white;
+}
+
+
+/*.table td, .table th {
+	min-width: 123px;
+	max-width: 123px;
+}
+.daralt{
+	min-width: 10px;
+	max-width: 10px;
+}*/
+
+/*table {
+	table-layout: fixed;
+}
+
+	table th, table td {
+		overflow: hidden;
+	}*/
+
+/*table {
+	table-layout: fixed;
+	word-wrap: break-word;
+	position: relative;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+	table th, table td {
+		overflow: hidden;
+	}
+*/
+
+thead th {
+
+	font-size: 12px !important; 
+
+}
+th, td {
+	font-size: 12px;
+}
+
+
+/*.purple {
+	border: 2px solid #9B59B6 !important;
+}
+
+	.purple thead {
+		background: #9B59B6 !important;
+	}
+*/
+/*table.scroll thead tr:after {
+    content: '';
+    overflow-y: scroll;
+    visibility: hidden;
+}*/
+/*table.scroll thead th {
+    flex: 1 auto;
+    display: block;
+    color: #fff;
+}*/
+table.scroll tbody {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    height: auto;
+    max-height: 200px;
+}
+table.scroll thead tr,
+table.scroll tbody tr {
+    display: flex;
+}
+/*table.scroll tbody tr td {
+    flex: 1 auto;
+    word-wrap: break;
+}
+table.scroll thead tr th,
+table.scroll tbody tr td {
+    width: 25%;
+    padding: 5px;
+    text-align-left;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+*/
+
+
+#focusedInput {
+	border - color: rgba(82, 168, 236, .8);
+	outline: 0;
+	outline: thin dotted \9;
+	-moz - box - shadow: 0 0 8px rgba(82, 168, 236, .6);
+	box - shadow: 0 0 8px rgba(82, 168, 236, .6);
+}
