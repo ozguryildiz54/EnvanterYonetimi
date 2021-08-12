@@ -177,6 +177,7 @@ table.scroll tbody tr td {
     border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 */
+<<<<<<< HEAD
 
 
 #focusedInput {
@@ -186,3 +187,5 @@ table.scroll tbody tr td {
 	-moz - box - shadow: 0 0 8px rgba(82, 168, 236, .6);
 	box - shadow: 0 0 8px rgba(82, 168, 236, .6);
 }
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9

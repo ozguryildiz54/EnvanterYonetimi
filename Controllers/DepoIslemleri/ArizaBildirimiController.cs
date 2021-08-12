@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿using EnvanterYonetimi.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+=======
+﻿using System;
+using System.Collections.Generic;
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,16 +16,20 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 {
     public class ArizaBildirimiController : Controller
     {
+<<<<<<< HEAD
         envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabanı referans nesnemiz
         cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanımlaması
         String mesaj = ""; // İşlem sonucunda ki mesajı saklayacağız.
 
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
         // GET: ArizaBildirimi
         [Route("ArizaBildirimi")]
         public ActionResult Index()
         {
             return View();
         }
+<<<<<<< HEAD
 
         // POST: ArizaBildirimi
         [HttpPost]
@@ -206,5 +215,7 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
         }
 
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
     }
 }
