@@ -1,0 +1,315 @@
+﻿@model EnvanterYonetimi.Models.Entity.cihazDetay
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+
+
+
+@* Navbar Menü Alanı *@
+<div class="header collapse d-lg-flex p-0" id="menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
+                    <li class="nav-item">
+                        <a href="/Main" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link" id="menuActive" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/UrunKaydi" class="dropdown-item "> Ürün Kaydı</a>
+                            <a href="/ArizaBildirimi" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="/BagisYap" class="dropdown-item active"> Bağış Yap</a>
+                            <a href="/IstenCikma" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi" class="dropdown-item "> Amortisman Bildirimi</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/KullaniciyaUrunAtama" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            @*<a href="/KargoTakibi" class="dropdown-item "> Kargo Takibi</a>*@
+                            <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/SistemKayitlari" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/CihazTuruYonetimi" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
+                            @*<a href="/OperatorIslemleri" class="dropdown-item "> Operatör İşlemleri</a>
+                                <a href="/KullaniciIslemleri" class="dropdown-item "> Kullanıcı İşlemleri</a>*@
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Content Alanı *@
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                Bağış Yap
+            </h1>
+        </div>
+
+        @if (ViewBag.Message == true) // Kayıt Başarılı!
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                Ürün Kaydı Başarılı!
+            </div>
+        }
+        @if (ViewBag.Message == false) // Kayıt Başarısız!
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @*Form alanları boş!*@
+        @if (TempData["mesaj"] == "formEmpty")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                Form alanlarının tümünü doldurun!
+            </div>
+        }
+
+        @*Kayıt Var!*@
+        @if (TempData["mesaj"] == "findRecord")
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                Cihaz Bulundu!
+            </div>
+        }
+
+        @*Kayıt Başarılı!*@
+        @if (TempData["mesaj"] == "successRecord")
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                Kayıt Başarılı!
+            </div>
+        }
+
+        @*Cihaz kullanılabilir durumda değil! (Tamirde)*@
+        @if (TempData["mesaj"] == "findRecordTamirde")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Cihaz Tamirde!
+            </div>
+        }
+
+        @*Cihaz kullanılabilir durumda değil! (Arızalı)*@
+        @if (TempData["mesaj"] == "findRecordAriza")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Cihaz Arızalı Durumda!
+            </div>}
+
+        @*Cihaz kullanılabilir durumda değil! (Hurda)*@
+        @if (TempData["mesaj"] == "findRecordHurda")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Cihaz Hurda Durumda!
+            </div> }
+
+        @*Kayıt Bulunamadı!*@
+        @if (TempData["mesaj"] == "noRecord")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Kayıt bulunamadı!
+            </div>
+        }
+
+        @*Kayıt Başarısız!*@
+        @if (TempData["mesaj"] == "errorServer")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Kayıt Başarısız!
+            </div>
+        }
+
+        @*Cihaz kullanılabilir durumda değil! (Tanımsız)*@
+        @if (TempData["mesaj"] == "deviceUndefined")
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Cihaz durumu tanımsız!
+            </div>
+        }
+
+        @*<div class="card-footer">*@
+        <div class="" style=" width: auto;">
+            <label for="exampleFormControlSelect1" style="margin-left:3px">Cihaz Ara</label>
+            <form action="#" id="ArizaBildirimi" name="ArizaBildirimi" method="post" class="form-group">
+                <div class="row gutters-xs" style="margin-left:1px">
+
+                    <span class="col-auto">
+                        @* Arama Alanı *@
+                        <input type="text" id="ara" name="searchString" class="form-control" placeholder="Envanter No veya Seri No" style=" width: 270px;" required>
+                    </span>
+                    <span class="col-auto">
+
+                        <button type="submit" class="btn btn-secondary" id="buttonsearch55" action="location.href='@Url.Action("Index", "BagisYap")'">
+                            <i class="fe fe-search"></i>
+                        </button>
+
+                        <button class="btn btn-secondary" type="button" onclick="arama()">
+                            <span class="glyphicon glyphicon-copy"></span> Kopyala
+                        </button>
+                    </span>
+
+                </div>
+            </form>
+        </div>
+        @*</div>*@
+        <br /><br />
+        <form name="ArizaBildirimi" action='@Url.Action("BagisYapKayit", "BagisYap")' onsubmit="return validateForm2()" method="post" class="login100-form validate-form">
+            @* Cihaz ve kullanıcı detayları form alanı *@
+            <div class="row row-cards row-deck">
+
+                <div class="col-sm-6 col-lg-4">
+
+                    @* Cihaz Türü Bilgisi *@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Türü</label>
+                        @Html.TextBoxFor(m => m.cihazTuruID, new
+                   {
+                       Name = "cihazTuruId",
+                       @class = "form-control",
+                       id = "cihazTuruId",
+                       ReadOnly = "false"
+                   })
+                    </div>
+
+                    @* Cihaz Modeli Bilgisi *@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Modeli</label>
+                        @Html.TextBoxFor(m => m.cihazModeliId, new
+                   {
+                       Name = "cihazModeliId",
+                       @class = "form-control",
+                       id = "cihazModeliId",
+                       ReadOnly = "false"
+                   })
+                    </div>
+
+                    @* Cihaz Garanti Bilgisi *@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
+                        @Html.TextBoxFor(m => m.garantiBas, new
+                   {
+                       Name = "garantiBas",
+                       @class = "form-control",
+                       id = "garantiBas",
+                       ReadOnly = "false"
+
+                   })
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    @* Cihaz Envanter Numarası *@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Envanter Numarası</label>
+                        @Html.TextBoxFor(m => m.envNo, new
+                   {
+                       Name = "envNo",
+                       @class = "form-control",
+                       id = "envNo",
+                       ReadOnly = "false"
+                   })
+                    </div>
+
+                    @* Cihaz Seri Numarası *@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Seri Numarası</label>
+                        @Html.TextBoxFor(m => m.seriNo, new
+                   {
+                       Name = "seriNo",
+                       @class = "form-control",
+                       id = "seriNo",
+                       ReadOnly = "false"
+                   })
+                    </div>
+
+                    @* Cihaz Durumu Bilgisi *@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cihaz Durumu</label>
+                        @Html.DropDownListFor(m => m.durum, new List<SelectListItem>{
+                            new SelectListItem() {Text = "Seçim Yap!", Disabled=true, Selected = true, Value= ""},
+                            new SelectListItem() {Text = "Bağış Yap", Value= "BAGIS"},
+                            new SelectListItem() {Text = "Kullanılabilir", Disabled=true, Value= "DEPODA"},
+                            new SelectListItem() {Text = "Arızalı", Disabled=true, Value= "ARIZALI"},
+                            new SelectListItem() { Text = "Hurda", Disabled=true, Value = "HURDA" },
+                            new SelectListItem() {Text = "Tamirde", Disabled=true, Value= "TAMIRDE"},
+                            new SelectListItem() {Text = "Tanımsız", Disabled=true, Value= "UNDEFINE"}},
+                            new
+                            {
+                                Name = "durum",
+                                @class = "form-control",
+                                id = "durum",
+                                ReadOnly = "false",
+                                autofocus = "autofocus"
+                            })
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-lg-4">
+
+                    @* Cihaz Açıklama Bilgisi *@
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                        @Html.TextAreaFor(m => m.aciklama, new
+                   {
+                       Name = "aciklama",
+                       @class = "form-control",
+                       id = "aciklama",
+                       rows = "6",
+                       ReadOnly = "false",
+                       onfocus = "regular(this)",
+                       onblur = "regular(this)"
+                   })
+                    </div>
+
+                    <br /><br />
+                </div>
+
+            </div>
+
+            @* Footer | Kaydet/İptal Button *@
+            <div class="card-footer text-right">
+                <div class="text-right">
+
+                    <button type="button" class="btn btn-danger btn-lg" style=" margin-right: 30px;" onclick="temizle()">
+                        İptal
+                    </button>
+                    <button type="submit" id="button1" class="btn btn-primary ml-auto btn-lg" action='@Url.Action("BagisYapKayit", "BagisYap")'>Kaydet</button>
+
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+

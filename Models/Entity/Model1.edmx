@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="envanterTakipWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CihazTuru">
+          <Key>
+            <PropertyRef Name="cihazTuruId" />
+            <PropertyRef Name="cihazTip" />
+            <PropertyRef Name="karakter" />
+          </Key>
+          <Property Name="cihazTuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTip" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="karakter" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Depo">
+          <Key>
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="depoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cihazTuruId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cihazModeliId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="envNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="seriNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="garantiBas" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="durum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemZaman" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemiYapan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aciklama" Type="varchar" MaxLength="250" />
+          <Property Name="sifirIkinciEl" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Islemler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="islemlerId" />
+            <PropertyRef Name="kullaniciAdi" />
+            <PropertyRef Name="kullaniciSoyadi" />
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="lokasyonId" />
+            <PropertyRef Name="envNo" />
+            <PropertyRef Name="cihazTuruId" />
+            <PropertyRef Name="seriNo" />
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="garantiBas" />
+            <PropertyRef Name="islemTuru" />
+            <PropertyRef Name="durum" />
+            <PropertyRef Name="islemZaman" />
+            <PropertyRef Name="islemiYapanId" />
+            <PropertyRef Name="kullanim" />
+          </Key>
+          <Property Name="islemlerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullaniciSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sirketId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lokasyonId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="envNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cihazTuruId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="seriNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="modelId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="garantiBas" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemTuru" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemZaman" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemiYapanId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullanim" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Kullanicilar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+            <PropertyRef Name="ad" />
+            <PropertyRef Name="soyad" />
+            <PropertyRef Name="kullaniciAdi" />
+          </Key>
+          <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="soyad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Lokasyon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Lokasyon">
+          <Key>
+            <PropertyRef Name="lokasyonId" />
+            <PropertyRef Name="lokasyonAdi" />
+          </Key>
+          <Property Name="lokasyonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lokasyonAdi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Modeller' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Modeller">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="model" />
+            <PropertyRef Name="cihazTuruId" />
+          </Key>
+          <Property Name="modelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cihazTuruId" Type="int" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Modeller_Depo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Modeller_Depo">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="depoId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Modeller_Islemler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Modeller_Islemler">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="islemlerId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="islemlerId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Modeller_Saha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Modeller_Saha">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="modelId" Type="int" Nullable="false" />
+          <Property Name="sahaId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Operator' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="operatorId" />
+            <PropertyRef Name="ad" />
+            <PropertyRef Name="soyad" />
+            <PropertyRef Name="kullaniciAdi" />
+            <PropertyRef Name="sifre" />
+          </Key>
+          <Property Name="operatorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="soyad" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sifre" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Saha">
+          <Key>
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="sahaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullaniciSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sirketId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lokasyonId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="envNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cihazTuruId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="seriNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cihazModelId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="garantiBas" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemZaman" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="operatorId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullanim" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="sifir_ikinci_el" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="iade" Type="nvarchar" MaxLength="50" />
+          <Property Name="termin" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sirket">
+          <Key>
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="sirket" />
+            <PropertyRef Name="sirketNo" />
+          </Key>
+          <Property Name="sirketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sirket" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sirketNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="kullanim" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Sirket_Lokasyon">
+          <Key>
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="lokasyonId" />
+          </Key>
+          <Property Name="sirketId" Type="int" Nullable="false" />
+          <Property Name="lokasyonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="envanterTakipWebModelStoreContainer">
+          <EntitySet Name="Depo" EntityType="Self.Depo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirket_Lokasyon" EntityType="Self.Sirket_Lokasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CihazTuru].[cihazTuruId] AS [cihazTuruId], 
+    [CihazTuru].[cihazTip] AS [cihazTip], 
+    [CihazTuru].[karakter] AS [karakter], 
+    [CihazTuru].[kullanim] AS [kullanim]
+    FROM [dbo].[CihazTuru] AS [CihazTuru]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Islemler].[islemlerId] AS [islemlerId], 
+    [Islemler].[kullaniciAdi] AS [kullaniciAdi], 
+    [Islemler].[kullaniciSoyadi] AS [kullaniciSoyadi], 
+    [Islemler].[sirketId] AS [sirketId], 
+    [Islemler].[lokasyonId] AS [lokasyonId], 
+    [Islemler].[envNo] AS [envNo], 
+    [Islemler].[cihazTuruId] AS [cihazTuruId], 
+    [Islemler].[seriNo] AS [seriNo], 
+    [Islemler].[modelId] AS [modelId], 
+    [Islemler].[garantiBas] AS [garantiBas], 
+    [Islemler].[islemTuru] AS [islemTuru], 
+    [Islemler].[durum] AS [durum], 
+    [Islemler].[islemZaman] AS [islemZaman], 
+    [Islemler].[islemiYapanId] AS [islemiYapanId], 
+    [Islemler].[kullanim] AS [kullanim]
+    FROM [dbo].[Islemler] AS [Islemler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kullanicilar].[kullaniciId] AS [kullaniciId], 
+    [Kullanicilar].[ad] AS [ad], 
+    [Kullanicilar].[soyad] AS [soyad], 
+    [Kullanicilar].[kullaniciAdi] AS [kullaniciAdi], 
+    [Kullanicilar].[kullanim] AS [kullanim]
+    FROM [dbo].[Kullanicilar] AS [Kullanicilar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Lokasyon" EntityType="Self.Lokasyon" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Lokasyon].[lokasyonId] AS [lokasyonId], 
+    [Lokasyon].[lokasyonAdi] AS [lokasyonAdi], 
+    [Lokasyon].[kullanim] AS [kullanim]
+    FROM [dbo].[Lokasyon] AS [Lokasyon]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Modeller" EntityType="Self.Modeller" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Modeller].[modelId] AS [modelId], 
+    [Modeller].[model] AS [model], 
+    [Modeller].[cihazTuruId] AS [cihazTuruId], 
+    [Modeller].[kullanim] AS [kullanim]
+    FROM [dbo].[Modeller] AS [Modeller]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Modeller_Depo" EntityType="Self.Modeller_Depo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Modeller_Depo].[modelId] AS [modelId], 
+    [Modeller_Depo].[depoId] AS [depoId]
+    FROM [dbo].[Modeller_Depo] AS [Modeller_Depo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Modeller_Islemler" EntityType="Self.Modeller_Islemler" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Modeller_Islemler].[modelId] AS [modelId], 
+    [Modeller_Islemler].[islemlerId] AS [islemlerId]
+    FROM [dbo].[Modeller_Islemler] AS [Modeller_Islemler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Modeller_Saha" EntityType="Self.Modeller_Saha" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Modeller_Saha].[modelId] AS [modelId], 
+    [Modeller_Saha].[sahaId] AS [sahaId]
+    FROM [dbo].[Modeller_Saha] AS [Modeller_Saha]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Operator" EntityType="Self.Operator" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Operator].[operatorId] AS [operatorId], 
+    [Operator].[ad] AS [ad], 
+    [Operator].[soyad] AS [soyad], 
+    [Operator].[kullaniciAdi] AS [kullaniciAdi], 
+    [Operator].[sifre] AS [sifre], 
+    [Operator].[kullanim] AS [kullanim]
+    FROM [dbo].[Operator] AS [Operator]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sirket" EntityType="Self.Sirket" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sirket].[sirketId] AS [sirketId], 
+    [Sirket].[sirket] AS [sirket], 
+    [Sirket].[sirketNo] AS [sirketNo], 
+    [Sirket].[kullanim] AS [kullanim]
+    FROM [dbo].[Sirket] AS [Sirket]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="envanterTakipWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Depo">
+          <Key>
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="depoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTuruId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cihazModeliId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="garantiBas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="islemZaman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="islemiYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="sifirIkinciEl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sirket_Lokasyon">
+          <Key>
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="lokasyonId" />
+          </Key>
+          <Property Name="sirketId" Type="Int32" Nullable="false" />
+          <Property Name="lokasyonId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CihazTuru">
+          <Key>
+            <PropertyRef Name="cihazTuruId" />
+            <PropertyRef Name="cihazTip" />
+            <PropertyRef Name="karakter" />
+          </Key>
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cihazTip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="karakter" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="islemlerId" />
+            <PropertyRef Name="kullaniciAdi" />
+            <PropertyRef Name="kullaniciSoyadi" />
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="lokasyonId" />
+            <PropertyRef Name="envNo" />
+            <PropertyRef Name="cihazTuruId" />
+            <PropertyRef Name="seriNo" />
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="garantiBas" />
+            <PropertyRef Name="islemTuru" />
+            <PropertyRef Name="durum" />
+            <PropertyRef Name="islemZaman" />
+            <PropertyRef Name="islemiYapanId" />
+            <PropertyRef Name="kullanim" />
+          </Key>
+          <Property Name="islemlerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kullaniciSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sirketId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lokasyonId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cihazTuruId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modelId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="garantiBas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="islemTuru" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="islemZaman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="islemiYapanId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+            <PropertyRef Name="ad" />
+            <PropertyRef Name="soyad" />
+            <PropertyRef Name="kullaniciAdi" />
+          </Key>
+          <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Lokasyon">
+          <Key>
+            <PropertyRef Name="lokasyonId" />
+            <PropertyRef Name="lokasyonAdi" />
+          </Key>
+          <Property Name="lokasyonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lokasyonAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Modeller">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="model" />
+            <PropertyRef Name="cihazTuruId" />
+          </Key>
+          <Property Name="modelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cihazTuruId" Type="Int32" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Modeller_Depo">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="depoId" />
+          </Key>
+          <Property Name="modelId" Type="Int32" Nullable="false" />
+          <Property Name="depoId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modeller_Islemler">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="islemlerId" />
+          </Key>
+          <Property Name="modelId" Type="Int32" Nullable="false" />
+          <Property Name="islemlerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modeller_Saha">
+          <Key>
+            <PropertyRef Name="modelId" />
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="modelId" Type="Int32" Nullable="false" />
+          <Property Name="sahaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="operatorId" />
+            <PropertyRef Name="ad" />
+            <PropertyRef Name="soyad" />
+            <PropertyRef Name="kullaniciAdi" />
+            <PropertyRef Name="sifre" />
+          </Key>
+          <Property Name="operatorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Saha">
+          <Key>
+            <PropertyRef Name="sahaId" />
+          </Key>
+          <Property Name="sahaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kullaniciSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sirketId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lokasyonId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="envNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cihazTuruId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cihazModelId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="garantiBas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="islemZaman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="operatorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifir_ikinci_el" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="iade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="termin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sirket">
+          <Key>
+            <PropertyRef Name="sirketId" />
+            <PropertyRef Name="sirket1" />
+            <PropertyRef Name="sirketNo" />
+          </Key>
+          <Property Name="sirketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sirket1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sirketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kullanim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="envanterTakipWebEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depo" EntityType="Self.Depo" />
+          <EntitySet Name="Sirket_Lokasyon" EntityType="Self.Sirket_Lokasyon" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="CihazTuru" EntityType="Self.CihazTuru" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Lokasyon" EntityType="Self.Lokasyon" />
+          <EntitySet Name="Modeller" EntityType="Self.Modeller" />
+          <EntitySet Name="Modeller_Depo" EntityType="Self.Modeller_Depo" />
+          <EntitySet Name="Modeller_Islemler" EntityType="Self.Modeller_Islemler" />
+          <EntitySet Name="Modeller_Saha" EntityType="Self.Modeller_Saha" />
+          <EntitySet Name="Operator" EntityType="Self.Operator" />
+          <EntitySet Name="Saha" EntityType="Self.Saha" />
+          <EntitySet Name="Sirket" EntityType="Self.Sirket" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="envanterTakipWebModelStoreContainer" CdmEntityContainer="envanterTakipWebEntities2">
+          <EntitySetMapping Name="Depo">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Depo">
+              <MappingFragment StoreEntitySet="Depo">
+                <ScalarProperty Name="sifirIkinciEl" ColumnName="sifirIkinciEl" />
+                <ScalarProperty Name="depoId" ColumnName="depoId" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="cihazModeliId" ColumnName="cihazModeliId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="islemiYapan" ColumnName="islemiYapan" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirket_Lokasyon">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Sirket_Lokasyon">
+              <MappingFragment StoreEntitySet="Sirket_Lokasyon">
+                <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CihazTuru">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.CihazTuru">
+              <MappingFragment StoreEntitySet="CihazTuru">
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="cihazTip" ColumnName="cihazTip" />
+                <ScalarProperty Name="karakter" ColumnName="karakter" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islemler">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Islemler">
+              <MappingFragment StoreEntitySet="Islemler">
+                <ScalarProperty Name="islemlerId" ColumnName="islemlerId" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="kullaniciSoyadi" ColumnName="kullaniciSoyadi" />
+                <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="islemTuru" ColumnName="islemTuru" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="islemiYapanId" ColumnName="islemiYapanId" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lokasyon">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Lokasyon">
+              <MappingFragment StoreEntitySet="Lokasyon">
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="lokasyonAdi" ColumnName="lokasyonAdi" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeller">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller">
+              <MappingFragment StoreEntitySet="Modeller">
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeller_Depo">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller_Depo">
+              <MappingFragment StoreEntitySet="Modeller_Depo">
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="depoId" ColumnName="depoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeller_Islemler">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller_Islemler">
+              <MappingFragment StoreEntitySet="Modeller_Islemler">
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="islemlerId" ColumnName="islemlerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeller_Saha">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Modeller_Saha">
+              <MappingFragment StoreEntitySet="Modeller_Saha">
+                <ScalarProperty Name="modelId" ColumnName="modelId" />
+                <ScalarProperty Name="sahaId" ColumnName="sahaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operator">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Operator">
+              <MappingFragment StoreEntitySet="Operator">
+                <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saha">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Saha">
+              <MappingFragment StoreEntitySet="Saha">
+                <ScalarProperty Name="termin" ColumnName="termin" />
+                <ScalarProperty Name="iade" ColumnName="iade" />
+                <ScalarProperty Name="sahaId" ColumnName="sahaId" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="kullaniciSoyadi" ColumnName="kullaniciSoyadi" />
+                <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+                <ScalarProperty Name="lokasyonId" ColumnName="lokasyonId" />
+                <ScalarProperty Name="envNo" ColumnName="envNo" />
+                <ScalarProperty Name="cihazTuruId" ColumnName="cihazTuruId" />
+                <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+                <ScalarProperty Name="cihazModelId" ColumnName="cihazModelId" />
+                <ScalarProperty Name="garantiBas" ColumnName="garantiBas" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="islemZaman" ColumnName="islemZaman" />
+                <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="sifir_ikinci_el" ColumnName="sifir_ikinci_el" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirket">
+            <EntityTypeMapping TypeName="envanterTakipWebModel.Sirket">
+              <MappingFragment StoreEntitySet="Sirket">
+                <ScalarProperty Name="sirketId" ColumnName="sirketId" />
+                <ScalarProperty Name="sirket1" ColumnName="sirket" />
+                <ScalarProperty Name="sirketNo" ColumnName="sirketNo" />
+                <ScalarProperty Name="kullanim" ColumnName="kullanim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

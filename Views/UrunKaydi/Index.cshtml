@@ -1,0 +1,191 @@
+﻿@model EnvanterYonetimi.Models.Entity.cihazDetay
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+@* Navbar Menü Alanı *@
+<div class="header collapse d-lg-flex p-0" id="menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0 flex-column flex-lg-row ">
+                    <li class="nav-item">
+                        <a href="/Main" class="nav-link"> <i class="fe fe-home"> </i> Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link" id="menuActive" data-toggle="dropdown"> <i class="fe fe-box"> </i> Depo İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/UrunKaydi" class="dropdown-item active"> Ürün Kaydı</a>
+                            <a href="/ArizaBildirimi" class="dropdown-item "> Arıza Bildirimi</a>
+                            <a href="/BagisYap" class="dropdown-item "> Bağış Yap</a>
+                            <a href="/IstenCikma" class="dropdown-item "> İşten Çıkma</a>
+                            <a href="/PozisyonDegisikligi" class="dropdown-item "> Pozisyon Değişikliği</a>
+                            <a href="/AmortismanBildirimi" class="dropdown-item "> Amortisman Bildirimi</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-calendar"> </i> Saha İşlemleri</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/KullaniciyaUrunAtama" class="dropdown-item "> Kullanıcıya Ürün Atama</a>
+                            <a href="/UrunKullanicisiDegistir" class="dropdown-item "> Ürün Kullanıcısı Değiştirme</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/SistemKayitlari" class="nav-link"> <i class="fe fe-check-square"> </i> Sistem Kayıtları</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"> <i class="fe fe-file"> </i> Diğer İşlemler</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="/CihazTuruYonetimi" class="dropdown-item "> Cihaz Türü Yönetimi</a>
+                            <a href="/ModelYonetimi" class="dropdown-item "> Model Yönetimi</a>
+                            <a href="/SirketYonetimi" class="dropdown-item "> Şirket Yönetimi</a>
+                            <a href="/LokasyonYonetimi" class="dropdown-item "> Lokasyon Yönetimi</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header" style=" padding-bottom: 10px; margin: 0px 0 20px;">
+            <h1 class="page-title" style=" margin-top: -15px;">
+                Depo Ürün Kaydı
+            </h1>
+        </div>
+        @if (TempData["mesaj"] == "true") // Kayıt Başarılı!
+        {
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+        Ürün Kaydı Başarılı!
+    </div>}
+        @if (TempData["mesaj"] == "false") // Kayıt Başarısız!
+        {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        Ürün Kaydedilemedi!
+    </div>}
+
+        @if (TempData["mesaj"] == "findEnvNo") // Kayıtlı Envanter No Bulundu!
+        {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        Envanter Numarası Sistemde Kayıtlı!
+    </div>}
+
+        @if (TempData["mesaj"] == "findSeriNo") // Kayıtlı Seri No Bulundu!
+        {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        Seri Numarası Sistemde Kayıtlı!
+    </div>
+        }
+
+        <form name="urunKaydi" onsubmit="return validateForm()" method="post" class="form-group">
+
+            <div class="row row-cards row-deck">
+                <div class="col-sm-6 col-lg-4">
+
+                    @*Cihaz Türü Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Türü</label>
+
+                        @if (ViewBag.CihazTurleri != null)
+                        {
+            @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new
+            { @class = "form-select", Name = "cihazTuruId", @id = "cihazTuruId", })}
+                    </div>
+
+                    @*Cihaz Modeli Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Modeli</label>
+
+                        @Html.DropDownListFor(model => model.modelId, new SelectList(" "), "Cihaz türüne ait model seçin!", new
+                        {
+                            @class = "form-select",
+                            @disabled = "disabled",
+                            Name = "cihazModeliId",
+                            @id = "modelId",
+                        })
+
+                    </div>
+
+                    @*Garanti Başlangıcı Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
+                        <input placeholder="Tarih Seçin!" name="garantiBas" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    @*Envanter Numarası Atama*@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
+                        <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+                    </div>
+
+                    @*Seri Numarası Atama*@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
+                        <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+                    </div>
+
+                    @*Cihaz Durumu Seçme*@
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><font color="red">* </font>Cihaz Durumu</label>
+                        <select class="form-select required" id="cihazDurumu" name="durum">
+                            <option value="" hidden>Cihaz durumunu seçin.</option>
+                            <option value="DEPODA">Kullanılabilir</option>
+                            <option value="ARIZALI">Arızalı</option>
+                            <option value="HURDA">Hurda</option>
+                            <option value="SERVISTE">Serviste</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-lg-4">
+
+                    @*Sıfır/İkinci El Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"><font color="red">* </font>Sıfır/İkinci El</label>
+                        <select class="form-select required" id="sifirIkinciEl" name="sifirIkinciEl">
+                            <option value="0" hidden>Seçim Yapın.</option>
+                            <option value="SIFIR">Sıfır</option>
+                            <option value="IKINCIEL">İkinci El</option>
+                        </select>
+                    </div>
+
+                    @*Açıklama Detayı Ekleme*@
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="aciklama" rows="2" placeholder="Ürüne ait detaylar."></textarea>
+                    </div>
+                </div>
+            </div><br /><br />
+
+            <div class="card-footer text-right">
+                <div class="text-right">
+                    <button type="reset" class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
+                    <button type="submit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cihazTuruId").change(function () {
+            $.get("/cihazTuruGetir", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {
+                $("#modelId").prop("disabled", false);
+                $("#modelId").empty();
+                $.each(data, function (index, row) {
+                    $("#modelId").append("<option value='" + row.modelId + "'>" + row.model + "</option>")
+                });
+            });
+        })
+    });
+</script>
