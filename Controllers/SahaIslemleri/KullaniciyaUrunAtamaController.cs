@@ -148,7 +148,15 @@ namespace EnvanterYonetimi.Controllers.SahaIslemleri
                     saha.garantiBas = form["garantiBas"].Trim();
                     saha.durum = form["durum"].Trim();
                     saha.aciklama = form["aciklama"].Trim();
+<<<<<<< HEAD
                     saha.sifir_ikinci_el = form["sifir_ikinci_el"];
+=======
+<<<<<<< HEAD
+                    saha.sifir_ikinci_el = form["sifir_ikinci_el"];
+=======
+                    saha.sifir_ikinci_el = form["sifir_ikinci_el"].Trim();
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     saha.operatorId = User.Identity.Name;
                     saha.islemZaman = DateTime.Now.ToString();
                     saha.kullanim = "aktif";
@@ -162,6 +170,13 @@ namespace EnvanterYonetimi.Controllers.SahaIslemleri
                     mesaj = "successRecord";
                     TempData["mesaj"] = mesaj;
                     mesaj = "";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                 }
             }
             catch(Exception exception) // Beklenmedik durumlar burada toplanır. Sunucu hatası vs.

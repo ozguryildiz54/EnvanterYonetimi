@@ -54,6 +54,7 @@
                 Depo Ürün Kaydı
             </h1>
         </div>
+<<<<<<< HEAD
         @if (TempData["mesaj"] == "true") // Kayıt Başarılı!
         {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -80,6 +81,21 @@
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
         Seri Numarası Sistemde Kayıtlı!
     </div>
+=======
+        @if (ViewBag.Message == true) // Kayıt Başarılı!
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                Ürün Kaydı Başarılı!
+            </div>
+        }
+        @if (ViewBag.Message == false) // Kayıt Başarısız!
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                Ürün Kaydedilemedi!
+            </div>
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         }
 
         <form name="urunKaydi" onsubmit="return validateForm()" method="post" class="form-group">
@@ -93,8 +109,14 @@
 
                         @if (ViewBag.CihazTurleri != null)
                         {
+<<<<<<< HEAD
             @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new
             { @class = "form-select", Name = "cihazTuruId", @id = "cihazTuruId", })}
+=======
+                            @Html.DropDownListFor(model => model.cihazTuruId, ViewBag.CihazTurleri as SelectList, "Cihaz türü seçin!", new
+                            { @class = "form-select", Name = "cihazTuruId", @id = "cihazTuruId", })
+                        }
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @*Cihaz Modeli Seçimi*@
@@ -112,10 +134,20 @@
                     </div>
 
                     @*Garanti Başlangıcı Seçimi*@
+<<<<<<< HEAD
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
                         <input placeholder="Tarih Seçin!" name="garantiBas" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
                     </div>
+=======
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><font color="red">* </font>Garanti Başlangıcı</label>
+                    @*<input type='text' name="garantiBas" class="form-control" id='datepicker' placeholder="Ürünün garanti başlangıç tarihi">*@
+                    @*@Html.TextBoxFor(m => m.depo.garantiBas, new { @class = "form-control", Name = "garantiBas", @id = "datepicker" })*@
+                    <input placeholder="Tarih Seçin!" name="garantiBas" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+
+                </div>
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                 </div>
                 <div class="col-sm-6 col-lg-4">
 
@@ -123,12 +155,22 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Envanter Numarası</label>
                         <input type="text" name="envNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne bir envanter numarası atayın.">
+<<<<<<< HEAD
+=======
+                        @*@Html.TextBoxFor(m => m.depo.envNo, new { @class = "form-control", Name = "envNo", @id = "exampleFormControlInput1" })*@
+
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @*Seri Numarası Atama*@
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><font color="red">* </font>Seri Numarası</label>
                         <input type="text" name="seriNo" class="form-control" id="exampleFormControlInput1" placeholder="Ürüne ait seri numarasını girin.">
+<<<<<<< HEAD
+=======
+                        @*@Html.TextBoxFor(m => m.depo.seriNo, new { @class = "form-control", Name = "seriNo", @id = "exampleFormControlInput1" })*@
+
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @*Cihaz Durumu Seçme*@
@@ -141,8 +183,16 @@
                             <option value="HURDA">Hurda</option>
                             <option value="SERVISTE">Serviste</option>
                         </select>
+<<<<<<< HEAD
                     </div>
 
+=======
+                        @*@Html.TextBoxFor(m => m.depo.durum, new { @class = "form-control", Name = "durum", @id = "cihazDurumu" })*@
+
+                    </div>
+
+                   
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                 </div>
                 <div class="col-md-6 col-lg-4">
 
@@ -154,18 +204,32 @@
                             <option value="SIFIR">Sıfır</option>
                             <option value="IKINCIEL">İkinci El</option>
                         </select>
+<<<<<<< HEAD
+=======
+                        @*@Html.TextBoxFor(m => m.depo.sifirIkinciEl, new { @class = "form-control", Name = "sifirIkinciEl", @id = "sifirIkinciEl" })*@
+
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @*Açıklama Detayı Ekleme*@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1"><font color="green">* </font>Açıklama</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" name="aciklama" rows="2" placeholder="Ürüne ait detaylar."></textarea>
+<<<<<<< HEAD
+=======
+                        @*@Html.TextBoxFor(m => m.depo.aciklama, new { @class = "form-control", Name = "aciklama" })*@
+
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
                 </div>
             </div><br /><br />
 
             <div class="card-footer text-right">
                 <div class="text-right">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     <button type="reset" class="btn btn-danger btn-lg" style=" margin-right: 30px;">İptal</button>
                     <button type="submit" class="btn btn-primary ml-auto btn-lg">Kaydet</button>
                 </div>
@@ -177,6 +241,26 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
+=======
+    //$(document).ready(function () {
+    //    $("#cihazTuruId").change(function () {
+    //        $.ajax({
+    //            url: '/cihazTuruGetir',
+    //            data: { cihazTuruId: $(this).val() },
+    //            dataType: "JSON",
+    //            success: function (result) {
+    //                var cihazModel = $("#modelId");
+    //                cihazModel.empty();
+    //                $.each(result, function (i, item) {
+    //                    cihazModel.append($("<option></option>").attr("value", item.id)
+    //                        .html(item.modelAdi));
+    //                });
+    //            }
+    //        });
+    //    });
+    //});
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     $(document).ready(function () {
         $("#cihazTuruId").change(function () {
             $.get("/cihazTuruGetir", { cihazTuruId: $("#cihazTuruId").val() }, function (data) {

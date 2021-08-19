@@ -1,8 +1,19 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 ﻿using EnvanterYonetimi.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+<<<<<<< HEAD
+=======
+=======
+﻿using System;
+using System.Collections.Generic;
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,16 +22,29 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 {
     public class ArizaBildirimiController : Controller
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabanı referans nesnemiz
         cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanımlaması
         String mesaj = ""; // İşlem sonucunda ki mesajı saklayacağız.
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         // GET: ArizaBildirimi
         [Route("ArizaBildirimi")]
         public ActionResult Index()
         {
             return View();
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 
         // POST: ArizaBildirimi
         [HttpPost]
@@ -122,6 +146,7 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
                         mesaj = "";
                         cihazDurumu = "DEPODA";
                     }
+<<<<<<< HEAD
                     else if (model.durum == "BAGIS")
                     {
                         mesaj = "findRecordBagıs"; // Cihaz durumu BAGIS
@@ -131,6 +156,10 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
                     }
 
                     else if (model.durum != "ARIZALI" || model.durum != "BAGIS" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
+=======
+                   
+                    else if (model.durum != "ARIZALI" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     {
                         mesaj = "deviceUndefined"; // Cihaz durumu tanımsız!
                         TempData["mesaj"] = mesaj;
@@ -213,5 +242,10 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
         }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     }
 }

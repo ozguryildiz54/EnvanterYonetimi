@@ -124,18 +124,27 @@ namespace EnvanterYonetimi
                 defaults: new { controller = "KullaniciyaUrunAtama", action = "kayit", id = UrlParameter.Optional }
             );
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
             routes.MapRoute(
                 name: "ArizaKayit",
                 url: "ArizaBildirimi",
                 defaults: new { controller = "ArizaBildirimi", action = "ArizaKayit", id = UrlParameter.Optional }
             );
 
+<<<<<<< HEAD
             routes.MapRoute(
                 name: "BagisYapKayit",
                 url: "BagisYap",
                 defaults: new { controller = "BagisYap", action = "BagisYapKayit", id = UrlParameter.Optional }
             );
 
+=======
+=======
+>>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
+>>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
             routes.MapRoute( // UrunKullanicisiDegistir/Index sayfamızın yönlendirmesi
                 name: "UrunKullanicisiDegistir",
                 url: "UrunKullanicisiDegistir",
