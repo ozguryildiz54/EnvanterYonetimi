@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 ﻿using EnvanterYonetimi.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-=======
-﻿using System;
-using System.Collections.Generic;
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,20 +10,16 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 {
     public class BagisYapController : Controller
     {
-<<<<<<< HEAD
         envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabanı referans nesnemiz
         cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanımlaması
         String mesaj = ""; // İşlem sonucunda ki mesajı saklayacağız.
 
-=======
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         // GET: BagisYap
         [Route("BagisYap")]
         public ActionResult Index()
         {
             return View();
         }
-<<<<<<< HEAD
 
         // POST: BagisYap
         [HttpPost]
@@ -221,7 +212,5 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
         }
 
-=======
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     }
 }

@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 ﻿using EnvanterYonetimi.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-<<<<<<< HEAD
-=======
-=======
-﻿using System;
-using System.Collections.Generic;
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,29 +11,16 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 {
     public class ArizaBildirimiController : Controller
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabanı referans nesnemiz
         cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanımlaması
         String mesaj = ""; // İşlem sonucunda ki mesajı saklayacağız.
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         // GET: ArizaBildirimi
         [Route("ArizaBildirimi")]
         public ActionResult Index()
         {
             return View();
         }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 
         // POST: ArizaBildirimi
         [HttpPost]
@@ -101,75 +77,83 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
                     #endregion //
 
-                    model = new cihazDetay() // Dönen kaydı modele ekliyoruz
-                    {
-                        cihazTuruID = kayit.cihazTuruId.ToString(),
-                        cihazModeliId = kayit.cihazModeliId.ToString(),
-                        envNo = kayit.envNo.ToString(),
-                        seriNo = kayit.seriNo.ToString(),
-                        garantiBas = kayit.garantiBas.ToString(),
-                        durum = kayit.durum.ToString(),
-                        islemZaman = kayit.islemZaman.ToString(),
-                        islemiYapan = kayit.islemiYapan.ToString(),
-                        kullanim = kayit.kullanim.ToString(),
-                        aciklama = kayit.aciklama.ToString(),
-                        sifirIkinciEl = kayit.sifirIkinciEl.ToString()
-                    };
-
                     String cihazDurumu = "DEPODA";
-                    if (model.durum == "TAMIRDE")
+
+                    if (kayit.kullanim=="aktif")
                     {
-                        mesaj = "findRecordTamirde"; // Cihaz durumu TAMIRDE
-                        TempData["mesaj"] = mesaj;
-                        mesaj = "";
-                        cihazDurumu = "TAMIRDE";
+                        model = new cihazDetay() // Dönen kaydı modele ekliyoruz
+                        {
+                            cihazTuruID = kayit.cihazTuruId.ToString(),
+                            cihazModeliId = kayit.cihazModeliId.ToString(),
+                            envNo = kayit.envNo.ToString(),
+                            seriNo = kayit.seriNo.ToString(),
+                            garantiBas = kayit.garantiBas.ToString(),
+                            durum = kayit.durum.ToString(),
+                            islemZaman = kayit.islemZaman.ToString(),
+                            islemiYapan = kayit.islemiYapan.ToString(),
+                            kullanim = kayit.kullanim.ToString(),
+                            aciklama = kayit.aciklama.ToString(),
+                            sifirIkinciEl = kayit.sifirIkinciEl.ToString()
+                        };
+
+                        if (model.durum == "TAMIRDE")
+                        {
+                            mesaj = "findRecordTamirde"; // Cihaz durumu TAMIRDE
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "TAMIRDE";
+                        }
+                        else if (model.durum == "ARIZALI")
+                        {
+                            mesaj = "findRecordAriza"; // Cihaz durumu ARIZALI
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "ARIZALI";
+                        }
+
+                        else if (model.durum == "HURDA")
+                        {
+                            mesaj = "findRecordHurda"; // Cihaz durumu HURDA
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "HURDA";
+                        }
+                        else if (model.durum == "DEPODA")
+                        {
+                            mesaj = "findRecord"; // Cihaz durumu DEPODA
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "DEPODA";
+                        }
+                        else if (model.durum == "BAGIS")
+                        {
+                            mesaj = "findRecordBagıs"; // Cihaz durumu BAGIS
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "BAGIS";
+                        }
+
+                        else if (model.durum != "ARIZALI" || model.durum != "BAGIS" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
+                        {
+                            mesaj = "deviceUndefined"; // Cihaz durumu tanımsız!
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "UNDEFINE";
+                        }
+                        model.durum = cihazDurumu; // Hatalı kayıtlar için kontrol
+                        return View(model);
+
                     }
-                    else if (model.durum == "ARIZALI")
+                    else if (kayit.kullanim == "pasif")
                     {
-                        mesaj = "findRecordAriza"; // Cihaz durumu ARIZALI
+                        mesaj = "pasifDeger"; // Kayıt pasif!
                         TempData["mesaj"] = mesaj;
                         mesaj = "";
-                        cihazDurumu = "ARIZALI";
+                        return View();
                     }
 
-                    else if (model.durum == "HURDA")
-                    {
-                        mesaj = "findRecordHurda"; // Cihaz durumu HURDA
-                        TempData["mesaj"] = mesaj;
-                        mesaj = "";
-                        cihazDurumu = "HURDA";
-                    }
-                    else if (model.durum == "DEPODA")
-                    {
-                        mesaj = "findRecord"; // Cihaz durumu DEPODA
-                        TempData["mesaj"] = mesaj;
-                        mesaj = "";
-                        cihazDurumu = "DEPODA";
-                    }
-<<<<<<< HEAD
-                    else if (model.durum == "BAGIS")
-                    {
-                        mesaj = "findRecordBagıs"; // Cihaz durumu BAGIS
-                        TempData["mesaj"] = mesaj;
-                        mesaj = "";
-                        cihazDurumu = "BAGIS";
-                    }
 
-                    else if (model.durum != "ARIZALI" || model.durum != "BAGIS" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
-=======
-                   
-                    else if (model.durum != "ARIZALI" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
-                    {
-                        mesaj = "deviceUndefined"; // Cihaz durumu tanımsız!
-                        TempData["mesaj"] = mesaj;
-                        mesaj = "";
-                        cihazDurumu = "UNDEFINE";
                     }
-
-                    model.durum = cihazDurumu; // Hatalı kayıtlar için kontrol
-                    return View(model);
-                }
                 mesaj = "noRecord"; // Kayıt yok!
                 TempData["mesaj"] = mesaj;
                 mesaj = "";
@@ -217,14 +201,29 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
                         if (kayitEnvNo != null) // Durum ve Açıklama değerleri güncellenir.
                         {
-                            kayitEnvNo.durum = kayit.durum;
-                            kayitEnvNo.aciklama = kayit.aciklama;
-                            db.Entry(kayitEnvNo).State = EntityState.Modified;
-                            db.SaveChanges();
+                            if(kayitEnvNo.kullanim=="aktif")
+                            {
+                                kayitEnvNo.durum = kayit.durum;
+                                kayitEnvNo.aciklama = kayit.aciklama;
+                                db.Entry(kayitEnvNo).State = EntityState.Modified;
+                                db.SaveChanges();
 
-                            mesaj = "successRecord";
-                            TempData["mesaj"] = mesaj;
-                            mesaj = "";
+                                mesaj = "successRecord";
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
+                            else if (kayitEnvNo.kullanim == "pasif")
+                            {
+                                mesaj = "pasifDeger"; // Sunucu hatası!
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
+                            else
+                            {
+                                mesaj = "nullDeger"; // Sunucu hatası!
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
                         }
                     }
                 }
@@ -242,10 +241,5 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
         }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     }
 }

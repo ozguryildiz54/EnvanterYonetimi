@@ -116,10 +116,6 @@ function validateForm() {
 
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 function validateForm2() {        
 
     var cihazTuruId = document.forms["ArizaBildirimi"]["cihazTuruId"].value;
@@ -158,11 +154,6 @@ function validateForm2() {
 }
 
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 function arama() {
     var copyText = document.getElementById("ara");
     copyText.select();
@@ -195,34 +186,31 @@ $(document).on('click', '.accept', function (e) {
     $(".modal-backdrop").remove();
 });
 
-<<<<<<< HEAD
 $('#termin').change(function () {
     if ($(this).val() == '2') {
-=======
-<<<<<<< HEAD
-$('#termin').change(function () {
-    if ($(this).val() == '2') {
-=======
-$('#termin2').change(function () {
-    if ($(this).val() == 'GECICI') {
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         $('#terminId').show();
     } else {
         $('#terminId').hide();
     }
-<<<<<<< HEAD
     if ($(this).val() == '2') {
-=======
-<<<<<<< HEAD
-    if ($(this).val() == '2') {
-=======
-    if ($(this).val() == 'GECICI') {
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
         $('#terminLabel').show();
     } else {
         $('#terminLabel').hide();
+    }
+
+
+});
+
+$('#termin3').change(function () {
+    if ($(this).val() == '2') {
+        $('#terminId').show();
+    } else {
+        $('#terminId').hide();
+    }
+    if ($(this).val() == '2') {
+        $('#terminLabel2').show();
+    } else {
+        $('#terminLabel2').hide();
     }
 
 
@@ -561,28 +549,13 @@ $(function () {
 
 
 function temizle() {
-<<<<<<< HEAD
     document.getElementById("ara").value = "";
-=======
-<<<<<<< HEAD
-    document.getElementById("ara").value = "";
-=======
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     document.getElementById("cihazTuruId").value = "";
     document.getElementById("cihazModeliId").value = "";
     document.getElementById("envNo").value = "";
     document.getElementById("seriNo").value = "";
     document.getElementById("garantiBas").value = "";
-<<<<<<< HEAD
     $('#durum').val("");
-=======
-<<<<<<< HEAD
-    $('#durum').val("");
-=======
-    document.getElementById("durum").value = "";
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
     document.getElementById("aciklama").value = "";
     document.getElementById("sifirIkinciEl").value = "";
     document.getElementById("islemiYapan").value = "";
@@ -641,10 +614,6 @@ window.onload = () => {
 //            });
 //        })
 //    });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
 //}
 
 
@@ -752,10 +721,3 @@ function regular(x) {
 //        txt.disabled = true;
 //    return false;
 //}
-<<<<<<< HEAD
-=======
-
-=======
-//}
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221

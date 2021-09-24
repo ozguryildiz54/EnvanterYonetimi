@@ -32,11 +32,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.CihazTuru' does not have a pr
           <Property Name="islemZaman" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="islemiYapan" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kullanim" Type="varchar" MaxLength="50" Nullable="false" />
-<<<<<<< HEAD
           <Property Name="aciklama" Type="varchar" MaxLength="250" />
-=======
-          <Property Name="aciklama" Type="varchar" MaxLength="250" Nullable="false" />
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
           <Property Name="sifirIkinciEl" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -326,11 +322,7 @@ warning 6002: The table/view 'envanterTakipWeb.dbo.Sirket' does not have a prima
           <Property Name="islemZaman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="islemiYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="kullanim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-<<<<<<< HEAD
           <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-=======
-          <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
           <Property Name="sifirIkinciEl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sirket_Lokasyon">

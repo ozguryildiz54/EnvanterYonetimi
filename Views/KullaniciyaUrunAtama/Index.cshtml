@@ -117,11 +117,11 @@
 
                     <span class="col-auto">
                         @* Arama Alanı *@
-                        <input type="text" id="ara" name="searchString" class="form-control" placeholder="Envanter No veya Seri No" style=" width: 270px;">
+                        <input type="text" id="ara" name="searchString" class="form-control" placeholder="Envanter No veya Seri No" style=" width: 270px;" required>
                     </span>
                     <span class="col-auto">
 
-                        <button type="submit" class="btn btn-secondary" id="buttonsearch" onclick="location.href='@Url.Action("Index", "KullaniciyaUrunAtama")'">
+                        <button type="submit" class="btn btn-secondary" id="buttonsearch" action="location.href='@Url.Action("Index", "KullaniciyaUrunAtama")'">
                             <i class="fe fe-search"></i>
                         </button>
 
@@ -140,7 +140,6 @@
             @*Pop up-tablo ekranı*@
             <div id="exampleModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-xl" style="max-width: 70%;" role="document">
-                    Pop up-tablo içeriği
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="my-3 my-md-5">
@@ -236,17 +235,8 @@
                         {
                             Name = "envNo",
                             @class = "form-control",
-<<<<<<< HEAD
                             id = "envNo",
 
-=======
-<<<<<<< HEAD
-                            id = "envNo",
-
-=======
-                            id = "envNo"
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                         })
                     </div>
 
@@ -254,79 +244,37 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Cihaz Türü</label>
                         @Html.TextBoxFor(m => m.cihazTuruID, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "cihazTuruId",
                        @class = "form-control",
                        id = "cihazTuruId",
                        ReadOnly = "false"
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "cihazTuruId",
-                            @class = "form-control",
-                            id = "cihazTuruId"
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @* Cihaz Modeli Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Cihaz Modeli</label>
                         @Html.TextBoxFor(m => m.cihazModeliId, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "cihazModeliId",
                        @class = "form-control",
                        id = "cihazModeliId",
                        ReadOnly = "false"
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "cihazModeliId",
-                            @class = "form-control",
-                            id = "cihazModeliId"
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @* Cihaz Durumu Bilgisi *@
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Cihaz Durumu</label>
-                        @Html.TextBoxFor(m => m.durum, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
-                   {
-                       Name = "durum",
-                       @class = "form-control",
-                       id = "durum",
-                       ReadOnly = "false"
-                   })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "durum",
-                            @class = "form-control",
-                            id = "durum"
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Cihaz Durumu</label>
+                    @Html.TextBoxFor(m => m.durum, new
+                    {
+                        Name = "durum",
+                        @class = "form-control",
+                        id = "durum2",
+                        ReadOnly = "false"
+                    })
+                </div>
 
 
                 </div>
@@ -358,10 +306,6 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Seri Numarası</label>
                         @Html.TextBoxFor(m => m.seriNo, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "seriNo",
                        @class = "form-control",
@@ -369,27 +313,12 @@
                        ReadOnly = "false"
 
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "seriNo",
-                            @class = "form-control",
-                            id = "seriNo"
-
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @* Cihaz Garanti Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Garanti Başlangıcı</label>
                         @Html.TextBoxFor(m => m.garantiBas, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "garantiBas",
                        @class = "form-control",
@@ -397,27 +326,12 @@
                        ReadOnly = "false"
 
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "garantiBas",
-                            @class = "form-control",
-                            id = "garantiBas"
-
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @* İşlemi Yapan Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">İşlemi Yapan</label>
                         @Html.TextBoxFor(m => m.islemiYapan, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "islemiYapan",
                        @class = "form-control",
@@ -425,17 +339,6 @@
                        ReadOnly = "false"
 
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "islemiYapan",
-                            @class = "form-control",
-                            id = "islemiYapan"
-
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                 </div>
@@ -445,25 +348,11 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Lokasyon Bilgisi</label>
                         @Html.TextBoxFor(m => m.lokasyonId, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "lokasyonId",
                        @class = "form-control",
                        id = "lokasyonId"
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "lokasyonId",
-                            @class = "form-control",
-                            id = "lokasyonId"
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @* Cihaz Açıklama Bilgisi *@
@@ -478,80 +367,44 @@
                     </div>
 
                     @* Sıfır/İkinci El Bilgisi *@
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Sıfır/İkinci El</label>
 
-                    @{
-                        var selectList = new SelectList(
-                            new List<SelectListItem>
-                            {
+                        @{
+                            var selectList = new SelectList(
+                                new List<SelectListItem>
+                                {
                                 new SelectListItem {Text = "İkinci El", Value = "IKINCIEL"},
                                 new SelectListItem {Text = "Sıfır", Value = "SIFIR"},
-                            }, "Value", "Text");
-                    }
+                }, "Value", "Text");
+                        }
 
-                    @Html.DropDownListFor(m => m.sifirIkinciEl, selectList, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
-               {
-                   Name = "sifir_ikinci_el",
-                   @class = "form-control",
-                   id = "sifirIkinciEl",
-                   ReadOnly = "false"
-               })
+                        @Html.DropDownListFor(m => m.sifirIkinciEl, selectList, new
+                   {
+                       Name = "sifir_ikinci_el",
+                       @class = "form-control",
+                       id = "sifirIkinciEl",
+                       ReadOnly = "false"
+                   })
 
-<<<<<<< HEAD
-=======
-=======
-                    {
-                        Name = "sifir_ikinci_el",
-                        @class = "form-control",
-                        id = "sifirIkinciEl"
-                    })
-
-
-                    @*@Html.TextBoxFor(m => m.sifirIkinciEl, new
-                    {
-                        Name = "sifir_ikinci_el",
-                        @class = "form-control",
-                        id = "sifirIkinciEl"
-                    })*@
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
-                </div>
+                    </div>
 
                     @* İşlem Zamanı Bilgisi *@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">İşlem Zamanı</label>
                         @Html.TextBoxFor(m => m.islemZaman, new
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                    {
                        Name = "islemZaman",
                        @class = "form-control",
                        id = "islemZaman",
                        ReadOnly = "false"
                    })
-<<<<<<< HEAD
-=======
-=======
-                        {
-                            Name = "islemZaman",
-                            @class = "form-control",
-                            id = "islemZaman"
-                        })
->>>>>>> 7c227c0713be66b688f9075539e8798a6d090bb9
->>>>>>> 4ca5a5afe9c7ab2e2ea38648c32549d06ba9e221
                     </div>
 
                     @*Cihaz Termin Seçimi*@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Cihaz Geçici mi?</label>
-                        <select class="form-control" id="termin2" name="iade">
+                        <select class="form-control" id="termin3" name="iade">
                             <option disabled hidden>Seçim Yapın.</option>
                             <option value="KALICI">Kalıcı</option>
                             <option value="GECICI">Geçici</option>
@@ -559,14 +412,35 @@
                     </div>
 
                     @* Cihaz Termin Zamanı Seç *@
-                    <div class="form-group">
-                        <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;">Cihaz Kullanım Termini</label>
-                        @*<input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />*@
+                <div class="form-group">
+                    <label id="terminLabel2" for="exampleFormControlTextarea1" style="display:none;">Cihaz Kullanım Termini</label>
+                    @*<input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />*@
 
+                    @*<input placeholder="Tarih Seçin!" name="termin" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="terminId2" style="display:none;">*@
+                    <input placeholder="Tarih Seçin!" name="termin" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="terminId">
+
+                </div>
+                    <br /><br />
+
+                    @*Cihaz Termin Seçimi*@
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"><font color="red">* </font>Cihaz Geçici mi?</label>
+                        <select class="form-select required" id="termin" name="iade">
+                            <option value="0" hidden>Seçim Yapın.</option>
+                            <option value="1">Kalıcı</option>
+                            <option value="2">Geçici</option>
+                        </select>
+                        @*@Html.TextBoxFor(m => m.depo.iade, new { @class = "form-control", Name = "iade", @id = "termin" })*@
+
+                    </div>
+                    <div class="form-group">
+                        <label id="terminLabel" for="exampleFormControlTextarea1" style="display:none;"><font color="red">* </font>Cihaz Kullanım Termini</label>
+                        <input name="termin" class="form-control" id="terminId" placeholder="Termin tarihi seçin!" type="text" style="display:none;" />
+                        @*@Html.TextBoxFor(m => m.depo.termin, new { @class = "form-control", Name = "termin", @id = "terminId" })*@
                         <input placeholder="Tarih Seçin!" name="termin" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="terminId" style="display:none;">
 
                     </div>
-                    <br /><br />
+
                 </div>
                
             </div>
