@@ -29,15 +29,11 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
         {
             try
             {
-                Depo kayit = db.Depo.Where(k => k.envNo == searchString).FirstOrDefault(); // Envanter numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
-                Depo kayitSeriNo = db.Depo.Where(k => k.seriNo == searchString).FirstOrDefault(); // Seri numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
+                Depo kayit = db.Depo.Where(k => k.envNo == searchString && k.kullanim == "aktif").FirstOrDefault(); // Envanter numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
+                Depo kayitSeriNo = db.Depo.Where(k => k.seriNo == searchString && k.kullanim == "aktif").FirstOrDefault(); // Seri numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
 
-                if (!(kayit==null) || !(kayitSeriNo == null)) // Envanter no veya Seri no ile arama yapıldığında kayıt varsa
+                if (kayit != null) // Envanter numarası ile eşleşen kayıt varsa
                 {
-                    if(kayit==null && kayitSeriNo != null) // Envanter no ile aradığında kayıt yoksa ve Seri no ile arama yapıldığında kayıt varsa
-                    {
-                        kayit = kayitSeriNo; // Seri no ile dönen kayıt envanter no ile arama yapılan nesneye aktarılır.
-                    }
 
                     // Depo kayıtları null değer kontrolü
                     #region depoNullKontrol
@@ -79,21 +75,126 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
 
                     String cihazDurumu = "DEPODA";
 
-                    if (kayit.kullanim=="aktif")
+                    model = new cihazDetay() // Dönen kaydı modele ekliyoruz
                     {
+                        cihazTuruID = kayit.cihazTuruId.ToString(),
+                        cihazModeliId = kayit.cihazModeliId.ToString(),
+                        envNo = kayit.envNo.ToString(),
+                        seriNo = kayit.seriNo.ToString(),
+                        garantiBas = kayit.garantiBas.ToString(),
+                        durum = kayit.durum.ToString(),
+                        islemZaman = kayit.islemZaman.ToString(),
+                        islemiYapan = kayit.islemiYapan.ToString(),
+                        kullanim = kayit.kullanim.ToString(),
+                        aciklama = kayit.aciklama.ToString(),
+                        sifirIkinciEl = kayit.sifirIkinciEl.ToString()
+                    };
+
+                    if (model.durum == "TAMIRDE")
+                    {
+                        mesaj = "findRecordTamirde"; // Cihaz durumu TAMIRDE
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "TAMIRDE";
+                    }
+                    else if (model.durum == "ARIZALI")
+                    {
+                        mesaj = "findRecordAriza"; // Cihaz durumu ARIZALI
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "ARIZALI";
+                    }
+
+                    else if (model.durum == "HURDA")
+                    {
+                        mesaj = "findRecordHurda"; // Cihaz durumu HURDA
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "HURDA";
+                    }
+                    else if (model.durum == "DEPODA")
+                    {
+                        mesaj = "findRecord"; // Cihaz durumu DEPODA
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "DEPODA";
+                    }
+                    else if (model.durum == "BAGIS")
+                    {
+                        mesaj = "findRecordBagıs"; // Cihaz durumu BAGIS
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "BAGIS";
+                    }
+
+                    else if (model.durum != "ARIZALI" || model.durum != "BAGIS" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
+                    {
+                        mesaj = "deviceUndefined"; // Cihaz durumu tanımsız!
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        cihazDurumu = "UNDEFINE";
+                    }
+                    model.durum = cihazDurumu; // Hatalı kayıtlar için kontrol
+                    return View(model);
+
+                }
+                else if (kayit == null)
+                {
+                    if (kayitSeriNo != null)
+                    {
+                        // Depo kayıtları null değer kontrolü
+                        #region depoNullKontrol
+
+                        if (kayitSeriNo.cihazTuruId == null)
+                            kayitSeriNo.cihazTuruId = "";
+
+                        if (kayitSeriNo.cihazModeliId == null)
+                            kayitSeriNo.cihazModeliId = "";
+
+                        if (kayitSeriNo.envNo == null)
+                            kayitSeriNo.envNo = "";
+
+                        if (kayitSeriNo.seriNo == null)
+                            kayitSeriNo.seriNo = "";
+
+                        if (kayitSeriNo.garantiBas == null)
+                            kayitSeriNo.garantiBas = "";
+
+                        if (kayitSeriNo.durum == null)
+                            kayitSeriNo.durum = "";
+
+                        if (kayitSeriNo.islemZaman == null)
+                            kayitSeriNo.islemZaman = "";
+
+                        if (kayitSeriNo.islemiYapan == null)
+                            kayitSeriNo.islemiYapan = "";
+
+                        if (kayitSeriNo.kullanim == null)
+                            kayitSeriNo.kullanim = "";
+
+                        if (kayitSeriNo.aciklama == null)
+                            kayitSeriNo.aciklama = "";
+
+                        if (kayitSeriNo.sifirIkinciEl == null)
+                            kayitSeriNo.sifirIkinciEl = "";
+
+                        #endregion //
+
+                        String cihazDurumu = "DEPODA";
+
                         model = new cihazDetay() // Dönen kaydı modele ekliyoruz
                         {
-                            cihazTuruID = kayit.cihazTuruId.ToString(),
-                            cihazModeliId = kayit.cihazModeliId.ToString(),
-                            envNo = kayit.envNo.ToString(),
-                            seriNo = kayit.seriNo.ToString(),
-                            garantiBas = kayit.garantiBas.ToString(),
-                            durum = kayit.durum.ToString(),
-                            islemZaman = kayit.islemZaman.ToString(),
-                            islemiYapan = kayit.islemiYapan.ToString(),
-                            kullanim = kayit.kullanim.ToString(),
-                            aciklama = kayit.aciklama.ToString(),
-                            sifirIkinciEl = kayit.sifirIkinciEl.ToString()
+                            cihazTuruID = kayitSeriNo.cihazTuruId.ToString(),
+                            cihazModeliId = kayitSeriNo.cihazModeliId.ToString(),
+                            envNo = kayitSeriNo.envNo.ToString(),
+                            seriNo = kayitSeriNo.seriNo.ToString(),
+                            garantiBas = kayitSeriNo.garantiBas.ToString(),
+                            durum = kayitSeriNo.durum.ToString(),
+                            islemZaman = kayitSeriNo.islemZaman.ToString(),
+                            islemiYapan = kayitSeriNo.islemiYapan.ToString(),
+                            kullanim = kayitSeriNo.kullanim.ToString(),
+                            aciklama = kayitSeriNo.aciklama.ToString(),
+                            sifirIkinciEl = kayitSeriNo.sifirIkinciEl.ToString()
                         };
 
                         if (model.durum == "TAMIRDE")
@@ -142,21 +243,21 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
                         }
                         model.durum = cihazDurumu; // Hatalı kayıtlar için kontrol
                         return View(model);
-
                     }
-                    else if (kayit.kullanim == "pasif")
+                    else if (kayitSeriNo == null)
                     {
-                        mesaj = "pasifDeger"; // Kayıt pasif!
+                        mesaj = "noRecord"; // Kayıt yok!
                         TempData["mesaj"] = mesaj;
                         mesaj = "";
                         return View();
                     }
+                }
 
-
-                    }
-                mesaj = "noRecord"; // Kayıt yok!
-                TempData["mesaj"] = mesaj;
-                mesaj = "";
+                else // Olası hatalı durumlar, kayıt başarısız!
+                {
+                    TempData["mesaj"] = "false";
+                    return View();
+                }
                 return View();
             }
             catch (Exception) // Beklenmedik durumlar burada toplanır. Sunucu hatası vs.
@@ -188,43 +289,72 @@ namespace EnvanterYonetimi.Controllers.DepoIslemleri
                 if (ModelState.IsValid) // Form alanları doğrulandı ise bu blok çalışır.
                 {
 
-                    var kayitEnvNo = db.Depo.Where(x => x.envNo == kayit.envNo).FirstOrDefault();
-                    var kayitSeriNo = db.Depo.Where(k => k.seriNo == kayit.seriNo).FirstOrDefault(); // Seri numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
+                    var kayitEnvNo = db.Depo.Where(x => x.envNo == kayit.envNo && x.kullanim == "aktif").FirstOrDefault();
+                    var kayitSeriNo = db.Depo.Where(k => k.seriNo == kayit.seriNo && k.kullanim == "aktif").FirstOrDefault(); // Seri numarası ve searchString değeri ile eşleşen Depo tablosundaki kayıtları döndürür.
 
-                    if (!(kayitEnvNo == null) || !(kayitSeriNo == null)) // Envanter no veya Seri no ile arama yapıldığında kayıt varsa
+                    if (kayitEnvNo != null) // Durum ve Açıklama değerleri güncellenir.
                     {
-                        if (kayitEnvNo == null && kayitSeriNo != null) // Envanter no ile aradığında kayıt yoksa ve Seri no ile arama yapıldığında kayıt varsa
+                        if (kayit.seriNo == kayitEnvNo.seriNo)
                         {
-                            kayitEnvNo = kayitSeriNo; // Seri no ile dönen kayıt envanter no ile arama yapılan nesneye aktarılır.
-                        }
+                            kayitEnvNo.durum = kayit.durum;
+
+                            #region depoNullKontrol
+
+                            if (kayit.cihazTuruId == null)
+                                kayit.cihazTuruId = "";
+
+                            if (kayit.cihazModeliId == null)
+                                kayit.cihazModeliId = "";
+
+                            if (kayit.envNo == null)
+                                kayit.envNo = "";
+
+                            if (kayit.seriNo == null)
+                                kayit.seriNo = "";
+
+                            if (kayit.garantiBas == null)
+                                kayit.garantiBas = "";
+
+                            if (kayit.durum == null)
+                                kayit.durum = "";
+
+                            if (kayit.islemZaman == null)
+                                kayit.islemZaman = "";
+
+                            if (kayit.islemiYapan == null)
+                                kayit.islemiYapan = "";
+
+                            if (kayit.kullanim == null)
+                                kayit.kullanim = "";
+
+                            if (kayit.aciklama == null)
+                                kayit.aciklama = "";
+
+                            if (kayit.sifirIkinciEl == null)
+                                kayit.sifirIkinciEl = "";
+
+                            #endregion //
 
 
-                        if (kayitEnvNo != null) // Durum ve Açıklama değerleri güncellenir.
-                        {
-                            if(kayitEnvNo.kullanim=="aktif")
+                            if (kayit.durum == "HURDA")
                             {
-                                kayitEnvNo.durum = kayit.durum;
-                                kayitEnvNo.aciklama = kayit.aciklama;
-                                db.Entry(kayitEnvNo).State = EntityState.Modified;
-                                db.SaveChanges();
+                                kayitEnvNo.kullanim = "pasif";
+                            }
+                            
+                            kayitEnvNo.aciklama = kayit.aciklama;
+                            db.Entry(kayitEnvNo).State = EntityState.Modified;
+                            db.SaveChanges();
 
-                                mesaj = "successRecord";
-                                TempData["mesaj"] = mesaj;
-                                mesaj = "";
-                            }
-                            else if (kayitEnvNo.kullanim == "pasif")
-                            {
-                                mesaj = "pasifDeger"; // Sunucu hatası!
-                                TempData["mesaj"] = mesaj;
-                                mesaj = "";
-                            }
-                            else
-                            {
-                                mesaj = "nullDeger"; // Sunucu hatası!
-                                TempData["mesaj"] = mesaj;
-                                mesaj = "";
-                            }
-                        }
+                            mesaj = "successRecord";
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                        }                   
+                    }
+                    else if (kayitEnvNo == null)
+                    {
+                        mesaj = "noRecord"; // Sunucu hatası!
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
                     }
                 }
             }

@@ -1,0 +1,244 @@
+using EnvanterYonetimi.Models.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace EnvanterYonetimi.Controllers.DepoIslemleri
+{
+    public class BagisYapController : Controller
+    {
+        envanterTakipWebEntities2 db = new envanterTakipWebEntities2(); // Veritabaný referans nesnemiz
+        cihazDetay model = new cihazDetay(); // Model için referans nesnesi tanýmlamasý
+        String mesaj = ""; // Ýþlem sonucunda ki mesajý saklayacaðýz.
+
+        // GET: BagisYap
+        [Route("BagisYap")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // POST: BagisYap
+        [HttpPost]
+        [Route("BagisYap")]
+        public ActionResult Index(string searchString) // Cihaz aramayý saðlar
+        {
+            try
+            {
+                Depo kayit = db.Depo.Where(k => k.envNo == searchString).FirstOrDefault(); // Envanter numarasý ve searchString deðeri ile eþleþen Depo tablosundaki kayýtlarý döndürür.
+                Depo kayitSeriNo = db.Depo.Where(k => k.seriNo == searchString).FirstOrDefault(); // Seri numarasý ve searchString deðeri ile eþleþen Depo tablosundaki kayýtlarý döndürür.
+
+                if (!(kayit == null) || !(kayitSeriNo == null)) // Envanter no veya Seri no ile arama yapýldýðýnda kayýt varsa
+                {
+                    if (kayit == null && kayitSeriNo != null) // Envanter no ile aradýðýnda kayýt yoksa ve Seri no ile arama yapýldýðýnda kayýt varsa
+                    {
+                        kayit = kayitSeriNo; // Seri no ile dönen kayýt envanter no ile arama yapýlan nesneye aktarýlýr.
+                    }
+
+                    // Depo kayýtlarý null deðer kontrolü
+                    #region depoNullKontrol
+
+                    if (kayit.cihazTuruId == null)
+                        kayit.cihazTuruId = "";
+
+                    if (kayit.cihazModeliId == null)
+                        kayit.cihazModeliId = "";
+
+                    if (kayit.envNo == null)
+                        kayit.envNo = "";
+
+                    if (kayit.seriNo == null)
+                        kayit.seriNo = "";
+
+                    if (kayit.garantiBas == null)
+                        kayit.garantiBas = "";
+
+                    if (kayit.durum == null)
+                        kayit.durum = "";
+
+                    if (kayit.islemZaman == null)
+                        kayit.islemZaman = "";
+
+                    if (kayit.islemiYapan == null)
+                        kayit.islemiYapan = "";
+
+                    if (kayit.kullanim == null)
+                        kayit.kullanim = "";
+
+                    if (kayit.aciklama == null)
+                        kayit.aciklama = "";
+
+                    if (kayit.sifirIkinciEl == null)
+                        kayit.sifirIkinciEl = "";
+
+                    #endregion //
+
+                    String cihazDurumu = "DEPODA";
+
+                    if (kayit.kullanim == "aktif")
+                    {
+                        model = new cihazDetay() // Dönen kaydý modele ekliyoruz
+                        {
+                            cihazTuruID = kayit.cihazTuruId.ToString(),
+                            cihazModeliId = kayit.cihazModeliId.ToString(),
+                            envNo = kayit.envNo.ToString(),
+                            seriNo = kayit.seriNo.ToString(),
+                            garantiBas = kayit.garantiBas.ToString(),
+                            durum = kayit.durum.ToString(),
+                            islemZaman = kayit.islemZaman.ToString(),
+                            islemiYapan = kayit.islemiYapan.ToString(),
+                            kullanim = kayit.kullanim.ToString(),
+                            aciklama = kayit.aciklama.ToString(),
+                            sifirIkinciEl = kayit.sifirIkinciEl.ToString()
+                        };
+
+                        if (model.durum == "TAMIRDE")
+                        {
+                            mesaj = "findRecordTamirde"; // Cihaz durumu TAMIRDE
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "TAMIRDE";
+                        }
+                        else if (model.durum == "ARIZALI")
+                        {
+                            mesaj = "findRecordAriza"; // Cihaz durumu ARIZALI
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "ARIZALI";
+                        }
+
+                        else if (model.durum == "HURDA")
+                        {
+                            mesaj = "findRecordHurda"; // Cihaz durumu HURDA
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "HURDA";
+                        }
+                        else if (model.durum == "DEPODA")
+                        {
+                            mesaj = "findRecord"; // Cihaz durumu DEPODA
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "DEPODA";
+                        }
+                        else if (model.durum == "BAGIS")
+                        {
+                            mesaj = "findRecordBagýs"; // Cihaz durumu BAGIS
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "BAGIS";
+                        }
+
+                        else if (model.durum != "ARIZALI" || model.durum != "BAGIS" || model.durum != "TAMIRDE" || model.durum != "HURDA" || model.durum != "DEPODA")
+                        {
+                            mesaj = "deviceUndefined"; // Cihaz durumu tanýmsýz!
+                            TempData["mesaj"] = mesaj;
+                            mesaj = "";
+                            cihazDurumu = "UNDEFINE";
+                        }
+
+                        model.durum = cihazDurumu; // Hatalý kayýtlar için kontrol
+                        return View(model);
+                    }
+                    else if (kayit.kullanim == "pasif")
+                    {
+                        mesaj = "pasifDeger"; // Kayýt pasif!
+                        TempData["mesaj"] = mesaj;
+                        mesaj = "";
+                        return View();
+                    }
+
+
+                }
+                mesaj = "noRecord"; // Kayýt yok!
+                TempData["mesaj"] = mesaj;
+                mesaj = "";
+                return View();
+            }
+            catch (Exception) // Beklenmedik durumlar burada toplanýr. Sunucu hatasý vs.
+            {
+                mesaj = "errorServer"; // Sunucu hatasý!
+                TempData["mesaj"] = mesaj;
+                mesaj = "";
+
+                return View();
+            }
+        }
+
+        // POST: BagisYap
+        [HttpPost]
+        [Route("BagisYapKayit")]
+        public ActionResult BagisYapKayit(Depo kayit, FormCollection form) // Form alanlarýnda ki veriler Depo tablosuna kaydedilir. 
+        {
+            try
+            {
+                // Form alanlarýnýn boþ olup olmadýðýný kontrol eder
+                if (form["envNo"] == "" || form["cihazModeliId"] == "" || form["seriNo"] == "" || form["garantiBas"] == "" || form["durum"] == "" || form["aciklama"] == "" || form["cihazTuruId"] == "")
+                {
+                    mesaj = "formEmpty";
+                    TempData["mesaj"] = mesaj; // Form alanlarýný doldurun hatasý View alanýna yönlendirilir.
+                    mesaj = "";
+
+                    return RedirectToAction("Index", "BagisYap"); // ArizaBildirimi sayfasýna yönlendirir.
+                }
+                if (ModelState.IsValid) // Form alanlarý doðrulandý ise bu blok çalýþýr.
+                {
+
+                    var kayitEnvNo = db.Depo.Where(x => x.envNo == kayit.envNo).FirstOrDefault();
+                    var kayitSeriNo = db.Depo.Where(k => k.seriNo == kayit.seriNo).FirstOrDefault(); // Seri numarasý ve searchString deðeri ile eþleþen Depo tablosundaki kayýtlarý döndürür.
+
+                    if (!(kayitEnvNo == null) || !(kayitSeriNo == null)) // Envanter no veya Seri no ile arama yapýldýðýnda kayýt varsa
+                    {
+                        if (kayitEnvNo == null && kayitSeriNo != null) // Envanter no ile aradýðýnda kayýt yoksa ve Seri no ile arama yapýldýðýnda kayýt varsa
+                        {
+                            kayitEnvNo = kayitSeriNo; // Seri no ile dönen kayýt envanter no ile arama yapýlan nesneye aktarýlýr.
+                        }
+
+
+                        if (kayitEnvNo != null) // Durum ve Açýklama deðerleri güncellenir.
+                        {
+                            if (kayitEnvNo.kullanim == "aktif")
+                            {
+                                kayitEnvNo.durum = kayit.durum;
+                                kayitEnvNo.aciklama = kayit.aciklama;
+                                db.Entry(kayitEnvNo).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                                mesaj = "successRecord";
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
+                            else if (kayitEnvNo.kullanim == "pasif")
+                            {
+                                mesaj = "pasifDeger"; // Sunucu hatasý!
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
+                            else
+                            {
+                                mesaj = "nullDeger"; // Sunucu hatasý!
+                                TempData["mesaj"] = mesaj;
+                                mesaj = "";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exception) // Beklenmedik durumlar burada toplanýr. Sunucu hatasý vs.
+            {
+                mesaj = "errorServer"; // Sunucu hatasý!
+                TempData["mesaj"] = mesaj;
+                mesaj = "";
+
+                return RedirectToAction("Index", "BagisYap"); // ArizaBildirimi sayfasýna yönlendirir.
+
+            }
+            return RedirectToAction("Index", "BagisYap"); // ArizaBildirimi sayfasýna yönlendirir.
+
+        }
+
+    }
+}
